@@ -1,0 +1,66 @@
+/* Set body properties for full-page height and center alignment */
+body {
+    margin: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    background-color: #B30000; /* Optional background color */
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color:#ffffff
+}
+
+/* Center the content and optionally style it */
+.center-content {
+    text-align: center; /* Align text inside the container */
+    padding: 20px;
+    border-radius: 10px;
+    background: #ffffff; /* Optional background color */
+    box-shadow: 0 4px 8px rgb(255, 232, 232); /* Optional shadow */
+}
+
+/* Style the form */
+form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    align-items: center; /* Center-align all elements horizontally */
+}
+
+/* Add a container to align label and input horizontally */
+.form-group {
+    display: flex;
+    align-items: center; /* Align label and input vertically centered */
+    margin-bottom: 10px; /* Space between fields */
+}
+
+/* Style the label and input fields */
+.form-group label {
+    margin-right: 10px; /* Space between label and input */
+    font-size: 16px;
+}
+
+/* Style the form inputs */
+form input[type="text"], form input[type="password"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 250px; /* Set a fixed width for inputs */
+}
+
+/* Style the submit button */
+form input[type="submit"] {
+    padding: 13px 35px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 20px; /* Add margin for spacing above the button */
+}
+
+form input[type="submit"]:hover {
+    background-color: #00b36e; /* Darker color on hover */
+}
