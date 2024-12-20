@@ -1,0 +1,170 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+  }
+  
+  /* Header container */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #B30000; /* Dark red background */
+    color: white;
+    padding: 10px 40px 10px 0;
+    height: 35px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Logo styling */
+  .logo {
+    max-height: 50px; /* Adjust to your logo size */
+    margin-right: 50px; /* Space between logo and search bar */
+  }
+  
+  /* Search bar container */
+  .search-container {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Allows it to take up remaining space */
+    margin-right: 20px; /* Space between search bar and icons */
+  }
+  
+  .search-bar {
+    width: 100%;
+    max-width: 800px; /* Max width of the search bar */
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left */
+  }
+  
+  .clear-btn {
+    background: white;
+    border: none;
+    padding: 7px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right */
+  }
+  
+  /* Right section styling */
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between icons */
+  }
+  
+  .icon {
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  /* Sidebar Styles */
+.sidebar {
+    width: 200px;
+    height: calc(100vh - 60px); /* Full height minus the height of the header */
+    background-color: #f1f1f1;
+    padding-top: 0px;
+    position: fixed;
+    top: 60px; /* Push below the header (header height is 60px) */
+    left: 0;
+    z-index: 500; /* Stays behind the header */
+    border-right: 1px solid #2705054d;
+  }
+  
+  .sidebar button {
+    display: block;
+    width: 90%;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: #EEF600;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    background-color: #5d6310;
+  }
+
+/* Title Bar */
+.title-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    padding: 5px;
+    font-weight: bold;
+
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 200px; /* Space for sidebar */
+    padding: 10px;
+    margin-top: 0px; /* Adjust for header height */
+}
+
+/* Status Section */
+.status-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.status-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px 20px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #B30000;
+    
+}
+
+.status-label {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Research Section */
+.research-section {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.research-section h2 {
+    font-size: 24px;
+    color: #B30000;
+    margin-bottom: 10px;
+}
+
+.research-list {
+    display: flex;
+    padding: 20px;
+    gap: 300px;
+}
+
+.research-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.research-list li {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
