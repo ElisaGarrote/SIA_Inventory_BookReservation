@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <title>Library Management System</title>
   <link rel="stylesheet" href="Admin.Dashboard.css">
+
+  <script>
+    // Update the values dynamically when the page loads (example lang)
+    /*let borrowedBooks = 150;
+    let overdueBooks = 30;
+    let totalBooks = 500; */
+
+    window.onload = function() {
+      // Update the display
+      document.getElementById('borrowed-books').textContent = borrowedBooks;
+      document.getElementById('overdue-books').textContent = overdueBooks;
+      document.getElementById('total-books').textContent = totalBooks;
+    };
+  </script>
+
 </head>
 <body>
 
   <!-- Header -->
   <div class="header">
-    <!-- Left Section: Logo -->
     <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
-
-    <!-- Center Section: Search Bar -->
     <div class="search-container">
       <input type="text" placeholder="Find book..." class="search-bar">
       <button class="clear-btn">✖</button>
     </div>
-
-    <!-- Right Section: Icons -->
     <div class="header-icons">
       <span class="icon">🔔</span>
       <span class="icon">👤</span>
@@ -26,33 +36,57 @@
 
   <!-- Title Bar -->
   <div class="title-bar">
-    <span>MM/DD/YYYY</span>
-    <span>00:00:00</span>
+    <span id="current-date"></span>
+    <span id="current-time"></span>
   </div>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <button>Dashboard</button>
-      <button>Book Inventory</button>
-      <button>User Management</button>
-      <button>Reports</button>
-    </div>
+  <script>
+    // Function to update the date and time
+    function updateDateTime() {
+      // Get the current date and time
+      const now = new Date();
 
-    
+      // Format the date as MM/DD/YYYY
+      const date = now.toLocaleDateString('en-US');
+      
+      // Format the time as HH:MM:SS
+      const time = now.toLocaleTimeString('en-US');
+
+      // Update the HTML elements with the current date and time
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+
+    // Call the updateDateTime function every second to keep the time up to date
+    setInterval(updateDateTime, 1000);
+
+    // Initial call to set the date and time when the page loads
+    window.onload = updateDateTime;
+  </script>
+
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button>Dashboard</button>
+    <button>Book Inventory</button>
+    <button>User Management</button>
+    <button>Reports</button>
+  </div>
+
   <!-- Main Content -->
   <div class="main-content">
     <!-- Status Section -->
     <div class="status-section">
       <div class="status-card">
-        <div class="status-number">000</div>
+        <div id="borrowed-books" class="status-number">000</div>
         <div class="status-label">Borrowed Books</div>
       </div>
       <div class="status-card">
-        <div class="status-number">000</div>
+        <div id="overdue-books" class="status-number">000</div>
         <div class="status-label">Overdue Books</div>
       </div>
       <div class="status-card">
-        <div class="status-number">000</div>
+        <div id="total-books" class="status-number">000</div>
         <div class="status-label">Total of Books</div>
       </div>
     </div>
@@ -62,31 +96,56 @@
       <h2>Types of Research Books</h2>
       <div class="research-list">
         <ul>
-          <li>Descriptive Studies 000</li>
-          <li>Exploratory Studies 000</li>
-          <li>Explanatory (Causal) Studies 000</li>
-          <li>Evaluative Studies 000</li>
-          <li>Qualitative Research 000</li>
-          <li>Quantitative Research 000</li>
-          <li>Mixed-Methods Research 000</li>
-          <li>Theoretical Studies 000</li>
-          <li>Applied Studies 000</li>
-          <li>Empirical Studies 000</li>
+          <li>Descriptive Studies</li>
+          <li>Exploratory Studies</li>
+          <li>Explanatory (Causal) Studies</li>
+          <li>Evaluative Studies</li>
+          <li>Qualitative Research</li>
+          <li>Quantitative Research</li>
+          <li>Mixed-Methods Research</li>
+          <li>Theoretical Studies</li>
+          <li>Applied Studies</li>
+          <li>Empirical Studies</li>
+        </ul>
+        <ul> 
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
         </ul>
         <ul>
-          <li>Cross-Sectional Studies 000</li>
-          <li>Longitudinal Studies 000</li>
-          <li>Primary Research 000</li>
-          <li>Secondary Research 000</li>
-          <li>Social Sciences Research 000</li>
-          <li>Natural Sciences Research 000</li>
-          <li>Business and Management Research 000</li>
-          <li>Technology Research 000</li>
-          <li>Experimental Research 000</li>
-          <li>Non-Experimental Research 000</li>
+          <li>Cross-Sectional Studies</li>
+          <li>Longitudinal Studies</li>
+          <li>Primary Research</li>
+          <li>Secondary Research</li>
+          <li>Social Sciences Research</li>
+          <li>Natural Sciences Research</li>
+          <li>Business and Management Research</li>
+          <li>Technology Research</li>
+          <li>Experimental Research</li>
+          <li>Non-Experimental Research</li>
+        </ul>
+        <ul> 
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
         </ul>
       </div>
     </div>
   </div>
+
 </body>
 </html>
