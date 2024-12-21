@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="Admin.BookInventory.css">
+
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+    <div class="search-container">
+      <input type="text" placeholder="Find book..." class="search-bar">
+      <button class="clear-btn">✖</button>
+    </div>
+    <div class="header-icons">
+      <span class="icon">🔔</span>
+      <span class="icon">👤</span>
+    </div>
+  </div>
+
+  <!-- Title Bar -->
+  <div class="title-bar">
+    <span id="current-date"></span>
+    <span id="current-time"></span>
+  </div>
+
+  <script>
+    // Function to update the date and time
+    function updateDateTime() {
+      // Get the current date and time
+      const now = new Date();
+
+      // Format the date as MM/DD/YYYY
+      const date = now.toLocaleDateString('en-US');
+      
+      // Format the time as HH:MM:SS
+      const time = now.toLocaleTimeString('en-US');
+
+      // Update the HTML elements with the current date and time
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+
+    // Call the updateDateTime function every second to keep the time up to date
+    setInterval(updateDateTime, 1000);
+
+    // Initial call to set the date and time when the page loads
+    window.onload = updateDateTime;
+  </script>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button onclick="window.location.href='Admin.Dashboard.html';">Dashboard</button>
+    <button onclick="window.location.href='Admin.BookInventory.html';">Book Inventory</button>
+    <button>User Management</button>
+    <button>Reports</button>
+  </div>
+  
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Filter and Action Container -->
+    <div class="filter-action-container">
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <label for="category-filter">Filter by:</label>
+        <input type="text" id="category-filter" placeholder="Category">
+        <input type="text" id="status-filter" placeholder="Status">
+        <input type="text" id="availability-filter" placeholder="Availability">
+        <button class="apply-btn">Apply</button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="add-btn">Add</button>
+        <button class="edit-btn">Edit</button>
+        <button class="archive-btn">Archive</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
