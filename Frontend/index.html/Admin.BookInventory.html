@@ -3,20 +3,18 @@
 <head>
   <title>Library Management System</title>
   <link rel="stylesheet" href="Admin.BookInventory.css">
-
 </head>
 <body>
-
   <!-- Header -->
   <div class="header">
     <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
     <div class="search-container">
       <input type="text" placeholder="Find book..." class="search-bar">
-      <button class="clear-btn">✖</button>
+      <button class="clear-btn">&#10006;</button>
     </div>
     <div class="header-icons">
-      <span class="icon">🔔</span>
-      <span class="icon">👤</span>
+      <span class="icon">&#128276;</span>
+      <span class="icon">&#128100;</span>
     </div>
   </div>
 
@@ -29,24 +27,13 @@
   <script>
     // Function to update the date and time
     function updateDateTime() {
-      // Get the current date and time
       const now = new Date();
-
-      // Format the date as MM/DD/YYYY
       const date = now.toLocaleDateString('en-US');
-      
-      // Format the time as HH:MM:SS
       const time = now.toLocaleTimeString('en-US');
-
-      // Update the HTML elements with the current date and time
       document.getElementById('current-date').textContent = date;
       document.getElementById('current-time').textContent = time;
     }
-
-    // Call the updateDateTime function every second to keep the time up to date
     setInterval(updateDateTime, 1000);
-
-    // Initial call to set the date and time when the page loads
     window.onload = updateDateTime;
   </script>
 
@@ -57,14 +44,14 @@
     <button>User Management</button>
     <button>Reports</button>
   </div>
-  
-<!-- Main Content -->
-<div class="main-content">
+
+  <!-- Main Content -->
+  <div class="main-content">
     <!-- Filter and Action Container -->
     <div class="filter-action-container">
       <!-- Filter Bar -->
       <div class="filter-bar">
-        <label for="category-filter">Filter by:</label>
+        <label for="category-filter">Filter:</label>
         <input type="text" id="category-filter" placeholder="Category">
         <input type="text" id="status-filter" placeholder="Status">
         <input type="text" id="availability-filter" placeholder="Availability">
@@ -73,11 +60,204 @@
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <button class="add-btn">Add</button>
-        <button class="edit-btn">Edit</button>
-        <button class="archive-btn">Archive</button>
+        <button class="add-btn" onclick="openAddModal()">Add</button>
+        <button class="edit-btn" onclick="openEditModal()">Edit</button>
+        <button class="archive-btn" onclick="openArchiveModal()">Archive</button>
       </div>
     </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <h2 id="modal-title">Add New Research Study</h2>
+      <form onsubmit="submitForm(event)">
+        <!-- Research ID -->
+        <label for="researchID">Research ID:</label>
+        <input type="text" id="researchID" placeholder="Research ID"><br><br>
+
+        <!-- Research Title -->
+        <label for="book-title">Research Title:</label>
+        <input type="text" id="book-title" placeholder="Enter research title" required><br><br>
+
+        <!-- Researcher -->
+        <label for="author">Researcher:</label>
+        <input type="text" id="author" placeholder="Enter researcher name" required><br><br>
+
+        <!-- Restriction Code -->
+        <label for="restriction-code">Restriction Code:</label>
+        <input type="text" id="restriction-code" placeholder="Enter restriction code"><br><br>
+
+        <!-- Category -->
+        <label for="category">Category:</label>
+        <input list="categories" id="category" placeholder="Enter or select a category" required>
+        <datalist id="categories">
+          <option value="Science">
+          <option value="Technology">
+          <option value="Engineering">
+          <option value="Mathematics">
+          <option value="Arts">
+        </datalist><br><br>
+
+        <!-- Buttons -->
+        <div class="button-container">
+          <button type="button" onclick="closeModal()" class="cancel-btn">Cancel</button>
+          <button type="submit" class="confirm-btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Variable to track whether we are in "edit" mode
+    let isEditMode = false;
+    let currentResearchID = null; // Stores the ID of the research study being edited
+
+    // Function to open the modal for adding a new research study
+    function openAddModal() {
+      // Reset the form fields
+      resetModal();
+      
+      // Change the modal title to "Add New Research Study"
+      document.getElementById('modal-title').textContent = "Add New Research Study";
+      
+      // Set the form to "Add" mode
+      isEditMode = false;
+      
+      // Show the modal
+      document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    // Function to open the modal for editing (no pre-filling data)
+    function openEditModal() {
+      // Change the modal title to "Edit Research Study"
+      document.getElementById('modal-title').textContent = "Edit Research Study";
+      
+      // Set the form to "Edit" mode
+      isEditMode = true;
+      
+      // Show the modal
+      document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById('modal-overlay').style.display = 'none';
+    }
+
+    // Function to reset the modal fields for a new add or edit action
+    function resetModal() {
+      document.getElementById('researchID').value = '';
+      document.getElementById('book-title').value = '';
+      document.getElementById('author').value = '';
+      document.getElementById('restriction-code').value = '';
+      document.getElementById('category').value = '';
+    }
+
+    // Function to submit the form (either add or edit)
+    function submitForm(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Get the form data
+      const formData = {
+        researchID: document.getElementById('researchID').value,
+        title: document.getElementById('book-title').value,
+        author: document.getElementById('author').value,
+        restrictionCode: document.getElementById('restriction-code').value,
+        category: document.getElementById('category').value
+      };
+
+      if (isEditMode) {
+        // If in edit mode, update the research study
+        console.log('Editing research study:', formData);
+        // Here, you can call an API or backend to update the data
+      } else {
+        // If in add mode, create a new research study
+        console.log('Adding new research study:', formData);
+        // Here, you can call an API or backend to add the new study
+      }
+
+      // Close the modal after saving
+      closeModal();
+    }
+  </script>
+
+  <!-- Archive Modal -->
+  <div class="modal-overlay" id="archive-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeArchiveModal()">&times;</button>
+      <h2>Archive Research Study</h2>
+      <form onsubmit="archiveBook(event)">
+        <!-- Book ID -->
+        <label for="book-id">Book ID:</label>
+        <input type="text" id="book-id" placeholder="Enter Book ID" required><br><br>
+
+        <!-- Research Title -->
+        <label for="research-title">Research Title:</label>
+        <input type="text" id="research-title" placeholder="Enter research title" required><br><br>
+
+        <!-- Input Reason -->
+        <label for="reason">Input Reason:</label>
+        <input type="text" id="reason" placeholder="Enter reason for archiving" required><br><br>
+
+        <!-- Category -->
+        <label for="category">Category:</label>
+        <input list="categories" id="category" placeholder="Enter or select a category" required>
+        <datalist id="categories">
+          <option value="Science">
+          <option value="Technology">
+          <option value="Engineering">
+          <option value="Mathematics">
+          <option value="Arts">
+        </datalist><br><br>
+
+        <!-- Buttons -->
+        <div class="button-container">
+          <button type="button" onclick="closeArchiveModal()" class="cancel-btn">Cancel</button>
+          <button type="submit" class="confirm-btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Function to open the archive modal
+    function openArchiveModal() {
+      document.getElementById('archive-modal').style.display = 'flex';
+    }
+
+    // Function to close the archive modal
+    function closeArchiveModal() {
+      document.getElementById('archive-modal').style.display = 'none';
+    }
+
+    // Function to handle the archive action
+    function archiveBook(event) {
+      event.preventDefault(); // Prevent form submission
+
+      const bookID = document.getElementById('book-id').value;
+      const title = document.getElementById('research-title').value;
+      const category = document.getElementById('category').value;
+      const reason = document.getElementById('reason').value;
+
+      console.log('Archiving book:', { bookID, title, category, reason });
+
+      // Here, add logic to update the backend or database
+
+      // Close the modal after archiving
+      closeArchiveModal();
+    }
+  </script>
+
+    <!-- Frame // sa src dito papasok yung mismong table :> --> 
+  <div class="frame-container">
+    <iframe
+      src="" 
+      title="Content Frame" 
+      class="content-frame" 
+      frameborder="0">
+    </iframe>
   </div>
 
 </body>
