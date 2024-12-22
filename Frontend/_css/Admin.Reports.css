@@ -1,0 +1,250 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+  }
+  
+  /* Header container */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #B30000; /* Dark red background */
+    color: white;
+    padding: 10px 40px 10px 0;
+    height: 35px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Logo styling */
+  .logo {
+    max-height: 50px; /* Adjust to your logo size */
+    margin-right: 50px; /* Space between logo and search bar */
+  }
+  
+  /* Search bar container */
+  .search-container {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Allows it to take up remaining space */
+    margin-right: 20px; /* Space between search bar and icons */
+  }
+  
+  .search-bar {
+    width: 100%;
+    max-width: 800px; /* Max width of the search bar */
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left */
+  }
+  
+  .clear-btn {
+    background: white;
+    border: 0px;
+    padding: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right */
+  }
+  
+  /* Right section styling */
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Space between icons */
+  }
+  
+  .icon {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  
+  /* Sidebar Styles */
+  .sidebar {
+    width: 200px;
+    height: 0px; /* Full height minus the height of the header */
+    display:block;
+    background-color: #f1f1f1;
+    padding-top: 10px;
+    top: 0px; /* Push below the header (header height is 60px) */
+  }
+  
+  .sidebar button {
+    display: flex;
+    width: 90%;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: #EEF600;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    background-color: #cbd44b;
+  }
+  
+  /* Title Bar */
+  .title-bar {
+    display: flex;
+    justify-content: right;
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-right: 10px;
+    font-weight: bold;
+    gap: 15px;
+  }
+  
+  .filter-action-container {
+    display: flex; /* Aligns items in a row */
+    justify-content: space-between; /* Spreads filter bar and action buttons apart */
+    align-items: center; /* Aligns items vertically */
+  }
+  
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adds spacing between filter inputs and the button */
+  }
+  
+  .filter-bar input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+  }
+  
+  .filter-bar button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filter-bar button:hover {
+    background-color: #0056b3;
+  }
+
+  .print-button {
+    display: flex;
+    gap: 10px; /* Adds spacing between buttons */
+  }
+  
+  .print-button button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .print-button .print-btn{
+    background-color: #fcfcfc;
+  }
+
+
+/* Modal Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  width: 400px;
+  border-radius: 8px;
+}
+
+.close-btn {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+button.cancel-btn, button.confirm-btn {
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.confirm-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}
+
+.confirm-btn:hover {
+  background-color: #45a049;
+}
+
+/* Checkbox and Input Styling */
+.modal-content div {
+  margin-bottom: 5px;
+}
+
+.modal-content label {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  width: 100%;
+  display: none;
+}
+
+button.print-btn, button.apply-btn {
+  background-color: #008CBA;
+  padding: 10px;
+  color: white;
+}
+
+button.print-btn:hover, button.apply-btn:hover {
+  background-color: #007B8C;
+}
+
+.frame-container {
+  margin-top: 20px;
+}
+
+.content-frame {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
