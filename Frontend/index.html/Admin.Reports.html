@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="Admin.UserManagement.css">
+  <style>
+    /* Adjusting checkbox and label alignment */
+    .filter-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter-container div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .filter-container label {
+      margin-left: 8px;
+    }
+
+    .modal-content input[type="checkbox"] {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+    <div class="search-container">
+      <input type="text" placeholder="Find user..." class="search-bar">
+      <button class="clear-btn">✖</button>
+    </div>
+
+    <div class="header-icons">
+      <span class="icon">🔔</span>
+      <!-- Log out icon -->
+      <a href="Admin.login.html" class="icon">⬅️</a>
+    </div>
+  </div>
+
+  <!-- Title Bar -->
+  <div class="title-bar">
+    <span id="current-date"></span>
+    <span id="current-time"></span>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      document.getElementById('current-date').textContent = now.toLocaleDateString('en-US');
+      document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US');
+    }
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+  </script>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button onclick="window.location.href='Admin.Dashboard.html';">Dashboard</button>
+    <button onclick="window.location.href='Admin.BookInventory.html';">Book Inventory</button>
+    <button onclick="window.location.href='Admin.UserManagement.html';">User Management</button>
+    <button onclick="window.location.href='Admin.Reports.html';">Reports</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="filter-action-container">
+      <div class="filter-bar">
+        <label for="date-filter">Filter:</label>
+        <input type="text" id="date-filter" placeholder="Date">
+        <input type="text" id="available-filter" placeholder="Availability">
+        <input type="text" id="category-filter" placeholder="Category">
+        <input type="text" id="employee-filter" placeholder="Assigned to">
+        <input type="text" id="role-filter" placeholder="Role">
+        <button class="apply-btn">Apply</button>
+      </div>
+      <div class="print-button">
+        <button class="print-btn" onclick="openPrintModal()">Print</button>
+      </div>
+    </div>
+
+    <!-- Print Modal -->
+    <div id="print-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">×</span>
+        <h2>Print Filters</h2>
+        <form>
+          <div class="filter-container">
+            <div>
+              <input type="checkbox" id="modal-date-checkbox" onchange="toggleInput('modal-date-checkbox', 'modal-date-input')">
+              <label for="modal-date-checkbox">Date:</label>
+              <input type="text" id="modal-date-input" style="display:none;" placeholder="Enter desired date"><br>
+            </div>
+            <div>
+              <input type="checkbox" id="modal-availability-checkbox" onchange="toggleInput('modal-availability-checkbox', 'modal-availability-input')">
+              <label for="modal-availability-checkbox">Availability:</label>
+              <input type="text" id="modal-availability-input" style="display:none;" placeholder="Enter desired availability"><br>
+            </div>
+            <div>
+              <input type="checkbox" id="modal-category-checkbox" onchange="toggleInput('modal-category-checkbox', 'modal-category-input')">
+              <label for="modal-category-checkbox">Category:</label>
+              <input type="text" id="modal-category-input" style="display:none;" placeholder="Enter desired category"><br>
+            </div>
+            <div>
+              <input type="checkbox" id="modal-assigned-checkbox" onchange="toggleInput('modal-assigned-checkbox', 'modal-assigned-input')">
+              <label for="modal-assigned-checkbox">Assigned to:</label>
+              <input type="text" id="modal-assigned-input" style="display:none;" placeholder="Enter assigned person"><br>
+            </div>
+            <div>
+              <input type="checkbox" id="modal-role-checkbox" onchange="toggleInput('modal-role-checkbox', 'modal-role-input')">
+              <label for="modal-role-checkbox">Role:</label>
+              <input type="text" id="modal-role-input" style="display:none;" placeholder="Enter desired role"><br>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+            <button type="button" class="confirm-btn" onclick="printFilters()">Print</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="frame-container">
+    <iframe src="" title="Content Frame" class="content-frame" frameborder="0"></iframe>
+  </div>
+
+  <script>
+    function openPrintModal() {
+      document.getElementById('print-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('print-modal').style.display = 'none';
+    }
+
+    function toggleInput(checkboxId, inputId) {
+      const checkbox = document.getElementById(checkboxId);
+      const input = document.getElementById(inputId);
+      if (checkbox.checked) {
+        input.style.display = 'block';
+      } else {
+        input.style.display = 'none';
+        input.value = ''; // Clear input value when unchecked
+      }
+    }
+
+    function printFilters() {
+      const filters = [];
+      if (document.getElementById('modal-date-checkbox').checked) {
+        filters.push(`Date: ${document.getElementById('modal-date-input').value}`);
+      }
+      if (document.getElementById('modal-availability-checkbox').checked) {
+        filters.push(`Availability: ${document.getElementById('modal-availability-input').value}`);
+      }
+      if (document.getElementById('modal-category-checkbox').checked) {
+        filters.push(`Category: ${document.getElementById('modal-category-input').value}`);
+      }
+      if (document.getElementById('modal-assigned-checkbox').checked) {
+        filters.push(`Assigned to: ${document.getElementById('modal-assigned-input').value}`);
+      }
+      if (document.getElementById('modal-role-checkbox').checked) {
+        filters.push(`Role: ${document.getElementById('modal-role-input').value}`);
+      }
+
+      if (filters.length > 0) {
+        alert(`Printing the following filters:\n${filters.join('\n')}`);
+      } else {
+        alert('No filters selected for printing.');
+      }
+      closeModal();
+    }
+    
+  </script>
+</body>
+</html>

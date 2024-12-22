@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="Admin.UserManagement.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+    <div class="search-container">
+      <input type="text" placeholder="Find user..." class="search-bar">
+      <button class="clear-btn">✖</button>
+    </div>
+
+    <div class="header-icons">
+      <span class="icon">🔔</span>
+      <!-- Log out icon -->
+      <a href="Admin.login.html" class="icon">⬅️</a>
+    </div>
+  </div>
+  
+  <!-- Title Bar -->
+  <div class="title-bar">
+    <span id="current-date"></span>
+    <span id="current-time"></span>
+  </div>
+
+  <script>
+    // Function to update the date and time
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-US');
+      const time = now.toLocaleTimeString('en-US');
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+  </script>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button onclick="window.location.href='Admin.Dashboard.html';">Dashboard</button>
+    <button onclick="window.location.href='Admin.BookInventory.html';">Book Inventory</button>
+    <button onclick="window.location.href='Admin.UserManagement.html';">User Management</button>
+    <button onclick="window.location.href='Admin.Reports.html';">User Management</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Filter and Action Container -->
+    <div class="filter-action-container">
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <label for="role-filter">Filter:</label>
+        <input type="text" id="role-filter" placeholder="Role">
+        <input type="text" id="status-filter" placeholder="Status">
+        <button class="apply-btn">Apply</button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="add-btn" onclick="openAddModal()">Add</button>
+        <button class="edit-btn" onclick="openEditModal()">Edit</button>
+        <button class="delete-btn" onclick="openDeleteModal()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <h2 id="modal-title">Add New User</h2>
+      <form onsubmit="submitForm(event)">
+        <!-- User ID -->
+        <label for="userID">User ID:</label>
+        <input type="text" id="userID" placeholder="User ID" required><br><br>
+
+        <!-- Name -->
+        <label for="user-name">Name:</label>
+        <input type="text" id="user-name" placeholder="Enter user name" required><br><br>
+
+        <!-- Role -->
+        <label for="role">Role:</label>
+        <input type="text" id="role" placeholder="Enter user role" required><br><br>
+
+        <!-- Status -->
+        <label for="status">Status:</label>
+        <input type="text" id="status" placeholder="Enter user status" required><br><br>
+
+        <!-- Contact Number -->
+        <label for="con-name">Contact Number:</label>
+        <input type="text" id="con-name" placeholder="Enter contact number" required><br><br>
+
+        <!-- Email Address -->
+        <label for="e-mail">E-mail Address:</label>
+        <input type="text" id="e-mail" placeholder="Enter e-mail" required><br><br>
+
+        <!-- Buttons -->
+        <div class="button-container">
+          <button type="button" onclick="closeModal()" class="cancel-btn">Cancel</button>
+          <button type="submit" class="confirm-btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Variable to track whether we are in "edit" mode
+    let isEditMode = false;
+    let currentUserID = null; // Stores the ID of the user being edited
+
+    // Function to open the modal for adding a new user
+    function openAddModal() {
+      // Reset the form fields
+      resetModal();
+      
+      // Change the modal title to "Add New User"
+      document.getElementById('modal-title').textContent = "Add New User";
+      
+      // Set the form to "Add" mode
+      isEditMode = false;
+      
+      // Show the modal
+      document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    // Function to open the modal for editing (no pre-filling data)
+    function openEditModal() {
+      // Change the modal title to "Edit User"
+      document.getElementById('modal-title').textContent = "Edit User";
+      
+      // Set the form to "Edit" mode
+      isEditMode = true;
+      
+      // Show the modal
+      document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById('modal-overlay').style.display = 'none';
+    }
+
+    // Function to reset the modal fields for a new add or edit action
+    function resetModal() {
+      document.getElementById('userID').value = '';
+      document.getElementById('user-name').value = '';
+      document.getElementById('role').value = '';
+      document.getElementById('status').value = '';
+      document.getElementById('con-name').value = '';
+      document.getElementById('e-mail').value = '';
+    }
+
+    // Function to submit the form (either add or edit)
+    function submitForm(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Get the form data
+      const formData = {
+        userID: document.getElementById('userID').value,
+        name: document.getElementById('user-name').value,
+        role: document.getElementById('role').value,
+        status: document.getElementById('status').value,
+        contactNumber: document.getElementById('con-name').value,
+        email: document.getElementById('e-mail').value
+      };
+
+      if (isEditMode) {
+        // If in edit mode, update the user
+        console.log('Editing user:', formData);
+        // Here, you can call an API or backend to update the data
+      } else {
+        // If in add mode, create a new user
+        console.log('Adding new user:', formData);
+        // Here, you can call an API or backend to add the new user
+      }
+
+      // Close the modal after saving
+      closeModal();
+    }
+  </script>
+
+  <!-- Delete Modal -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeDeleteModal()">&times;</button>
+      <h2>Delete User</h2>
+      <form onsubmit="deleteUser(event)">
+        <!-- User ID -->
+        <label for="delete-user-id">User ID:</label>
+        <input type="text" id="delete-user-id" placeholder="Enter User ID" required><br><br>
+
+        <!-- Reason -->
+        <label for="delete-reason">Reason:</label>
+        <input type="text" id="delete-reason" placeholder="Enter reason for deletion" required><br><br>
+
+        <!-- Buttons -->
+        <div class="button-container">
+          <button type="button" onclick="closeDeleteModal()" class="cancel-btn">Cancel</button>
+          <button type="submit" class="confirm-btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Function to open the delete modal
+    function openDeleteModal() {
+      document.getElementById('delete-modal').style.display = 'flex';
+    }
+
+    // Function to close the delete modal
+    function closeDeleteModal() {
+      document.getElementById('delete-modal').style.display = 'none';
+    }
+
+    // Function to handle the delete action
+    function deleteUser(event) {
+      event.preventDefault(); // Prevent form submission
+
+      const userID = document.getElementById('delete-user-id').value;
+      const reason = document.getElementById('delete-reason').value;
+
+      console.log('Deleting user:', { userID, reason });
+
+      // Here, add logic to update the backend or database
+
+      // Close the modal after deleting
+      closeDeleteModal();
+    }
+  </script>
+
+    <!-- Frame --> 
+  <div class="frame-container">
+    <iframe
+      src="" 
+      title="Content Frame" 
+      class="content-frame" 
+      frameborder="0">
+    </iframe>
+  </div>
+
+</body>
+</html>

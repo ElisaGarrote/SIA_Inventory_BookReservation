@@ -4,6 +4,23 @@
   <title>Library Management System</title>
   <link rel="stylesheet" href="Admin.Dashboard.css">
 
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+    <div class="search-container">
+      <input type="text" placeholder="Find book..." class="search-bar">
+      <button class="clear-btn">✖</button>
+
+    <div class="header-icons">
+      <span class="icon">🔔</span>
+      <!-- Log out icon -->
+      <a href="Admin.login.html" class="icon">⬅️</a>
+    </div>
+  </div>
+
   <script>
     // Update the values dynamically when the page loads (example lang)
     /*let borrowedBooks = 150;
@@ -17,22 +34,6 @@
       document.getElementById('total-books').textContent = totalBooks;
     };
   </script>
-
-</head>
-<body>
-
-  <!-- Header -->
-  <div class="header">
-    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
-    <div class="search-container">
-      <input type="text" placeholder="Find book..." class="search-bar">
-      <button class="clear-btn">✖</button>
-    </div>
-    <div class="header-icons">
-      <span class="icon">🔔</span>
-      <span class="icon">👤</span>
-    </div>
-  </div>
 
   <!-- Title Bar -->
   <div class="title-bar">
@@ -69,8 +70,8 @@
   <div class="sidebar">
     <button onclick="window.location.href='Admin.Dashboard.html';">Dashboard</button>
     <button onclick="window.location.href='Admin.BookInventory.html';">Book Inventory</button>
-    <button>User Management</button>
-    <button>Reports</button>
+    <button onclick="window.location.href='Admin.UserManagement.html';">User Management</button>
+    <button onclick="window.location.href='Admin.Reports.html';">Reports</button>
   </div>
 
   <!-- Main Content -->

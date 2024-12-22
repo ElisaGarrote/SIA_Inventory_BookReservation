@@ -3,18 +3,22 @@
 <head>
   <title>Library Management System</title>
   <link rel="stylesheet" href="Admin.BookInventory.css">
+  
 </head>
 <body>
+
   <!-- Header -->
   <div class="header">
     <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
     <div class="search-container">
       <input type="text" placeholder="Find book..." class="search-bar">
-      <button class="clear-btn">&#10006;</button>
+      <button class="clear-btn">✖</button>
     </div>
+
     <div class="header-icons">
-      <span class="icon">&#128276;</span>
-      <span class="icon">&#128100;</span>
+      <span class="icon">🔔</span>
+      <!-- Log out icon -->
+      <a href="Admin.login.html" class="icon">⬅️</a>
     </div>
   </div>
 
@@ -41,10 +45,27 @@
   <div class="sidebar">
     <button onclick="window.location.href='Admin.Dashboard.html';">Dashboard</button>
     <button onclick="window.location.href='Admin.BookInventory.html';">Book Inventory</button>
-    <button>User Management</button>
-    <button>Reports</button>
+    <button onclick="window.location.href='Admin.UserManagement.html';">User Management</button>
+    <button onclick="window.location.href='Admin.Reports.html';">Reports</button>
   </div>
 
+  <script>
+    // Add click event listener to sidebar buttons
+    document.addEventListener("DOMContentLoaded", () => {
+      const sidebarButtons = document.querySelectorAll(".sidebar button");
+  
+      sidebarButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          // Remove the "clicked" class from all buttons
+          sidebarButtons.forEach(btn => btn.classList.remove("clicked"));
+  
+          // Add the "clicked" class to the clicked button
+          button.classList.add("clicked");
+        });
+      });
+    });
+  </script>
+  
   <!-- Main Content -->
   <div class="main-content">
     <!-- Filter and Action Container -->
