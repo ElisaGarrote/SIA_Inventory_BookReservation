@@ -48,17 +48,27 @@ body {
     border-radius: 0 5px 5px 0; /* Rounded corners on the right */
   }
   
-  /* Right section styling */
-  .header-icons {
-    display: flex;
-    align-items: center;
-    gap: 40px; /* Space between icons */
-  }
-  
-  .icon {
-    cursor: pointer;
-    font-size: 20px;
-  }
+/* Right section styling */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust space if needed */
+}
+
+.logout-btn {
+  background-color: #580000;
+  color: #ffffff;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #ff7f7f;
+}
+
   
   /* Sidebar Styles */
   .sidebar {

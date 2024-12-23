@@ -52,13 +52,23 @@ body {
 .header-icons {
   display: flex;
   align-items: center;
-  gap: 40px; /* Space between icons */
+  gap: 20px; /* Adjust space if needed */
 }
 
-.icon {
+.logout-btn {
+  background-color: #580000;
+  color: #ffffff;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  font-size: 14px;
   cursor: pointer;
-  font-size: 20px;
 }
+
+.logout-btn:hover {
+  background-color: #ff7f7f;
+}
+
 
 /* Sidebar Styles */
 .sidebar {
@@ -110,32 +120,59 @@ body {
 
 /* Status Section */
 .status-section {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto; /* 3 equal columns + 1 auto column for the merged card */
+  grid-template-rows: repeat(2, 1fr) auto; /* Two equal rows */
+  gap: 10px;
+  padding: 0px;
 }
 
 .status-card {
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 15px 20px;
   text-align: center;
-  width: 30%;
+  padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.total-card {
+  grid-column: 4; /* Positioned in column 4 */
+  grid-row: span 2; /* Spans rows 2 and 3 */
+  display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+  flex-direction: column; /* Align text vertically (number and label) */
 }
 
 .status-number {
   font-size: 24px;
   font-weight: bold;
-  color: #B30000;
-  
+  color: #333;
 }
 
 .status-label {
   font-size: 14px;
-  color: #333;
+  color: #666;
+  margin-top: 10px;
 }
+
+  h2 {
+    color: #B30000;
+  }
+
+.frame-container {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.content-frame {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #cacaca;
+  border-radius: 5px;
+}
+
 
 /* Research Section */
 .research-section {

@@ -52,12 +52,21 @@ body {
 .header-icons {
   display: flex;
   align-items: center;
-  gap: 40px; /* Space between icons */
+  gap: 20px; /* Adjust space if needed */
 }
 
-.icon {
+.logout-btn {
+  background-color: #580000;
+  color: #ffffff;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  font-size: 14px;
   cursor: pointer;
-  font-size: 20px;
+}
+
+.logout-btn:hover {
+  background-color: #ff7f7f;
 }
 
 /* Sidebar Styles */
