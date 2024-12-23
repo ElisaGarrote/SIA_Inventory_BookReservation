@@ -15,10 +15,19 @@
     </div>
 
     <div class="header-icons">
-      <span class="icon">🔔</span>
-      <span class="icon">👤</span>
+      <button class="logout-btn" onclick="handleLogout()">Log out</button>
     </div>
   </div>
+
+  <script>
+    function handleLogout() {
+      const confirmation = confirm("Are you sure you want to logout?");
+      if (confirmation) {
+        // Simulate logout by redirecting to the login page or clearing session storage
+        window.location.href = "Admin.login.html"; // Update with your login page URL
+      }
+    }
+  </script>
 
 
   <!-- Title Bar -->
@@ -45,7 +54,7 @@
     <button onclick="window.location.href='Admin.Dashboard.html';">Dashboard</button>
     <button onclick="window.location.href='Admin.BookInventory.html';">Book Inventory</button>
     <button onclick="window.location.href='Admin.UserManagement.html';">User Management</button>
-    <button onclick="window.location.href='Admin.Reports.html';">User Management</button>
+    <button onclick="window.location.href='Admin.Reports.html';">Reports</button>
   </div>
 
   <!-- Main Content -->

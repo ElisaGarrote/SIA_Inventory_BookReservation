@@ -3,7 +3,6 @@
 <head>
   <title>Library Management System</title>
   <link rel="stylesheet" href="Admin.Dashboard.css">
-
 </head>
 <body>
 
@@ -13,26 +12,20 @@
     <div class="search-container">
       <input type="text" placeholder="Find book..." class="search-bar">
       <button class="clear-btn">✖</button>
-      
     </div>
     <div class="header-icons">
-      <span class="icon">🔔</span>
-      <span class="icon">👤</span>
+      <button class="logout-btn" onclick="handleLogout()">Log out</button>
     </div>
   </div>
 
   <script>
-    // Update the values dynamically when the page loads (example lang)
-    /*let borrowedBooks = 150;
-    let overdueBooks = 30;
-    let totalBooks = 500; */
-
-    window.onload = function() {
-      // Update the display
-      document.getElementById('borrowed-books').textContent = borrowedBooks;
-      document.getElementById('overdue-books').textContent = overdueBooks;
-      document.getElementById('total-books').textContent = totalBooks;
-    };
+    function handleLogout() {
+      const confirmation = confirm("Are you sure you want to logout?");
+      if (confirmation) {
+        // Simulate logout by redirecting to the login page or clearing session storage
+        window.location.href = "Admin.login.html"; // Update with your login page URL
+      }
+    }
   </script>
 
   <!-- Title Bar -->
@@ -42,26 +35,14 @@
   </div>
 
   <script>
-    // Function to update the date and time
     function updateDateTime() {
-      // Get the current date and time
       const now = new Date();
-
-      // Format the date as MM/DD/YYYY
       const date = now.toLocaleDateString('en-US');
-      
-      // Format the time as HH:MM:SS
       const time = now.toLocaleTimeString('en-US');
-
-      // Update the HTML elements with the current date and time
       document.getElementById('current-date').textContent = date;
       document.getElementById('current-time').textContent = time;
     }
-
-    // Call the updateDateTime function every second to keep the time up to date
     setInterval(updateDateTime, 1000);
-
-    // Initial call to set the date and time when the page loads
     window.onload = updateDateTime;
   </script>
 
@@ -76,22 +57,47 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Status Section -->
     <div class="status-section">
       <div class="status-card">
-        <div id="borrowed-books" class="status-number">000</div>
+        <div class="status-number">000</div>
         <div class="status-label">Borrowed Books</div>
       </div>
       <div class="status-card">
-        <div id="overdue-books" class="status-number">000</div>
-        <div class="status-label">Overdue Books</div>
+        <div class="status-number">000</div>
+        <div class="status-label">Reserved Books</div>
       </div>
       <div class="status-card">
-        <div id="total-books" class="status-number">000</div>
+        <div class="status-number">000</div>
+        <div class="status-label">Available Books</div>
+      </div>
+      <div class="status-card total-card">
+        <div class="status-number">000</div>
         <div class="status-label">Total of Books</div>
+      </div>
+      <div class="status-card">
+        <div class="status-number">000</div>
+        <div class="status-label">Damaged Books</div>
+      </div>
+      <div class="status-card">
+        <div class="status-number">000</div>
+        <div class="status-label">Missing Books</div>
+      </div>
+      <div class="status-card">
+        <div class="status-number">000</div>
+        <div class="status-label">Overdue Books</div>
       </div>
     </div>
 
+      <h2>Faculty Librarian Assign</h2>
+    <div class="frame-container">
+      <iframe
+        src="" 
+        title="Content Frame" 
+        class="content-frame" 
+        frameborder="0">
+      </iframe>
+    </div>
+    
     <!-- Research Books Section -->
     <div class="research-section">
       <h2>Types of Research Books</h2>

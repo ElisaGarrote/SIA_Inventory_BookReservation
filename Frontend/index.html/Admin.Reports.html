@@ -35,10 +35,19 @@
     </div>
 
     <div class="header-icons">
-      <span class="icon">🔔</span>
-      <span class="icon">👤</span>
+      <button class="logout-btn" onclick="handleLogout()">Log out</button>
     </div>
   </div>
+
+  <script>
+    function handleLogout() {
+      const confirmation = confirm("Are you sure you want to logout?");
+      if (confirmation) {
+        // Simulate logout by redirecting to the login page or clearing session storage
+        window.location.href = "Admin.login.html"; // Update with your login page URL
+      }
+    }
+  </script>
 
   <!-- Title Bar -->
   <div class="title-bar">
