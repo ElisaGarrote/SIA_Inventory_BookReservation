@@ -267,26 +267,6 @@ input[type="text"] {
   cursor: pointer;
 }
 
-.filter-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.filter-container div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.filter-container label {
-  margin: 0;
-}
-
-.filter-container input[type="text"] {
-  display: none;
-  margin-left: 10px;
-}
 /* Confirm Button */
 .confirm-btn {
   background-color: green;
