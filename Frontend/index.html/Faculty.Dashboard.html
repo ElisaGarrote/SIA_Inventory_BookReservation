@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="Faculty.Dashboard.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+    <div class="search-container">
+      <input type="text" placeholder="Find book..." class="search-bar">
+      <button class="clear-btn">✖</button>
+    </div>
+    
+    <div class="header-icons">
+      <button class="logout-btn" onclick="handleLogout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    function handleLogout() {
+      const confirmation = confirm("Are you sure you want to logout?");
+      if (confirmation) {
+        // Simulate logout by redirecting to the login page or clearing session storage
+        window.location.href = "Admin.login.html"; // Update with your login page URL
+      }
+    }
+  </script>
+
+  <!-- Title Bar -->
+  <div class="title-bar">
+    <span id="current-date"></span>
+    <span id="current-time"></span>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-US');
+      const time = now.toLocaleTimeString('en-US');
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+  </script>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="window.location.href='Faculty.Dashboard.html';">Dashboard</button>
+        <button onclick="window.location.href='Faculty.Reservation.html';">Reservation</button>
+        <button onclick="window.location.href='Faculty.WalkIn.html';">Walk In</button>
+        <button onclick="window.location.href='Faculty.BookInventory.html';">Book Inventory</button>
+        <button onclick="window.location.href='Faculty.Reports.html';">Reports</button>
+      </div>
+
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+<!-- Status Section -->
+<div class="status-section">
+  <div class="status-card">
+    <div id="borrowed-books" class="status-number">000</div>
+    <div class="status-label">Borrowed Books</div>
+  </div>
+  <div class="status-card">
+    <div id="overdue-books" class="status-number">000</div>
+    <div class="status-label">Overdue Books</div>
+  </div>
+  <div class="status-card">
+    <div id="total-books" class="status-number">000</div>
+    <div class="status-label">Total of Books</div>
+  </div>
+</div>
+  
+  <!-- Research Books Section -->
+  <div class="research-section">
+    <h2>Types of Research Books</h2>
+    <div class="research-grid">
+      <div>
+        <ul>
+          <li>Descriptive Studies</li>
+          <li>Exploratory Studies</li>
+          <li>Explanatory (Causal) Studies</li>
+          <li>Evaluative Studies</li>
+          <li>Qualitative Research</li>
+          <li>Quantitative Research</li>
+          <li>Mixed-Methods Research</li>
+          <li>Theoretical Studies</li>
+          <li>Applied Studies</li>
+          <li>Empirical Studies</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li>Cross-Sectional Studies</li>
+          <li>Longitudinal Studies</li>
+          <li>Primary Research</li>
+          <li>Secondary Research</li>
+          <li>Social Sciences Research</li>
+          <li>Natural Sciences Research</li>
+          <li>Business and Management Research</li>
+          <li>Technology Research</li>
+          <li>Experimental Research</li>
+          <li>Non-Experimental Research</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+          <li>000</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

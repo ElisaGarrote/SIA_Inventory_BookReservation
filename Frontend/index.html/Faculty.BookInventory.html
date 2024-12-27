@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="Faculty.BookInventory.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+    <div class="search-container">
+      <input type="text" placeholder="Find book..." class="search-bar">
+      <button class="clear-btn">✖</button>
+    </div>
+
+    <div class="header-icons">
+      <button class="logout-btn" onclick="handleLogout()">Log out</button>
+    </div>
+  </div>
+
+  <script>
+    function handleLogout() {
+      const confirmation = confirm("Are you sure you want to logout?");
+      if (confirmation) {
+        // Simulate logout by redirecting to the login page or clearing session storage
+        window.location.href = "Admin.login.html"; // Update with your login page URL
+      }
+    }
+  </script>
+
+  <!-- Title Bar -->
+  <div class="title-bar">
+    <span id="current-date"></span>
+    <span id="current-time"></span>
+  </div>
+
+  <script>
+    // Function to update the date and time
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-US');
+      const time = now.toLocaleTimeString('en-US');
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+  </script>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+      <button onclick="window.location.href='Faculty.Dashboard.html';">Dashboard</button>
+      <button onclick="window.location.href='Faculty.Reservation.html';">Reservation</button>
+      <button onclick="window.location.href='Faculty.WalkIn.html';">Walk In</button>
+      <button onclick="window.location.href='Faculty.BookInventory.html';">Book Inventory</button>
+      <button onclick="window.location.href='Faculty.Reports.html';">Reports</button>
+  </div>
+  
+  
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <label for="category-filter">Filter:</label>
+      <input type="text" id="category-filter" placeholder="Category">
+      <input type="text" id="status-filter" placeholder="Status">
+      <input type="text" id="availability-filter" placeholder="Availability">
+      <button class="apply-btn">Apply</button>
+    </div>
+  </div>
+
+  <!-- Frame // sa src dito papasok yung mismong table :> --> 
+  <div class="frame-container">
+    <iframe
+      src="" 
+      title="Content Frame" 
+      class="content-frame" 
+      frameborder="0">
+    </iframe>
+  </div>
+
+</body>
+</html>

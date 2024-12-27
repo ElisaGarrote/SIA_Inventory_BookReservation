@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="Faculty.Reservation.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+    <div class="search-container">
+      <input type="text" placeholder="Find book..." class="search-bar">
+      <button class="clear-btn">✖</button>
+    </div>
+    <div class="header-icons">
+      <button class="logout-btn" onclick="handleLogout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    function handleLogout() {
+      const confirmation = confirm("Are you sure you want to logout?");
+      if (confirmation) {
+        window.location.href = "Admin.login.html";
+      }
+    }
+  </script>
+
+  <!-- Title Bar -->
+  <div class="title-bar">
+    <span id="current-date"></span>
+    <span id="current-time"></span>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-US');
+      const time = now.toLocaleTimeString('en-US');
+      document.getElementById('current-date').textContent = date;
+      document.getElementById('current-time').textContent = time;
+    }
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+  </script>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button onclick="window.location.href='Faculty.Dashboard.html';">Dashboard</button>
+    <button onclick="window.location.href='Faculty.Reservation.html';">Reservation</button>
+    <button onclick="window.location.href='Faculty.WalkIn.html';">Walk In</button>
+    <button onclick="window.location.href='Faculty.BookInventory.html';">Book Inventory</button>
+    <button onclick="window.location.href='Faculty.Reports.html';">Reports</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Filter and Action Container -->
+    <div class="filter-action-container">
+      <div class="filter-bar">
+        <label for="category-filter">Filter:</label>
+        <input type="text" id="category-filter" placeholder="Category">
+        <input type="text" id="status-filter" placeholder="Status">
+        <button class="apply-btn">Apply</button>
+      </div>
+
+      <div class="action-buttons">
+        <button class="add-btn" onclick="openAddModal()">Add</button>
+        <button class="edit-btn" onclick="openEditModal()">Edit</button>
+        <button class="delete-btn" onclick="openDeleteModal()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Modal -->
+  <div class="modal-overlay" id="add-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('add-modal')">&times;</button>
+      <h2>Add Reservation</h2>
+      <form onsubmit="submitAddForm(event)">
+        <label for="add-BookID">Book ID:</label>
+        <input type="text" id="add-BookID" required>
+        <label for="add-ResearchTitle">Research Title:</label>
+        <input type="text" id="add-ResearchTitle" required>
+        <label for="add-RestrictionCode">Restriction Code:</label>
+        <input type="text" id="add-RestrictionCode" required>
+        <label for="add-StudentID">Student ID:</label>
+        <input type="text" id="add-StudentID" required>
+        <label for="add-StudentName">Name of Student:</label>
+        <input type="text" id="add-StudentName" required>
+        <label for="add-Email">E-mail:</label>
+        <input type="text" id="add-Email" required>
+        <label for="add-ContactNumber">Contact Number:</label>
+        <input type="text" id="add-ContactNumber" required>
+        <label for="add-StartDate">Start Date:</label>
+        <input type="date" id="add-StartDate" required>
+        <label for="add-DueDate">Due Date:</label>
+        <input type="date" id="add-DueDate" required>
+        <div class="button-container">
+          <button type="button" class="cancel-btn" onclick="closeModal('add-modal')">Cancel</button>
+          <button type="submit" class="confirm-btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('edit-modal')">&times;</button>
+      <h2>Edit Reservation</h2>
+      <form onsubmit="submitEditForm(event)">
+        <label for="edit-BookID">Book ID:</label>
+        <input type="text" id="edit-BookID" required>
+        <label for="edit-ResearchTitle">Research Title:</label>
+        <input type="text" id="edit-ResearchTitle" required>
+        <label for="edit-RestrictionCode">Restriction Code:</label>
+        <input type="text" id="edit-RestrictionCode" required>
+        <label for="edit-StudentID">Student ID:</label>
+        <input type="text" id="edit-StudentID" required>
+        <label for="edit-StudentName">Name of Student:</label>
+        <input type="text" id="edit-StudentName" required>
+        <label for="edit-Email">E-mail:</label>
+        <input type="text" id="edit-Email" required>
+        <label for="edit-ContactNumber">Contact Number:</label>
+        <input type="text" id="edit-ContactNumber" required>
+        <label for="edit-StartDate">Start Date:</label>
+        <input type="date" id="edit-StartDate" required>
+        <label for="edit-DueDate">Due Date:</label>
+        <input type="date" id="edit-DueDate" required>
+        <div class="button-container">
+          <button type="button" class="cancel-btn" onclick="closeModal('edit-modal')">Cancel</button>
+          <button type="submit" class="confirm-btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('delete-modal')">&times;</button>
+      <h2>Confirm Deletion</h2>
+      <p>Do you want to delete the reservation?</p>
+      <div class="button-container">
+        <button type="button" class="cancel-btn" onclick="closeModal('delete-modal')">Cancel</button>
+        <button type="button" class="confirm-btn" onclick="confirmDelete()">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openAddModal() {
+      document.getElementById('add-modal').style.display = 'flex';
+    }
+
+    function openEditModal() {
+      document.getElementById('edit-modal').style.display = 'flex';
+    }
+
+    function openDeleteModal() {
+      document.getElementById('delete-modal').style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    function submitAddForm(event) {
+      event.preventDefault();
+      alert("Add reservation confirmed!");
+      closeModal('add-modal');
+    }
+
+    function submitEditForm(event) {
+      event.preventDefault();
+      alert("Edit reservation confirmed!");
+      closeModal('edit-modal');
+    }
+
+    function confirmDelete() {
+      alert("Reservation deleted successfully!");
+      closeModal('delete-modal');
+    }
+  </script>
+
+    <!-- Frame --> 
+    <div class="frame-container">
+      <iframe
+        src="" 
+        title="Content Frame" 
+        class="content-frame" 
+        frameborder="0">
+      </iframe>
+    </div>
+
+
+</body>
+</html>

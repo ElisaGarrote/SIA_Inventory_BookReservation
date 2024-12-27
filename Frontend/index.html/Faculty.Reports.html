@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Library Management System</title>
-  <link rel="stylesheet" href="Admin.Reports.css">
+  <link rel="stylesheet" href="Faculty.Reports.css">
 </head>
 <body>
   <!-- Header -->
@@ -12,7 +12,6 @@
       <input type="text" placeholder="Find user..." class="search-bar">
       <button class="clear-btn">✖</button>
     </div>
-
     <div class="header-icons">
       <button class="logout-btn" onclick="handleLogout()">Log out</button>
     </div>
@@ -22,7 +21,6 @@
     function handleLogout() {
       const confirmation = confirm("Are you sure you want to logout?");
       if (confirmation) {
-        // Simulate logout by redirecting to the login page or clearing session storage
         window.location.href = "Admin.login.html"; // Update with your login page URL
       }
     }
@@ -46,10 +44,11 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <button onclick="window.location.href='Admin.Dashboard.html';">Dashboard</button>
-    <button onclick="window.location.href='Admin.BookInventory.html';">Book Inventory</button>
-    <button onclick="window.location.href='Admin.UserManagement.html';">User Management</button>
-    <button onclick="window.location.href='Admin.Reports.html';">Reports</button>
+    <button onclick="window.location.href='Faculty.Dashboard.html';">Dashboard</button>
+    <button onclick="window.location.href='Faculty.Reservation.html';">Reservation</button>
+    <button onclick="window.location.href='Faculty.WalkIn.html';">Walk In</button>
+    <button onclick="window.location.href='Faculty.BookInventory.html';">Book Inventory</button>
+    <button onclick="window.location.href='Faculty.Reports.html';">Reports</button>
   </div>
 
   <!-- Main Content -->
@@ -60,8 +59,6 @@
         <input type="text" id="date-filter" placeholder="Date">
         <input type="text" id="available-filter" placeholder="Availability">
         <input type="text" id="category-filter" placeholder="Category">
-        <input type="text" id="employee-filter" placeholder="Assigned to">
-        <input type="text" id="role-filter" placeholder="Role">
         <button class="apply-btn">Apply</button>
       </div>
       <div class="print-button">
@@ -73,36 +70,25 @@
     <div id="print-modal" class="modal-overlay">
       <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">×</span>
-        <h2>Print Filters</h2>
+        <h2>Print Reports</h2>
         <form>
           <div class="filter-container">
             <div>
               <input type="checkbox" id="modal-date-checkbox" onchange="toggleInput('modal-date-checkbox', 'modal-date-input')">
               <label for="modal-date-checkbox">Date:</label>
-              <input type="text" id="modal-date-input" style="display:none;" placeholder="Enter desired date"><br>
+              <input type="text" id="modal-date-input" placeholder="Enter desired date" style="display: none;">
             </div>
             <div>
               <input type="checkbox" id="modal-availability-checkbox" onchange="toggleInput('modal-availability-checkbox', 'modal-availability-input')">
               <label for="modal-availability-checkbox">Availability:</label>
-              <input type="text" id="modal-availability-input" style="display:none;" placeholder="Enter desired availability"><br>
+              <input type="text" id="modal-availability-input" placeholder="Enter desired availability" style="display: none;">
             </div>
             <div>
               <input type="checkbox" id="modal-category-checkbox" onchange="toggleInput('modal-category-checkbox', 'modal-category-input')">
               <label for="modal-category-checkbox">Category:</label>
-              <input type="text" id="modal-category-input" style="display:none;" placeholder="Enter desired category"><br>
-            </div>
-            <div>
-              <input type="checkbox" id="modal-assigned-checkbox" onchange="toggleInput('modal-assigned-checkbox', 'modal-assigned-input')">
-              <label for="modal-assigned-checkbox">Assigned to:</label>
-              <input type="text" id="modal-assigned-input" style="display:none;" placeholder="Enter assigned person"><br>
-            </div>
-            <div>
-              <input type="checkbox" id="modal-role-checkbox" onchange="toggleInput('modal-role-checkbox', 'modal-role-input')">
-              <label for="modal-role-checkbox">Role:</label>
-              <input type="text" id="modal-role-input" style="display:none;" placeholder="Enter desired role"><br>
+              <input type="text" id="modal-category-input" placeholder="Enter desired category" style="display: none;">
             </div>
           </div>
-
           <div class="button-container">
             <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
             <button type="button" class="confirm-btn" onclick="printFilters()">Print</button>
@@ -128,12 +114,9 @@
     function toggleInput(checkboxId, inputId) {
       const checkbox = document.getElementById(checkboxId);
       const input = document.getElementById(inputId);
-      if (checkbox.checked) {
-        input.style.display = 'block';
-      } else {
-        input.style.display = 'none';
-        input.value = ''; // Clear input value when unchecked
-      }
+      // Show or hide input based on checkbox status
+      input.style.display = checkbox.checked ? 'block' : 'none';
+      if (!checkbox.checked) input.value = ''; // Clear input if unchecked
     }
 
     function printFilters() {
@@ -146,12 +129,6 @@
       }
       if (document.getElementById('modal-category-checkbox').checked) {
         filters.push(`Category: ${document.getElementById('modal-category-input').value}`);
-      }
-      if (document.getElementById('modal-assigned-checkbox').checked) {
-        filters.push(`Assigned to: ${document.getElementById('modal-assigned-input').value}`);
-      }
-      if (document.getElementById('modal-role-checkbox').checked) {
-        filters.push(`Role: ${document.getElementById('modal-role-input').value}`);
       }
 
       if (filters.length > 0) {
