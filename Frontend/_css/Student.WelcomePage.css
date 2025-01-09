@@ -1,0 +1,123 @@
+/* Top Left Image */
+.top-left-image {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 150px;
+    height: auto;
+}
+
+/* Main Container for Welcome and Login Sections */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 150px;
+
+}
+
+/* Welcome Section */
+.welcome-section {
+    padding-right: 65px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.welcome-section h1 {
+    color: #b30000;
+    margin-bottom: 10px;
+    font-size: 64px;
+    font-family: Arial;
+    font-weight: bold;
+    line-height: 15px;
+}
+
+.subheading {
+    font-family: Arial;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.description {
+    font-family: Arial;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 60%;
+    color: #555;
+    text-align: right;
+}
+
+/* Login Container */
+.login-container {
+    width: 75%;
+    padding-left: 65px;
+}
+
+/* Login Section */
+.login-section {
+    padding: 40px;
+    background-color: #b30000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    font-family: Arial;
+    color: #ffffff;
+}
+
+.login-form p {
+    text-align: center;
+    font-family: Arial;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.login-form input {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-family: Arial;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-btn {
+    background-color: #EEF600;
+    color: #000;
+    border: none;
+    padding: 10px;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.signup-btn {
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    padding: 10px;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.forgot-password a {
+    color: #ffffff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 12px; /* Smaller font for a subtle look */
+}

@@ -1,0 +1,122 @@
+/* Top Left Image */
+.top-left-image {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 150px;
+    height: auto;
+}
+
+/* Main Container for Welcome and Login Sections */
+.main-container {
+    background-color: #b30000;
+    padding-left: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background-color: #b30000;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #ffffff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial;
+    text-align: left;
+}
+
+.welcome-section h1 {
+    color: #EEF600;
+    margin: 0;
+    font-size: 48px;
+    line-height: 1.2;
+}
+
+.subheading {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.createacc-container {
+    background-color: #ffffff;
+    width: 50%;
+    padding-bottom: 50px;
+}
+
+/* Create Account Section */
+.create-account-section {
+    flex: 1;
+    padding-left: 25px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-account-section h2 {
+    color: #b30000;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.create-account-section form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.create-account-section label {
+    grid-column: span 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.create-account-section select {
+    grid-column: span 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    appearance: none;
+    cursor: pointer;
+}
+
+.create-account-section input {
+    grid-column: span 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.create-account-section button {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #ffcc00;
+    color: #b30000;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.create-account-section button:hover {
+    background-color: #e6b800;
+}
