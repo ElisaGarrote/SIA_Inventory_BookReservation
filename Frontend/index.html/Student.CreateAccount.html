@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Student.CreateAccount.css">
+</head>
+<body>
+    
+    <!-- Top Left Image -->
+    <img src="assets/UNIARCHIVE.HEADER.png" alt="UNIARCHIVE Logo" class="top-left-image">
+
+    <!-- Main Container for Welcome and Login Sections -->
+    <div class="main-container">
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>Welcome to</h1>
+            <h1>UNIARCHIVE!</h1>
+            <p class="subheading">Access. Reserve. Discover.</p>
+            <p class="description">
+                Allows you to easily reserve research books, manage your reservations, 
+                and receive personalized updates on book availability and library events. 
+                Sign up today for a smoother and more tailored library experience!
+            </p>
+        </div>
+
+        <!-- Login Container -->
+        <div class="createacc-container">
+         <!-- Create Account Section -->
+            <div class="create-account-section">
+                <h2>Create Account</h2>
+                <form id="createAccountForm">
+                    <label for="email">E-mail Address:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="student-id">Student ID:</label>
+                    <input type="text" id="student-id" name="student-id" required>
+
+                    <label for="year-section">Year & Section:</label>
+                    <input type="text" id="year-section" name="year-section" required>
+
+                    <label for="program">Program:</label>
+                    <input type="text" id="program" name="program" required>
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+
+                    <label for="birthday">Birthday:</label>
+                    <input type="date" id="birthday" name="birthday" required>
+
+                    <label for="contact">Contact Number:</label>
+                    <input type="tel" id="contact" name="contact" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit">Continue</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('createAccountForm').addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent form submission
+    
+                // Get the form values
+                const email = document.getElementById('email').value;
+                const studentId = document.getElementById('student-id').value;
+                const yearSection = document.getElementById('year-section').value;
+                const program = document.getElementById('program').value;
+                const name = document.getElementById('name').value;
+                const gender = document.getElementById('gender').value;
+                const birthday = document.getElementById('birthday').value;
+                const contact = document.getElementById('contact').value;
+                const password = document.getElementById('password').value;
+    
+                // Validation: Check if all fields are filled
+                if (!email || !studentId || !yearSection || !program || !name || !gender || !birthday || !contact || !password) {
+                    alert('All fields are required. Please fill out the form completely.');
+                    return;
+                }
+    
+                // You can add additional email or password validation here (e.g., regex for email format or password strength)
+    
+                // If all validations pass
+                alert('Account created successfully! Redirecting to dashboard...');
+                window.location.href = 'Student.WelcomePage.html'; // Update the redirect page as needed
+            });
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Student.WelcomePage.css">
+</head>
+<body>
+
+    <!-- Top Left Image -->
+    <img src="assets/UNIARCHIVE.png" alt="UNIARCHIVE Logo" class="top-left-image">
+        
+    <!-- Main Container for Welcome and Login Sections -->
+    <div class="main-container">
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <!-- Login Section -->
+        <div class="login-section">
+            <form class="login-form" id="loginForm">
+                <label for="username">Username or E-mail:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username or email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                
+                <!-- Forgot Password Link -->
+                <p class="forgot-password">
+                    <a href="ForgotPassword.html">Forgot Password?</a>
+                </p>
+
+                <button type="submit" class="login-btn">Log In</button>
+                <p>or</p>
+                <button type="button" class="signup-btn" id="signupBtn">Sign Up!</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Attach an event listener to handle the form submission
+        document.getElementById('loginForm').addEventListener('submit', GotoFrontPage);
+
+        // Attach an event listener to handle the "Sign Up!" button click
+        document.getElementById('signupBtn').addEventListener('click', () => {
+            window.location.href = 'Student.CreateAccount.html';
+        });
+
+        function GotoFrontPage(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const username = document.querySelector('#username').value;
+            const password = document.querySelector('#password').value;
+
+            // Validate the inputs
+            if (username.trim() && password.trim()) {
+                // Navigate to the front page if validation passes
+                window.location.href = 'Student.FrontPage.html';
+            } else {
+                // Show an alert if either field is empty
+                alert('Please enter both username and password!');
+            }
+        }
+    </script>
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>Welcome to</h1>
+            <h1>UNIARCHIVE!</h1>
+            <p class="subheading">Access. Reserve. Discover.</p>
+            <p class="description">
+                You can explore our collection of research books, 
+                reserve them conveniently online, and stay updated with availability. 
+                Enhance your research experience with just a few clicks!
+            </p>
+        </div>
+
+    </div>
+    
+</body>
+</html>
