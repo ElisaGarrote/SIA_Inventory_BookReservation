@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UNIARCHIVE</title>
+  <link rel="stylesheet" href="Student.LibraryPage.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+
+        <div class="search-container">
+            <input type="text" placeholder="Find book..." class="search-bar" id="search-input">
+            <button class="search-btn" onclick="searchBook()">Search</button>
+            <button class="clear-btn" onclick="clearSearch()">✖</button>
+        </div>
+        
+        <script>
+            function searchBook() {
+                const searchQuery = document.getElementById("search-input").value.toLowerCase();
+                
+                if (searchQuery) {
+                    const listItems = document.querySelectorAll('#list li');
+                    let resultsFound = false;
+            
+                    listItems.forEach(item => {
+                        const itemTitle = item.querySelector('.title').textContent.toLowerCase();
+                        
+                        if (itemTitle.includes(searchQuery)) {
+                            item.style.display = 'block'; // Show matching item
+                            resultsFound = true;
+                        } else {
+                            item.style.display = 'none'; // Hide non-matching item
+                        }
+                    });
+            
+                    if (!resultsFound) {
+                        alert("No matching results found.");
+                    }
+                } else {
+                    // If search input is empty, show all items
+                    const listItems = document.querySelectorAll('#list li');
+                    listItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                }
+            }
+
+            function clearSearch() {
+                // Clear the search input field
+                document.getElementById("search-input").value = "";
+                
+                // Show all items in the list again
+                const listItems = document.querySelectorAll('#list li');
+                listItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+            }
+            
+        </script>
+
+        <div class="header-icons">
+            <button class="profile" onclick="window.location.href='Student.ProfilePage.html';">👤</button>
+            <button class="logout-btn" onclick="handleLogout()">Log out</button>
+        </div>
+    </div>
+
+    <script>
+        function handleLogout() {
+            const confirmation = confirm("Are you sure you want to logout?");
+            if (confirmation) {
+                window.location.href = "Student.WelcomePage.html"; // Update with your login page URL
+            }
+        }
+    </script>
+
+    <!-- Title Bar -->
+    <div class="title-bar">
+        <span id="current-date"></span>
+        <span id="current-time"></span>
+    </div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('en-US');
+            const time = now.toLocaleTimeString('en-US');
+            document.getElementById('current-date').textContent = date;
+            document.getElementById('current-time').textContent = time;
+        }
+        setInterval(updateDateTime, 1000);
+        window.onload = updateDateTime;
+    </script>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="window.location.href='Student.FrontPage.html';">Home</button>
+        <button onclick="window.location.href='Student.LibraryPage.html';">Library</button>
+    </div>
+
+    <div class="buttons"> 
+      <button class="add-btn" onclick="addItem()">Add</button>
+      <button class="edit-btn" onclick="editItem()">Edit</button>
+      <button class="delete-btn" onclick="deleteItem()">Delete</button>
+  </div>
+  
+    <script>
+      // JavaScript functions for the Add, Edit, and Delete buttons
+      function addItem() {
+        // Display the reservation form
+        document.getElementById("reservation-form-container").style.display = "block";
+      }
+    
+      function editItem() {
+        // Find the selected book item (assuming each item has a unique ID)
+        const selectedItem = document.querySelector('#list li.selected'); // Example: class 'selected' marks the selected item
+        
+        if (!selectedItem) {
+            alert("Please select an item to edit.");
+            return;
+        }
+
+        // Pre-fill the reservation form with the selected item's data
+        document.getElementById("reservation-title").value = selectedItem.querySelector('.title').textContent;
+        document.getElementById("reservation-name").value = selectedItem.querySelector('.name').textContent;
+        document.getElementById("reservation-section").value = selectedItem.querySelector('.section').textContent;
+        document.getElementById("reservation-program").value = selectedItem.querySelector('.program').textContent;
+        document.getElementById("reservation-contact").value = selectedItem.querySelector('.contact').textContent;
+        document.getElementById("reservation-email").value = selectedItem.querySelector('.email').textContent;
+        document.getElementById("reservation-datetime-reserve").value = selectedItem.querySelector('.reserve-time').textContent;
+        document.getElementById("reservation-datetime-return").value = selectedItem.querySelector('.return-time').textContent;
+        document.getElementById("reservation-status").value = selectedItem.querySelector('.status').textContent;
+
+        // Show the reservation form
+        document.getElementById("reservation-form-container").style.display = "block";
+    }
+    
+    // Example: Highlight selected item (for simplicity)
+    document.querySelectorAll('#list li').forEach(item => {
+        item.addEventListener('click', () => {
+            document.querySelectorAll('#list li').forEach(li => li.classList.remove('selected'));
+            item.classList.add('selected');
+        });
+    });
+
+    function confirmEdit() {
+        // Save edited data logic here
+        alert('Changes saved successfully!');
+        
+        // Close the form
+        closeReservationForm();
+    }
+    
+        function deleteItem() {
+          // Select all checkboxes that are checked
+          const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+          
+          if (checkboxes.length === 0) {
+              alert("No items selected for deletion.");
+              return;
+          }
+  
+          // Confirm before deleting
+          const confirmation = confirm("Are you sure you want to delete the selected items?");
+          if (confirmation) {
+              checkboxes.forEach(checkbox => {
+                  // Remove the parent <li> element of the checked checkbox
+                  checkbox.parentElement.remove();
+              });
+              alert("Selected items have been deleted.");
+          }
+      }
+    
+      // Function to close the reservation form
+      function closeReservationForm() {
+        document.getElementById("reservation-form-container").style.display = "none";
+      }
+    
+      // Function to confirm the reservation
+      function confirmReservation() {
+        const returnDate = document.getElementById("reservation-datetime-return").value;
+        const currentDate = new Date();
+      
+        // Set initial book status
+        let bookStatus = document.getElementById("reservation-status").value;
+      
+        // Check if the return date has passed to determine if the book is overdue
+        if (new Date(returnDate) < currentDate) {
+          bookStatus = "Overdue";
+        }
+    
+        // Close the form after confirmation
+        closeReservationForm();
+      }
+
+        // Function to automatically set the book status based on title
+      function updateBookStatus() {
+        const title = document.getElementById("reservation-title").value.trim(); // Get the title and remove leading/trailing spaces
+        const statusField = document.getElementById("reservation-status");
+
+        // If title is empty, set status to blank
+        if (title === "") {
+            statusField.value = ""; // Keep status field empty
+        } else {
+            // Send an asynchronous request to the backend to check the book's status
+            //PWede to baguhin as example lang to gpt hehe
+            fetch(`http://localhost:3000/book-status?title=${encodeURIComponent(title)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Assuming the response contains a status property
+                    const bookStatus = data.status;
+
+                    // Update the book status based on the backend response
+                    if (bookStatus) {
+                        statusField.value = bookStatus; // Set the status from backend
+                    } else {
+                        statusField.value = "Not Available"; // Default status if no response
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching book status:", error);
+                    statusField.value = "Not Available"; // Default in case of error
+                });
+        }
+      }
+
+  </script>
+  
+    <!-- Reservation Form (Initially hidden) -->
+  <div id="reservation-form-container" style="display: none;">
+    <h2>Add Reservation</h2>
+    <form>
+      <label for="reservation-title">Title of Book:</label>
+      <input type="text" id="reservation-title" oninput="updateBookStatus()"><br><br>
+        
+      <label for="reservation-name">Name:</label>
+      <input type="text" id="reservation-name"><br><br>
+
+      <label for="reservation-section">Year & Section:</label>
+      <input type="text" id="reservation-section"><br><br>
+
+      <label for="reservation-program">Program:</label>
+      <input type="text" id="reservation-program"><br><br>
+
+      <label for="reservation-contact">Contact Number:</label>
+      <input type="text" id="reservation-contact"><br><br>
+
+      <label for="reservation-email">E-mail:</label>
+      <input type="email" id="reservation-email"><br><br>
+
+      <label for="reservation-datetime-reserve">Date and Time will Reserve:</label>
+      <input type="datetime-local" id="reservation-datetime-reserve"><br><br>
+
+      <label for="reservation-datetime-return">Date and Time will Return:</label>
+      <input type="datetime-local" id="reservation-datetime-return"><br><br>
+
+      <!-- Book Status (text box for status, will be read-only) -->
+      <label for="reservation-status">Book Status:</label>
+      <input type="text" id="reservation-status" readonly><br><br>
+
+      <button type="button" onclick="closeReservationForm()">Cancel</button>
+      <button type="button" onclick="confirmReservation()">Confirm</button>
+    </form>
+  </div>
+
+
+    <!-- Right-side tabs -->
+    <div class="right-tabs">
+      <button onclick="showTab('tab1')">All</button>
+      <button onclick="showTab('tab2')">Reserved</button>
+      <button onclick="showTab('tab3')">Overdue</button>
+    </div>
+
+    <!-- Tab content sections -->
+    <div id="tab1" class="tab-content">
+      <h3>All</h3>
+      <p>List of all books will be displayed here.</p>
+    </div>
+
+    <div id="tab2" class="tab-content">
+      <h3>Reserved Books</h3>
+      <p>Details of Reserved books will be displayed here.</p>
+    </div>
+
+    <div id="tab3" class="tab-content">
+      <h3>Overdue</h3>
+      <p>All Overdue will be displayed here.</p>
+    </div>
+
+    <script>
+      function showTab(tabId) {
+        // Hide all tab content
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.classList.remove('active');
+        });
+
+        // Show the selected tab
+        document.getElementById(tabId).classList.add('active');
+      }
+    </script>
+
+</body>
+</html>
