@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniArchive</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .left-section {
+            flex: 3;
+            background-color: #f4f4f4;
+            background-image: url('background-art.png'); /* Replace with your image path */
+            background-size: cover;
+            background-position: stretch;
+        }
+
+        .right-section {
+            flex: 1;
+            background-color: #951D1F;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: normal;
+            align-items: center;
+            padding: 100px;
+            padding-bottom: 300px; /* Added padding from the bottom */
+        }
+
+        .logo {
+            font-family: 'Verdana', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .welcome-message {
+            font-family: Verdana;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .instruction {
+            font-family: Verdana;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Adjust space between arrow and text */
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 1000%;
+            max-width: 500px;
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .button.admin {
+            background-color: #fbc02d;
+            color: black;
+        }
+
+        .button.student {
+            background-color: #2F518D;
+            color: white;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section"></div>
+        <div class="right-section">
+            <div class="logo">
+                <img src="UNIARCHIVE2.png" alt="UniArchive Logo" style="height: 130px; margin-bottom: 10px;">
+            </div>
+            <div class="welcome-message">Welcome, Researchers!</div>
+            <div class="instruction">
+                <span class="arrow">&#x2193;</span>
+                <span>Please choose your destination.</span>
+            </div>
+            <div class="buttons">
+                <button class="button admin">ADMIN</button>
+                <button class="button student">STUDENT</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
