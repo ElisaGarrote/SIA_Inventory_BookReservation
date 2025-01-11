@@ -12,7 +12,7 @@ body {
 .left-section {
     flex: 3;
     background-color: #f4f4f4;
-    background-image: url('background-art.png'); /* Replace with your image path */
+    background-image: url('books-bg.png'); /* Replace with your image path */
     background-size: cover;
     background-position: stretch;
 }
