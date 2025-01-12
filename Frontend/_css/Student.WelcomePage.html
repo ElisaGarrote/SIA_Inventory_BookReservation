@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Student.WelcomePage.css">
+</head>
+<body>
+
+    <!-- Top Left Image -->
+    <img src="assets/UNIARCHIVE.png" alt="UNIARCHIVE Logo" class="top-left-image">
+        
+    <!-- Main Container for Welcome and Login Sections -->
+    <div class="main-container">
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <!-- Login Section -->
+        <div class="login-section">
+            <form class="login-form" id="loginForm">
+                <label for="username">Username or E-mail:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username or email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                
+                <!-- Forgot Password Link -->
+                <p class="forgot-password" id="forgotPasswordSection">
+                    <a href="Student.ForgotPassword.html">Forgot Password?</a>
+                </p>
+
+                <!-- Request a New Password Link (Initially Hidden) -->
+                <p class="forgot-password" id="resetPasswordSection" style="display: none;">
+                    <a href="Student.RequestPassword.html">Request a New Password</a>
+                </p>
+
+                <button type="submit" class="login-btn">Log In</button>
+                <p>or</p>
+                <button type="button" class="signup-btn" id="signupBtn">Sign Up!</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h1>Welcome to</h1>
+        <h1>UNIARCHIVE!</h1>
+        <p class="subheading">Access. Reserve. Discover.</p>
+        <p class="description">
+            You can explore our collection of research books, 
+            reserve them conveniently online, and stay updated with availability. 
+            Enhance your research experience with just a few clicks!
+        </p>
+    </div>
+
+    </div>
+    
+    <script>
+        let loginAttempts = 0; // Counter for login attempts
+        const maxAttempts = 3; // Maximum allowed attempts
+    
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            if (username.trim() && password.trim()) {
+                if (username === "hatdog123" && password === "qwerty123") {
+                    // Successful login
+                    window.location.href = 'Student.FrontPage.html';
+                } else {
+                    loginAttempts++;
+                    if (loginAttempts >= maxAttempts) {
+                        // After 3 failed attempts, hide "Forgot Password" and show "Request a New Password"
+                        document.getElementById('forgotPasswordSection').style.display = 'none';
+                        document.getElementById('resetPasswordSection').style.display = 'block';
+                        alert('You have reached the maximum login attempts. Please request a new password.');
+                        document.getElementById('username').disabled = true;
+                        document.getElementById('password').disabled = true;
+                        document.querySelector('.login-btn').disabled = true;
+                    } else {
+                        alert(`Invalid credentials. You have ${maxAttempts - loginAttempts} attempt(s) left.`);
+                        // Allow user to input again
+                    }
+                }
+            } else {
+                // Show alert if either field is empty
+                alert('Please enter both username and password!');
+            }
+        });
+    
+        // Handle the "Sign Up!" button click
+        document.getElementById('signupBtn').addEventListener('click', () => {
+            window.location.href = 'Student.CreateAccount.html';
+        });
+    </script>
+
+</body>
+</html>
