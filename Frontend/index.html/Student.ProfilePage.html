@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UNIARCHIVE</title>
+  <link rel="stylesheet" href="Student.ProfilePage.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <img src="assets/UNIARCHIVE.HEADER.png" alt="UNARCHIVE Logo" class="logo">
+
+        <div class="search-container">
+            <input type="text" placeholder="Find book..." class="search-bar" id="search-input">
+            <button class="search-btn" onclick="searchBook()">Search</button>
+            <button class="clear-btn" onclick="clearSearch()">✖</button>
+        </div>
+        
+        <script>
+            function searchBook() {
+                const searchQuery = document.getElementById("search-input").value.toLowerCase();
+                
+                if (searchQuery) {
+                    const listItems = document.querySelectorAll('#list li');
+                    let resultsFound = false;
+            
+                    listItems.forEach(item => {
+                        const itemTitle = item.querySelector('.title').textContent.toLowerCase();
+                        
+                        if (itemTitle.includes(searchQuery)) {
+                            item.style.display = 'block'; // Show matching item
+                            resultsFound = true;
+                        } else {
+                            item.style.display = 'none'; // Hide non-matching item
+                        }
+                    });
+            
+                    if (!resultsFound) {
+                        alert("No matching results found.");
+                    }
+                } else {
+                    // If search input is empty, show all items
+                    const listItems = document.querySelectorAll('#list li');
+                    listItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                }
+            }
+
+            function clearSearch() {
+                // Clear the search input field
+                document.getElementById("search-input").value = "";
+                
+                // Show all items in the list again
+                const listItems = document.querySelectorAll('#list li');
+                listItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+            }
+            
+        </script>
+
+        <div class="header-icons">
+            <button class="profile" onclick="window.location.href='Student.ProfilePage.html';">👤</button>
+            <button class="logout-btn" onclick="handleLogout()">Log out</button>
+        </div>
+    </div>
+
+    <script>
+        function handleLogout() {
+            const confirmation = confirm("Are you sure you want to logout?");
+            if (confirmation) {
+                window.location.href = "Student.WelcomePage.html"; // Update with your login page URL
+            }
+        }
+    </script>
+
+    <!-- Title Bar -->
+    <div class="title-bar">
+        <span id="current-date"></span>
+        <span id="current-time"></span>
+    </div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('en-US');
+            const time = now.toLocaleTimeString('en-US');
+            document.getElementById('current-date').textContent = date;
+            document.getElementById('current-time').textContent = time;
+        }
+        setInterval(updateDateTime, 1000);
+        window.onload = updateDateTime;
+    </script>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button onclick="window.location.href='Student.FrontPage.html';">Home</button>
+        <button onclick="window.location.href='Student.LibraryPage.html';">Library</button>
+    </div>
+    
+    <!-- Form section for displaying information -->
+    <div class="form-container">
+        <form id="student-info-form">
+            <div class="form-row">
+                <label for="student-id">Student ID:</label>
+                <input type="text" id="student-id" readonly>
+            </div>
+            <div class="form-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" readonly>
+            </div>
+            <div class="form-row">
+                <label for="year-section">Year & Section:</label>
+                <input type="text" id="year-section" readonly>
+            </div>
+            <div class="form-row">
+                <label for="program">Program:</label>
+                <input type="text" id="program" readonly>
+            </div>
+            <div class="form-row">
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" readonly>
+            </div>
+            <div class="form-row">
+                <label for="birthday">Birthday:</label>
+                <input type="text" id="birthday" readonly>
+            </div>
+            <div class="form-row">
+                <label for="contact-number">Contact Number:</label>
+                <input type="text" id="contact-number" readonly>
+            </div>
+            <div class="form-row">
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Simulate a data source (e.g., API or database) with student information
+        const studentData = {
+            studentId: "987654321",
+            name: "John Doe",
+            yearSection: "3-1",
+            program: "BSIT",
+            gender: "Male",
+            birthday: "1999-12-31",
+            contactNumber: "09123456789",
+            email: "john.doe@example.com"
+        };
+
+        // Populate the form fields dynamically
+        function populateStudentInfo() {
+            document.getElementById("student-id").value = studentData.studentId;
+            document.getElementById("name").value = studentData.name;
+            document.getElementById("year-section").value = studentData.yearSection;
+            document.getElementById("program").value = studentData.program;
+            document.getElementById("gender").value = studentData.gender;
+            document.getElementById("birthday").value = studentData.birthday;
+            document.getElementById("contact-number").value = studentData.contactNumber;
+            document.getElementById("email").value = studentData.email;
+        }
+
+        // Call the function to populate the form when the page loads
+        window.onload = populateStudentInfo;
+    </script>
+
+    <div class="button-container">
+        <button class="btn change-password" onclick="toggleContainer('change-password-container')">Change Password</button>
+        <button class="btn edit-profile" onclick="toggleContainer('edit-profile-container')">Edit Profile</button>
+        <button class="btn delete-account" onclick="toggleContainer('delete-account-container')">Delete Account</button>
+    </div>
+    
+    <!-- Change Password Container -->
+    <div id="change-password-container" class="container">
+        <form id="change-password-form">
+            <h3>Change Password</h3>
+            <div class="form-row">
+                <label for="current-password">Current Password:</label>
+                <input type="password" id="current-password" required>
+            </div>
+            <div class="form-row">
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" required>
+            </div>
+            <div class="form-row">
+                <label for="confirm-password">Confirm New Password:</label>
+                <input type="password" id="confirm-password" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn submit">Submit</button>
+                <button type="button" class="btn cancel" onclick="toggleContainer('change-password-container')">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Edit Profile Container -->
+    <div id="edit-profile-container" class="container">
+        <form id="student-info-form">
+            <h3>Edit Profile</h3>
+            <div class="form-row">
+                <label for="student-id">Student ID:</label>
+                <input type="text" id="student-id" readonly>
+            </div>
+            <div class="form-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-row">
+                <label for="year-section">Year & Section:</label>
+                <input type="text" id="year-section">
+            </div>
+            <div class="form-row">
+                <label for="program">Program:</label>
+                <input type="text" id="program">
+            </div>
+            <div class="form-row">
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender">
+            </div>
+            <div class="form-row">
+                <label for="birthday">Birthday:</label>
+                <input type="date" id="birthday">
+            </div>
+            <div class="form-row">
+                <label for="contact-number">Contact Number:</label>
+                <input type="tel" id="contact-number">
+            </div>
+            <div class="form-row">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn update">Update Changes</button>
+                <button type="button" class="btn cancel" onclick="toggleContainer('edit-profile-container')">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Delete Account Container -->
+    <div id="delete-account-container" class="container">
+        <h3>Delete Account</h3>
+        <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+        <div class="form-actions">
+            <button class="btn confirm" onclick="confirmDelete()">Confirm</button>
+            <button class="btn cancel" onclick="toggleContainer('delete-account-container')">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleContainer(containerId) {
+            // Hide all containers first
+            let containers = document.querySelectorAll('.container');
+            containers.forEach(container => {
+                container.style.display = 'none';
+            });
+    
+            // Toggle the selected container's display
+            let selectedContainer = document.getElementById(containerId);
+            selectedContainer.style.display = 'block';
+        }
+    
+        // Script for Change Password Form Submission
+        document.getElementById('change-password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let currentPassword = document.getElementById('current-password').value;
+            let newPassword = document.getElementById('new-password').value;
+            let confirmPassword = document.getElementById('confirm-password').value;
+    
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+            } else {
+                alert('Password changed successfully!');
+                toggleContainer('change-password-container');
+            }
+        });
+    
+        // Script for Edit Profile Form Submission
+        document.getElementById('student-info-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Profile updated successfully!');
+            toggleContainer('edit-profile-container');
+        });
+    
+        
+        function cancelContainer(containerId) {
+            // Get the specified container
+            let container = document.getElementById(containerId);
+            
+            if (container) {
+                // Hide the container
+                container.style.display = 'none';
+            }
+        }
+    
+        function confirmDelete() {
+            let confirmation = confirm('Are you sure you want to delete your account?');
+            if (confirmation) {
+                alert('Account deleted successfully!');
+                cancelContainer('delete-account-container');
+            }
+        }
+    </script>
+ 
+</body>
+</html>
