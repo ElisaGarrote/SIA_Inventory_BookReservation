@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+body {
+    overflow: hidden;
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.61),rgba(0, 0, 0, 0.5)), url(ASSETS/background-art.png);
+    background-position: center;
+}
+
+.logo{
+    width: 150px;
+}
+
+.navibar{
+    width: 90%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navibar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 35px;
+    position: relative;
+}
+
+.navibar ul li a{
+    text-decoration: none;
+    font-size: 12px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.navibar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: rgb(184, 0, 0);
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.20s;
+}
+
+.navibar ul li:hover:after{
+    width: 100%;
+}
+
+.content {
+    width: 100%;
+    top: 225px;
+    position: absolute;
+    text-align: center;
+    color: white;
+}
+
+.content h1{
+    font-weight: bold;
+    color: rgb(184, 0, 0);
+    font-size: 45px;
+    margin-top: 15px;
+}
+
+.content h1, h2{
+    font-family: Verdana;
+    display: inline;
+}
+
+.content p{
+    font-family: Helvetica;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 9px;
+}
+
+button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid rgba(184, 0, 0, 0.514);
+    background: rgba(184, 0, 0, 0.151);
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.5s;
+    z-index: 1; /* Ensure button text is on top */
+}
+
+button span {
+    background: rgb(184, 0, 0);
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1; /* Push the background span behind */
+    transition: width 0.5s;
+}
+
+button:hover span {
+    width: 100%; /* Expand the span to cover the button */
+}
+
+button:hover {
+    color: white; /* Text remains white on hover */
+    border: none;
+}
+
+.sections {
+    width: 100%;
+    height: 100vh; /* Match the height of the viewport like .banner */
+    background-position: center;
+    background-size: cover; /* Ensure the background image covers the entire section */
+    display: flex;
+    justify-content: center; /* Center content vertically and horizontally */
+}
+
+.sections > div {
+    display: none; /* Hide all sections by default */
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.sections > .home-section {
+    display: block; /* Show Home section by default */
+}
+
+.sections > div h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.sections > div p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.sections > .about-section {
+    display: none; /* Hide the About section by default */
+    padding: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: rgba(88, 1, 1, 0.459); /* Adjust background color to complement the design */
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Helvetica; 
+}
+
+
+.about-section h2 {
+    text-align: center;
+    font-size: 2.5rem; /* Slightly larger for emphasis */
+    margin-bottom: 20px;
+    color: #ffffff; /* Light color for contrast */
+}
+
+.about-section p {
+    text-align: left;
+    font-size: 12px;
+    margin-top: 15px;
+    line-height: 1.5; /* Improve readability */
+    color: #ffffff; /* Softer text color */
+}
+
+.about-section ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 20px 0;
+    text-align: left; /* Align list items to the left for clarity */
+}
+
+.about-section ul li {
+    font-size: 15px;
+    margin-bottom: 10px;
+    line-height: 1.6; /* Improve readability */
+    color: #ffffff; /* Match the heading color */
+}
+
+.about-section ul li strong {
+    color: #ffffff; /* Highlight key terms */
+}
+
+.about-section h3 {
+    text-align: left;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #ffffff; /* Ensure consistency with headings */
+}
