@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Student.LibraryPage.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="top_navbar">
+            <div class="header">
+                <img src="ASSETS/UNIARCHIVE__4_-removebg-preview.png" class="logo">
+            </div>
+
+            <div class="userman">
+              <div class="user_name" id="userName">
+              </div>
+
+              <div class="dropdown">
+                <button class="dropbtn">▼</button>
+                <div class="dropdown-content">
+                    <a href="profile.html">View Profile</a>
+                    <a href="Student.SignInPage.html" id="logout-link">Log Out</a>
+                </div>
+
+                <script>
+                  // Add a confirmation dialog to the Log Out link
+                  document.getElementById("logout-link").addEventListener("click", function (event) {
+                    // Show a confirmation dialog
+                    const confirmation = confirm("Are you sure you want to log out?");
+                    if (!confirmation) {
+                      event.preventDefault(); // Prevent navigation if the user cancels
+                    }
+                  });
+
+                  // Simulate fetching data from a source (e.g., backend API)
+                  const userData = {
+                    name: "Seth Pelagio" // This value could come from your backend or database
+                  };
+
+                  // Dynamically display the user name in the navbar
+                  document.addEventListener("DOMContentLoaded", () => {
+                    const userNameDiv = document.getElementById("userName");
+                    userNameDiv.textContent = userData.name; // Only display the user's name
+                  });
+                </script>
+
+            </div>
+
+          </div>
+
+        </div>
+          
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                  <ul>
+                    <li>
+                      <a href="Student.DashboardPage.html">
+                        <span class="title">Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.LibraryPage.html" class="active">
+                        <span class="title">Library</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.ReservationPage.html">
+                        <span class="title">Reservation</span>
+                      </a>
+                    </li>
+                  </ul>
+
+                </div>
+            </div>
+
+            <div class="container">
+
+              <div class="title-bar">
+                <span id="current-date"></span>
+                <span id="current-time"></span>
+              </div>
+
+              <!-- New Content Container -->
+              <div class="content-container">
+
+                <div class="left-container">
+                  <!-- For List -->
+                  <div class="add-container">
+                    <div id="item-list">
+                      <ul id="list">
+                        <!-- List items will be added dynamically here -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+            <!-- Right Container -->
+            <div class="right-container">
+              <h2>Filters</h2>
+              
+              <!-- Research Title Filter -->
+              <label for="research-title-filter">Research Title:</label>
+              <input type="text" id="research-title-filter" placeholder="Enter research title">
+              
+              <br><br>
+              
+              <!-- Category Filter -->
+              <label for="category-filter">Category:</label>
+              <select id="category-filter">
+                <option value="">Select Category</option>
+                <option value="Qualitative Research">Qualitative Research</option>
+                <option value="Quantitative Research">Quantitative Research</option>
+                <option value="Mixed-Methods Research">Mixed-Methods Research</option>
+                <option value="Explanatory Research">Explanatory Research</option>
+                <option value="Descriptive Research">Descriptive Research</option>
+                <option value="Applied Research">Applied Research</option>
+                <option value="Health and Medical Research">Health and Medical Research</option>
+                <option value="Engineering and Technology Research">Engineering and Technology Research</option>
+                <option value="Business and Management Research">Business and Management Research</option>
+                <option value="Environmental Research">Environmental Research</option>
+              </select>
+              
+              <br><br>
+              
+              <!-- Year Filter -->
+              <label for="year-filter">Year:</label>
+              <select id="year-filter">
+                <option value="">Select Year</option>
+                <!-- Populate the years dynamically with a 5-year difference -->
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <!-- Continue adding years in increments of 5 if needed -->
+              </select>
+              
+              <br><br>
+              
+              <!-- Filter Button -->
+              <button id="filter-btn">Apply Filters</button>
+            </div>
+
+                <!-- Details Container -->
+                <div id="details-container" style="display:none;">
+                  <h3 id="details-title"></h3>
+                  <p id="details-researcher"></p>
+                  <p id="details-date"></p>
+                  <p id="details-category"></p>
+                  <p id="details-year"></p>
+                  <p id="details-status"></p>
+                  <p id="details-abstract"></p> <!-- Abstract details -->
+                  <button id="close-button" onclick="hideDetails()">Close</button>
+                  <button id="reserve-button" onclick="reserveBook()">Reserve Book</button> <!-- Reserve Book button -->
+              </div>
+
+              <!-- Reservation Form Container -->
+              <div id="reservation-form-container" style="display:none;">
+                  <h2>Add Reservation</h2>
+                  <form>
+                      <label for="reservation-title">Title of Book:</label>
+                      <input type="text" id="reservation-title" readonly><br><br>
+                      
+                      <label for="reservation-name">Name:</label>
+                      <input type="text" id="reservation-name"><br><br>
+      
+                      <label for="reservation-section">Year & Section:</label>
+                      <input type="text" id="reservation-section"><br><br>
+      
+                      <label for="reservation-program">Program:</label>
+                      <input type="text" id="reservation-program"><br><br>
+      
+                      <label for="reservation-contact">Contact Number:</label>
+                      <input type="text" id="reservation-contact"><br><br>
+      
+                      <label for="reservation-email">E-mail:</label>
+                      <input type="email" id="reservation-email"><br><br>
+      
+                      <label for="reservation-datetime-reserve">Date and Time will Reserve:</label>
+                      <input type="datetime-local" id="reservation-datetime-reserve"><br><br>
+      
+                      <label for="reservation-datetime-return">Date and Time will Return:</label>
+                      <input type="datetime-local" id="reservation-datetime-return"><br><br>
+
+                      <button type="button" onclick="closeReservationForm()">Cancel</button>
+                      <button type="button" onclick="confirmReservation()">Confirm</button>
+                  </form>
+              </div>
+            </div>
+
+            <script>
+              const data = [
+                  {
+                      title: "Research on Quantum Mechanics",
+                      author: "Dr. John Doe",
+                      date: "2023-02-15",
+                      status: "AVAILABLE",
+                      category: "Science",
+                      year: "2023",
+                      abstract: "This research explores the fundamental principles of quantum mechanics and their applications in modern physics."
+                  },
+                  {
+                      title: "Study on Artificial Intelligence",
+                      author: "Dr. Jane Smith",
+                      date: "2024-01-12",
+                      status: "UNAVAILABLE",
+                      category: "Technology",
+                      year: "2024",
+                      abstract: "A detailed study on the applications and future of artificial intelligence."
+                  },
+                  {
+                      title: "Exploration of Virtual Assistants",
+                      author: "Dr. Alice Brown",
+                      date: "2023-11-30",
+                      status: "RESERVED",
+                      category: "Technology",
+                      year: "2023",
+                      abstract: "Exploring the development and impact of virtual assistants in modern-day businesses."
+                  }
+              ];
+              
+              // Function to render the list dynamically
+              function renderList(items) {
+                  const list = document.getElementById("list");
+                  list.innerHTML = "";
+
+                  items.forEach((item) => {
+                      const listItem = document.createElement("li");
+                      listItem.classList.add("item");
+
+                      listItem.innerHTML = `
+                          <h3>${item.title}</h3>
+                          <p>${item.author}</p>
+                          <p>${item.date}</p>
+                          <span class="status ${item.status.toLowerCase()}">${item.status}</span>
+                          <button class="open-btn">Open</button>
+                      `;
+
+                      // Add functionality to the "Open" button
+                      listItem.querySelector(".open-btn").addEventListener("click", () => {
+                          document.getElementById('details-title').textContent = item.title;
+                          document.getElementById('details-researcher').textContent = `Researcher: ${item.author}`;
+                          document.getElementById('details-date').textContent = `Date: ${item.date}`;
+                          document.getElementById('details-category').textContent = `Category: ${item.category}`;
+                          document.getElementById('details-year').textContent = `Year: ${item.year}`;
+                          document.getElementById('details-status').textContent = `Status: ${item.status}`;
+                          document.getElementById('details-abstract').textContent = `Abstract: ${item.abstract}`;
+                          document.getElementById('details-container').style.display = 'block';
+                      });
+
+                      list.appendChild(listItem);
+                  });
+              }
+
+              function hideDetails() {
+                  document.getElementById('details-container').style.display = 'none';
+              }
+
+              function reserveBook() {
+                  const title = document.getElementById('details-title').textContent;
+                  document.getElementById('reservation-title').value = title; // Set title in the form
+                  document.getElementById('reservation-form-container').style.display = 'block'; // Show reservation form
+              }
+
+              function closeReservationForm() {
+                  document.getElementById('reservation-form-container').style.display = 'none'; // Hide reservation form
+              }
+
+              function confirmReservation() {
+                  const title = document.getElementById('reservation-title').value;
+                  const name = document.getElementById('reservation-name').value;
+                  const section = document.getElementById('reservation-section').value;
+                  const program = document.getElementById('reservation-program').value;
+                  const contact = document.getElementById('reservation-contact').value;
+                  const email = document.getElementById('reservation-email').value;
+                  const datetimeReserve = document.getElementById('reservation-datetime-reserve').value;
+                  const datetimeReturn = document.getElementById('reservation-datetime-return').value;
+              
+                  if (name && section && program && contact && email && datetimeReserve && datetimeReturn) {
+                      alert(`Reservation confirmed for "${title}".\nName: ${name}\nProgram: ${program}`);
+                      closeReservationForm();
+                  } else {
+                      alert("Please fill in all fields.");
+                  }
+              }
+
+              // Render the list on page load
+              renderList(data);
+
+              function updateDateTime() {
+                  const now = new Date();
+                  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                  const date = now.toLocaleDateString('en-US', options);
+                  const time = now.toLocaleTimeString('en-US');
+                  document.getElementById('current-date').textContent = date;
+                  document.getElementById('current-time').textContent = time;
+              }
+
+              setInterval(updateDateTime, 1000);
+              window.onload = updateDateTime;
+            </script>
+                
+
+              <script>
+
+              function updateDateTime() {
+                const now = new Date();
+                
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const date = now.toLocaleDateString('en-US', options);
+                
+                // Format the time
+                const time = now.toLocaleTimeString('en-US');
+                
+                document.getElementById('current-date').textContent = date;
+                document.getElementById('current-time').textContent = time;
+            }
+        
+            setInterval(updateDateTime, 1000);
+            window.onload = updateDateTime;
+            </script>
+
+          </div>
+
+        </div>
+        
+      </div>
+
+</body>
+</html>

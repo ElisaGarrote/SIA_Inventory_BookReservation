@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Student.DashboardPage.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="top_navbar">
+            <div class="header">
+                <img src="ASSETS/UNIARCHIVE__4_-removebg-preview.png" class="logo">
+            </div>
+
+            <div class="userman">
+              <div class="user_name" id="userName">
+              </div>
+
+              <div class="dropdown">
+                <button class="dropbtn">▼</button>
+                <div class="dropdown-content">
+                    <a href="profile.html">View Profile</a>
+                    <a href="Student.SignInPage.html" id="logout-link">Log Out</a>
+                </div>
+              </div>
+
+              <script>
+                // Add a confirmation dialog to the Log Out link
+                document.getElementById("logout-link").addEventListener("click", function (event) {
+                  // Show a confirmation dialog
+                  const confirmation = confirm("Are you sure you want to log out?");
+                  if (!confirmation) {
+                    event.preventDefault(); // Prevent navigation if the user cancels
+                  }
+                });
+              </script>
+
+          </div>
+
+        </div>
+          
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                  <ul>
+                    <li>
+                      <a href="Student.DashboardPage.html" >
+                        <span class="title">Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.LibraryPage.html">
+                        <span class="title">Library</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.ReservationPage.html" class="active">
+                        <span class="title">Reservation</span>
+                      </a>
+                    </li>
+                  </ul>
+                  
+                </div>
+            </div>
+
+            <div class="container">
+
+              <div class="title-bar">
+                <span id="current-date"></span>
+                <span id="current-time"></span>
+              </div>
+              
+              <script>
+                  function updateDateTime() {
+                      const now = new Date();
+                      
+                      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                      const date = now.toLocaleDateString('en-US', options);
+                      
+                      // Format the time
+                      const time = now.toLocaleTimeString('en-US');
+                      
+                      document.getElementById('current-date').textContent = date;
+                      document.getElementById('current-time').textContent = time;
+                  }
+              
+                  setInterval(updateDateTime, 1000);
+                  window.onload = updateDateTime;
+              </script>
+
+            </div>
+
+        </div>
+        
+      </div>
+
+      <script>
+      // Simulate fetching data from a source (e.g., backend API)
+      const userData = {
+        name: "Seth Pelagio" // This value could come from your backend or database
+      };
+
+      // Dynamically display the user name in the navbar
+      document.addEventListener("DOMContentLoaded", () => {
+        const userNameDiv = document.getElementById("userName");
+        userNameDiv.textContent = userData.name; // Only display the user's name
+      });
+      </script>
+
+</body>
+</html>
