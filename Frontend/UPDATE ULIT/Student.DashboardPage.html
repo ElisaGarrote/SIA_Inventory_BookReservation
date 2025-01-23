@@ -1,9 +1,262 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Document</title>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Student.DashboardPage.css">
 </head>
+
 <body>
-    
+
+    <div class="wrapper">
+
+        <div class="top_navbar">
+            <div class="header">
+                <img src="ASSETS/UNIARCHIVE__4_-removebg-preview.png" class="logo">
+            </div>
+
+            <div class="userman">
+              <div class="user_name" id="userName">
+              </div>
+
+              <div class="dropdown">
+                <button class="dropbtn">▼</button>
+                <div class="dropdown-content">
+                    <a href="profile.html">View Profile</a>
+                    <a href="Student.SignInPage.html" id="logout-link">Log Out</a>
+                </div>
+
+                <script>
+                  // Add a confirmation dialog to the Log Out link
+                  document.getElementById("logout-link").addEventListener("click", function (event) {
+                    // Show a confirmation dialog
+                    const confirmation = confirm("Are you sure you want to log out?");
+                    if (!confirmation) {
+                      event.preventDefault(); // Prevent navigation if the user cancels
+                    }
+                  });
+                </script>
+
+            </div>
+
+          </div>
+
+        </div>
+          
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                  <ul>
+                    <li>
+                      <a href="Student.DashboardPage.html" class="active">
+                        <span class="title">Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.LibraryPage.html">
+                        <span class="title">Library</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.ReservationPage.html">
+                        <span class="title">Reservation</span>
+                      </a>
+                    </li>
+                  </ul>
+
+                </div>
+            </div>
+
+            <div class="container">
+
+              <div class="title-bar">
+                <span id="current-date"></span>
+                <span id="current-time"></span>
+              </div>
+
+            <script>
+
+              function updateDateTime() {
+                const now = new Date();
+                
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const date = now.toLocaleDateString('en-US', options);
+                
+                // Format the time
+                const time = now.toLocaleTimeString('en-US');
+                
+                document.getElementById('current-date').textContent = date;
+                document.getElementById('current-time').textContent = time;
+            }
+        
+            setInterval(updateDateTime, 1000);
+            window.onload = updateDateTime;
+            </script>
+
+              <div class="container1">
+                <div class="box1">
+                <h1 id="reserved-count"></h1>
+                  <span>Total Number of Reserved Books</span></div>
+
+                <div class="box2">
+                  <h1 id="overtime-count"></h1>
+                  <span>Total Number of Overtime Books</span></div>
+              </div>  
+
+              <div class="container2">
+                <div class="box3">
+                  <div class="header">
+                    <h1 id="new-box1">Reservations</h1>
+                    <button id="view-all-button" onclick="location.href='Student.ReservationPage.html'">View All</button>
+                  </div>
+                  <table id="reservations-table">
+                    <thead>
+                      <tr>
+                        <th>Research Title</th>
+                        <th>Category</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="reservations-body">
+                      <!-- Rows will be dynamically inserted here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- This is the container that will show reservation details -->
+              <div id="container-view" style="display: none;">
+                <div class="view-content">
+                  <h2 id="view-title">Reservation Details</h2>
+                  <p id="view-category"></p>
+                  <p id="view-published-date"></p> <!-- Published Date -->
+                  <p id="view-researchers"></p> <!-- Researchers -->
+                  <p id="view-abstract"></p> <!-- Abstract -->
+                  <p id="view-start-date"></p>
+                  <p id="view-end-date"></p>
+                  <button id="close-view-button">Close</button>
+                </div>
+              </div>
+
+              <script>
+              // Example data to populate the table, including Published Date, Researchers, and Abstract
+                const reservationsData = [
+                {
+                  title: "Example Research 1",
+                  category: "Category 1",
+                  startDate: "2025-01-01",
+                  endDate: "2025-12-31",
+                  publishedDate: "2025-01-01",   // Added Published Date
+                  researchers: "John Doe, Jane Smith",  // Added Researchers
+                  abstract: "This research focuses on the impact of AI in education, exploring various applications and outcomes.",  // Added Abstract
+                },
+                {
+                  title: "Example Research 2",
+                  category: "Category 2",
+                  startDate: "2025-02-01",
+                  endDate: "2025-11-30",
+                  publishedDate: "2025-02-01",   // Added Published Date
+                  researchers: "Alice Brown, Bob White",  // Added Researchers
+                  abstract: "This study investigates climate change solutions, focusing on renewable energy innovations.",  // Added Abstract
+                },
+                ];
+
+                // Function to populate the table dynamically
+                function populateReservationsTable(data) {
+                const tableBody = document.getElementById("reservations-body");
+
+                data.forEach((item, index) => {
+                  const row = document.createElement("tr");
+
+                  row.innerHTML = `
+                    <td>${item.title}</td>
+                    <td>${item.category}</td>
+                    <td>${item.startDate}</td>
+                    <td>${item.endDate}</td>
+                    <td>
+                      <div class="actions-wrapper">
+                        <button class="view-button" data-index="${index}">View</button>
+                        <button class="cancel-button" data-index="${index}">Cancel</button>
+                      </div>
+                    </td>
+                  `;
+
+                  tableBody.appendChild(row);
+                });
+                }
+
+                // Event listener for button actions
+                document.addEventListener("click", (event) => {
+                // If "View" button is clicked, open the container-view and populate it
+                if (event.target.classList.contains("view-button")) {
+                  const index = event.target.getAttribute("data-index");
+                  const reservation = reservationsData[index];
+
+                  // Populate the container-view with reservation details
+                  document.getElementById("view-title").textContent = reservation.title;
+                  document.getElementById("view-category").textContent = `Category: ${reservation.category}`;
+                  document.getElementById("view-start-date").textContent = `Start Date: ${reservation.startDate}`;
+                  document.getElementById("view-end-date").textContent = `End Date: ${reservation.endDate}`;
+                  document.getElementById("view-published-date").textContent = `Published Date: ${reservation.publishedDate}`;  // Display Published Date
+                  document.getElementById("view-researchers").textContent = `Researcher(s): ${reservation.researchers}`;  // Display Researchers
+                  document.getElementById("view-abstract").textContent = `Abstract: ${reservation.abstract}`;  // Display Abstract
+
+                  // Show the container-view
+                  document.getElementById("container-view").style.display = "flex";
+                }
+
+                // If "Close" button is clicked, hide the container-view
+                if (event.target.id === "close-view-button") {
+                  document.getElementById("container-view").style.display = "none";
+                }
+
+                // If "Cancel" button is clicked, remove the reservation from the table
+                if (event.target.classList.contains("cancel-button")) {
+                  const index = event.target.getAttribute("data-index");
+                  const confirmation = confirm(
+                    `Are you sure you want to cancel: ${reservationsData[index].title}?`
+                  );
+                  if (confirmation) {
+                    reservationsData.splice(index, 1); // Remove the item from the array
+                    document.getElementById("reservations-body").innerHTML = ""; // Clear the table
+                    populateReservationsTable(reservationsData); // Rebuild the table
+                  }
+                }
+                });
+
+                // Populate the table on page load
+                document.addEventListener("DOMContentLoaded", () => {
+                populateReservationsTable(reservationsData);
+                });
+              </script>
+
+            </div>
+
+        </div>
+        
+      </div>
+
+      <script>
+      // Simulate fetching data from a source (e.g., backend API)
+      const userData = {
+        name: "Seth Pelagio" // This value could come from your backend or database
+      };
+
+      // Dynamically display the user name in the navbar
+      document.addEventListener("DOMContentLoaded", () => {
+        const userNameDiv = document.getElementById("userName");
+        userNameDiv.textContent = userData.name; // Only display the user's name
+      });
+
+      // Simulating dynamic data (replace these values with your actual source)
+      const reservedBooks = 90; // Example value for reserved books
+      const overtimeBooks = 120; // Example value for overtime books
+
+      // Updating the h1 content dynamically
+      document.getElementById('reserved-count').textContent = reservedBooks;
+      document.getElementById('overtime-count').textContent = overtimeBooks;
+      </script>
+
 </body>
 </html>
