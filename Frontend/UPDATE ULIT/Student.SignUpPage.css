@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(ASSETS/background-art.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.top header {
+    font-family: Helvetica; /* Set font to Helvetica */
+    font-weight: bolder; /* Make the text bold */
+    margin-bottom: 10px; /* Add a bottom margin for spacing */
+    font-size: 24px; /* Adjust font size (optional) */
+    color: #ffffff; /* Optional: Add a color for styling */
+}
+
+.login-header{
+    text-align: center;
+    margin: 10px;
+}
+
+.logo{
+    width: 200px;
+}
+
+.register-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 480px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #8d0000;
+}
+
+/* General styles for alignment */
+.four-forms, .two-forms {
+    display: flex;
+    justify-content: space-between; /* Ensure spacing between inputs */
+    gap: 10px; /* Adds spacing between the input fields */
+    margin-bottom: 10px;
+}
+
+.input-box {
+    flex: 1; /* Ensures all input fields are of equal width */
+    position: relative;
+}
+
+.input-box .input-field,
+.input-box select {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    padding: 0 25px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #8d0000;
+    transform: scale(1.02);
+}
+
+.input-box select {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    padding: 0 25px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    outline: none;
+    transition: all 0.3s ease;
+    background: #fff;
+    appearance: none;
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    color: #aaa;
+    font-size: 18px;
+}
+
+.input-box p {
+    font-size: 12px; /* Smaller font for info text */
+    color: #ffffff; /* Match the focus color for a cohesive design */
+    margin: 0 0 0 0; /* Add spacing above the text */
+    padding-left: 15px; /* Slight indentation for better alignment */
+}
+
+::placeholder {
+    font-weight: 500;
+    color: #999;
+}
+
+.input-field:focus {
+    border-color: #8d0000;
+    transform: scale(1.02);
+}
+
+.submit-btn {
+    width: 100%;
+    height: 45px;
+    background: rgba(184, 0, 0, 0.8);
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #9c0000;
+    transform: scale(1.05);
+}
+
+.gender-birthday {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.gender-birthday .input-box {
+    flex: 1;
+}
+
+.privacy-terms {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #8d0000;
+}
+
+.privacy-terms a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: #8d0000;
+}
+
+.privacy-terms a:hover {
+    text-decoration: underline;
+}
+
+.sign-up-link {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.sign-up-link a {
+    color: #8d0000;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.sign-up-link a:hover {
+    text-decoration: underline;
+}
+
+.two-col {
+    display: flex; /* Makes the container a flexbox for layout control */
+    font-weight: bolder;
+    align-items: center; /* Vertically centers child elements */
+    justify-content: center; /* Centers the items horizontally */
+    margin-top: 5px; /* Adds spacing above the two columns */
+    font-family: Helvetica; /* Sets a clean font style */
+    font-size: 14px; /* Sets font size */
+}
+
+.two-col .one{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.two-col .one a {
+    text-decoration: none; /* Removes underlines from links */
+    color: #ececec; /* Sets link color to a standard red */
+    transition: color 0.3s; /* Smooth hover effect */
+}
+
+.two-col .one a:hover {
+    color: #b30000; /* Changes color on hover for better user feedback */
+}
+
+
+.input-submit{
+    position: relative;
+}
+
+.submit-btn{
+    margin-top: 5px;
+    width: 100%;
+    height: 50px;
+    background: rgba(184, 0, 0, 0.514);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.input-submit label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+.submit-btn:hover{
+    background: #9c0000;
+    transform: scale(1.05,1);
+}
+.sign-up-link{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.sign-up-link a{
+    color: #8d0000;
+    font-weight: bold;
+}
+
+.slide-container {
+    display: none;
+    position: fixed; /* Make it float above the content */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Align the center */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a floating effect */
+    z-index: 1000; /* Ensure it appears on top */
+    animation: slide-up 0.5s ease-out;
+    width: 80%; /* Adjust the width of the container */
+    max-width: 400px; /* Optional: Max width for better responsiveness */
+    font-size: 16px; /* Adjust overall text size */
+    color: #333; /* Overall text color */
+    line-height: 1.5; /* Adjust line spacing */
+    text-align: center; /* Default text alignment */
+    font-family: 'Arial', sans-serif; /* Set font family */
+}
+
+.slide-container.active {
+    display: block;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translate(-50%, -40%); /* Start slightly lower */
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%); /* Finish at the center */
+        opacity: 1;
+    }
+}
+
+/* Optional: Add an overlay behind the container */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Behind the floating container */
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Style for the policy section */
+.policy-section {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 20px;
+}
+
+/* Scrollable content section styles */
+.scrollable-content {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #222;
+    text-align: left;
+}
+
+/* Checkbox section text styles */
+.checkbox-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensure text aligns left */
+    gap: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Next button container styles */
+.next-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Adjust as needed */
+}
+
+/* Next button styles */
+.next-btn {
+    width: 150px;
+    height: 35px;
+    background: rgba(201, 0, 0, 0.692);
+    border: none;
+    border-radius: 30px;
+    cursor: not-allowed;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.next-btn:enabled {
+    cursor: pointer;
+    opacity: 1;
+}
+
+/* Responsive adjustments for text */
+@media (max-width: 768px) {
+    .slide-container {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .policy-section {
+        font-size: 12px;
+    }
+
+    .scrollable-content {
+        font-size: 12px;
+    }
+
+    .checkbox-section {
+        font-size: 12px;
+    }
+}

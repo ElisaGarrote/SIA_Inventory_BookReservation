@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Student.SignUpPage.css">
+</head>
+
+<body>
+    <div class="form-box">
+        <div class="login-header">
+            <img src="ASSETS/UNIARCHIVE.TRANS.png" class="logo">
+        </div>
+
+        <!------------------- registration form -------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <header>Create Account</header>
+            </div>
+
+            <form id="registrationForm">
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Student ID" required>
+                    <i class="bx bx-id-card"></i>
+                </div>
+
+                <!------------------- for name start -------------------------->
+                <div class="four-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Lastname:" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Firstname:" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Middlename:">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <select class="input-field">
+                            <option value="" disabled selected>Suffix:</option>
+                            <option value="Jr.">Jr</option>
+                            <option value="Sr.">Sr</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                            <option value="V">V</option>
+                        </select>
+                        <i class="bx bx-chevron-down"></i>
+                    </div>
+                </div>
+                <!------------------- for name end -------------------------->
+
+                <div class="two-forms">
+                    <div class="input-box">
+                        <select class="input-field" id="gender">
+                            <option value="" disabled selected>Select Gender:</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            <option value="PreferNotToSay">Prefer not to say</option>
+                        </select>
+                        <i class="bx bx-chevron-down"></i>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="date" class="input-field" id="birthday" max="" placeholder="Select your birthday" required>
+                        <i class="bx bx-calendar"></i>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <select class="input-field">
+                        <option value="" disabled selected>Select College Program:</option>
+                        <option value="it">Information Technology</option>
+                        <option value="he">Home Economics</option>
+                        <option value="ict">Information Communication and Technology</option>
+                        <option value="hrm">Human Resource Management</option>
+                        <option value="mm">Marketing Management</option>
+                        <option value="entrep">Entrepreneurship</option>
+                        <option value="fa">Fiscal Administration</option>
+                        <option value="domt">Office Management Technology</option>
+                    </select>
+                    <i class="bx bx-chevron-down"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="E-mail Address:" required>
+                    <i class="bx bx-envelope"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" class="input-field" id="password" placeholder="Password:" required>
+                    <p>Password must be at least 8 characters long, contain at least one number, one uppercase letter, and one special character.</p>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" class="input-field" id="confirmPassword" placeholder="Confirm Password:" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+
+                <div class="two-col">
+                    <div class="two">
+                        <label>
+                            <input type="checkbox" class="policy-summary-checkbox" id="two-col-checkbox" disabled> 
+                        </label>
+
+                    </div>
+                    <div class="one">
+                        <a href="#" class="trigger-readable" data-target="combined-container">Privacy Policy | Terms & Conditions</a>
+                    </div>
+                </div>
+                
+                <div class="overlay"></div> <!-- The background overlay -->
+                
+                <div id="combined-container" class="slide-container">
+                    <div class="scrollable-content">
+                    <p>This container includes both Privacy Policy and Terms and Conditions content.</p>
+                    
+                    <div class="policy-section">
+                        <h3>Privacy Policy</h3>
+                        <p>Your privacy is important to us. This Privacy Policy outlines how UNIARCHIVE collects, uses, and protects your information when you use our library book reservation and inventory management system.</p>
+                        <ol>
+                            <li>
+                                <strong>Information We Collect:</strong> 
+                                <ul>
+                                    <li>Personal Information: Name, email address, or other identifiers provided during account registration.</li>
+                                    <li>Usage Data: Information about how you interact with the System, such as login times, book reservations, and search history.</li>
+                                    <li>Device Information: IP address, browser type, and operating system details for security and analytics purposes.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>How We Use Your Information:</strong>
+                                <ul>
+                                    <li>To provide and manage the System's services.</li>
+                                    <li>To process book reservations and maintain accurate inventory records.</li>
+                                    <li>To communicate updates or respond to your inquiries.</li>
+                                    <li>To enhance user experience and improve the System.</li>
+                                    <li>To comply with legal and regulatory requirements.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Data Sharing and Disclosure:</strong>
+                                <p>We do not sell, trade, or rent your personal information. However, we may share data:</p>
+                                <ul>
+                                    <li>With service providers assisting us in operating the System.</li>
+                                    <li>When required by law, regulation, or legal process.</li>
+                                    <li>To protect the rights, safety, or property of our users or the public.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Data Security:</strong>
+                                <p>We implement industry-standard security measures to protect your information. However, no system can be completely secure. We encourage users to safeguard their account credentials.</p>
+                            </li>
+                            <li>
+                                <strong>Your Rights:</strong>
+                                <ul>
+                                    <li>Access, update, or delete your personal information.</li>
+                                    <li>Opt out of non-essential communications.</li>
+                                    <li>Withdraw consent for data processing where applicable.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Changes to This Policy:</strong>
+                                <p>We may update this Privacy Policy periodically. Changes will be posted with an updated "Effective Date."</p>
+                            </li>
+                            <li>
+                                <strong>Contact Us:</strong>
+                                <p>If you have questions about this Privacy Policy, please contact us at ashleyyyerillo@gmai.com, elisataan01@gmail.com.</p>
+                            </li>
+                        </ol>
+
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h3>Terms and Conditions</h3>
+                        <p>These Terms and Conditions govern your use of the library book reservation and inventory management system provided by UNIARCHIVE. By accessing or using the System, you agree to these Terms.</p>
+                        <ol>
+                            <li><strong>Account Responsibilities:</strong>
+                                <ul>
+                                    <li>You are responsible for maintaining the confidentiality of your login credentials.</li>
+                                    <li>Notify us immediately of unauthorized access to your account.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Usage Guidelines:</strong>
+                                <ul>
+                                    <li>Use it solely for lawful purposes.</li>
+                                    <li>Refrain from interfering with its operation or security.</li>
+                                    <li>Not engage in any fraudulent activities, such as reserving books without intent to borrow.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Reservations and Borrowing:</strong>
+                                <ul>
+                                    <li>Book reservations are subject to availability.</li>
+                                    <li>Reserved books must be picked up within [specified time frame, e.g., 3 days] or the reservation will be canceled.</li>
+                                    <li>Overdue books may incur penalties as outlined by the library’s policies.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Intellectual Property:</strong>
+                                <p>All content and software in the System are owned by us or licensed to us. Unauthorized use, reproduction, or distribution is prohibited.</p>
+                            </li>
+                            <li><strong>Limitation of Liability:</strong>
+                                <p>We are not responsible for:</p>
+                                <ul>
+                                    <li>System downtime, data loss, or technical issues.</li>
+                                    <li>Unauthorized access to your account due to your negligence.</li>
+                                    <li>Damages arising from your use of the System.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Termination:</strong>
+                                <p>We reserve the right to suspend or terminate your access to the System for violating these Terms or engaging in unlawful activities.</p>
+                            </li>
+                            <li><strong>Changes to These Terms:</strong>
+                                <p>We may update these Terms periodically. Continued use of the System after updates constitutes acceptance of the revised Terms.</p>
+                            </li>
+                            <li><strong>Contact Us:</strong>
+                                <p>For questions about these Terms, please contact us at ashleyyyerillo@gmai.com, elisataan01@gmail.com.</p>
+                            </li>
+                        </ol>
+                    </div>
+                    </div>
+
+                <!-- Checkboxes and Register Button -->
+                <div class="checkbox-section">
+                    <label>
+                        <input type="checkbox" class="policy-checkbox" id="privacy-checkbox"> I agree to the Privacy Policy
+                    </label>
+                    <label>
+                        <input type="checkbox" class="policy-checkbox" id="terms-checkbox"> I agree to the Terms and Conditions
+                    </label>
+                </div>
+
+                </div>
+
+                <div class="input-box">
+                    <input type="button" class="submit-btn trigger" data-target="combined-container" value="Continue">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Set the max attribute to today's date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('birthday').setAttribute('max', today);
+        
+        // Select checkboxes and buttons
+        const privacyCheckbox = document.getElementById('privacy-checkbox');
+        const termsCheckbox = document.getElementById('terms-checkbox');
+        const allPoliciesCheckbox = document.getElementById('two-col-checkbox');
+        const continueButton = document.querySelector('.submit-btn');
+        const overlayContainer = document.querySelector('.overlay');
+        const slideContainer = document.getElementById('combined-container');
+
+        // Function to handle changes for individual policy checkboxes
+        function handlePolicyCheckboxChange() {
+            if (privacyCheckbox.checked && termsCheckbox.checked) {
+                allPoliciesCheckbox.checked = true; // Automatically check "All Policies Agreed"
+                continueButton.disabled = false; // Enable "Continue" button
+                closeOverlay(); // Close overlay when both policies are agreed
+            } else {
+                allPoliciesCheckbox.checked = false; // Uncheck "All Policies Agreed"
+                continueButton.disabled = true; // Disable "Continue" button
+            }
+        }
+
+        // Function to close the overlay
+        function closeOverlay() {
+            overlayContainer.classList.remove('active');
+            slideContainer.classList.remove('active');
+        }
+
+        // Add event listeners for Privacy and Terms checkboxes
+        privacyCheckbox.addEventListener('change', handlePolicyCheckboxChange);
+        termsCheckbox.addEventListener('change', handlePolicyCheckboxChange);
+
+       // Event listener for "Continue" button
+        continueButton.addEventListener('click', () => {
+            if (!privacyCheckbox.checked || !termsCheckbox.checked) {
+                // If not agreed, show the overlay
+                overlayContainer.classList.add('active');
+                slideContainer.classList.add('active');
+            } else {
+                // Proceed with redirection to the login page
+                alert("Thank you for agreeing to the policies. Proceeding to the next step.");
+                window.location.href = "Student.SignInPage.html"; // Replace "login.html" with the actual login page URL
+            }
+        });
+
+        // Optional: Handle overlay click to close
+        overlayContainer.addEventListener('click', closeOverlay);
+
+        // Optional: Add close logic for the modal's close button
+        document.querySelectorAll('.slide-container .close-btn').forEach(button => {
+            button.addEventListener('click', closeOverlay);
+        });
+
+        // Select the "read-only" trigger
+        const readOnlyTrigger = document.querySelector('.trigger-readable');
+
+        // Handle clicking the read-only trigger
+        readOnlyTrigger.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default action of the link
+            // Open the overlay for reading only
+            overlayContainer.classList.add('active');
+            slideContainer.classList.add('active');
+        });
+
+        </script>
+        
+
+</body>
+</html>

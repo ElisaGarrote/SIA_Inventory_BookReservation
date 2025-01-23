@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="Student.SignInPage.css">
     <title>UNIARCHIVE | Login</title>
-
+    <link rel="stylesheet" href="Student.SignInPage.css">
 </head>
 <body>
 
@@ -26,9 +25,15 @@
             <label for="submit">Log In</label>
         </div>
         <div class="sign-up-link">
-            <p>Don't have account? <a href="#">Sign Up</a></p>
+            <p>Don't have an account? <a href="Student.SignUpPage.html" target="_blank">Sign Up</a></p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function () {
+            window.location.href = 'Student.DashboardPage.html'; // Redirect to the dashboard
+        });
+    </script>
 
 </body>
 </html>
