@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>UNIARCHIVE</title>
+    <title>UNIARCHIVE | Register</title>
     <link rel="stylesheet" href="Student.SignUpPage.css">
 </head>
 
@@ -65,24 +65,25 @@
                     </div>
 
                     <div class="input-box">
-                        <input type="date" class="input-field" id="birthday" max="" placeholder="Select your birthday" required>
-                        <i class="bx bx-calendar"></i>
+                        <select class="input-field">
+                            <option value="" disabled selected>Select College Program:</option>
+                            <option value="it">Information Technology</option>
+                            <option value="he">Home Economics</option>
+                            <option value="ict">Information Communication and Technology</option>
+                            <option value="hrm">Human Resource Management</option>
+                            <option value="mm">Marketing Management</option>
+                            <option value="entrep">Entrepreneurship</option>
+                            <option value="fa">Fiscal Administration</option>
+                            <option value="domt">Office Management Technology</option>
+                        </select>
+                        <i class="bx bx-chevron-down"></i>
                     </div>
+
                 </div>
 
                 <div class="input-box">
-                    <select class="input-field">
-                        <option value="" disabled selected>Select College Program:</option>
-                        <option value="it">Information Technology</option>
-                        <option value="he">Home Economics</option>
-                        <option value="ict">Information Communication and Technology</option>
-                        <option value="hrm">Human Resource Management</option>
-                        <option value="mm">Marketing Management</option>
-                        <option value="entrep">Entrepreneurship</option>
-                        <option value="fa">Fiscal Administration</option>
-                        <option value="domt">Office Management Technology</option>
-                    </select>
-                    <i class="bx bx-chevron-down"></i>
+                    <input type="text" class="input-field" id="contact" max="" placeholder="Contact Number:" required>
+                    <i class="bx bx-contact"></i>
                 </div>
 
                 <div class="input-box">
@@ -243,10 +244,36 @@
     </div>
 
     <script>
-        // Set the max attribute to today's date
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('birthday').setAttribute('max', today);
-        
+        const contactInput = document.getElementById("contact");
+
+        // This flag is to prevent multiple alerts
+        let alertShown = false;
+    
+        contactInput.addEventListener("blur", function() {
+            const contactValue = contactInput.value;
+    
+            // Check if the input is exactly 11 digits long and is a number
+            if (contactValue.length === 11 && !isNaN(contactValue)) {
+                // The input is valid, proceed with the next action
+                console.log("Valid contact number:", contactValue);
+            } else {
+                // Show the alert only if it hasn't been shown yet
+                if (!alertShown) {
+                    alert("Please enter a valid 11-digit contact number.");
+                    alertShown = true; // Set the flag to true so the alert is not shown again
+                }
+    
+                contactInput.focus(); // Focus back to the input field for correction
+            }
+        });
+    
+        // Reset the alert flag if the user starts typing again
+        contactInput.addEventListener("input", function() {
+            if (alertShown) {
+                alertShown = false; // Allow the alert to be shown again if the user starts correcting
+            }
+        });
+
         // Select checkboxes and buttons
         const privacyCheckbox = document.getElementById('privacy-checkbox');
         const termsCheckbox = document.getElementById('terms-checkbox');

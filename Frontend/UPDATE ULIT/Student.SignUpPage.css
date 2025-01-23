@@ -140,13 +140,13 @@ body {
     transform: scale(1.05);
 }
 
-.gender-birthday {
+.gender-program {
     display: flex;
     justify-content: space-between;
     gap: 10px;
 }
 
-.gender-birthday .input-box {
+.gender-program .input-box {
     flex: 1;
 }
 
