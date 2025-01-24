@@ -18,6 +18,19 @@
               <div class="user_name" id="userName">
               </div>
 
+              <script>
+               // Simulate fetching data from a source (e.g., backend API)
+                const userData = {
+                  name: "Seth Pelagio" // This value could come from your backend or database
+                };
+
+                // Dynamically display the user name in the navbar
+                document.addEventListener("DOMContentLoaded", () => {
+                  const userNameDiv = document.getElementById("userName");
+                  userNameDiv.textContent = userData.name; // Only display the user's name
+                });
+              </script>
+
               <div class="dropdown">
                 <button class="dropbtn">▼</button>
                 <div class="dropdown-content">
@@ -71,24 +84,54 @@
                 <span id="current-date"></span>
                 <span id="current-time"></span>
               </div>
-              
+
               <script>
-                  function updateDateTime() {
-                      const now = new Date();
-                      
-                      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                      const date = now.toLocaleDateString('en-US', options);
-                      
-                      // Format the time
-                      const time = now.toLocaleTimeString('en-US');
-                      
-                      document.getElementById('current-date').textContent = date;
-                      document.getElementById('current-time').textContent = time;
-                  }
+                function updateDateTime() {
+                    const now = new Date();
+                    
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    const date = now.toLocaleDateString('en-US', options);
+                    
+                    // Format the time
+                    const time = now.toLocaleTimeString('en-US');
+                    
+                    document.getElementById('current-date').textContent = date;
+                    document.getElementById('current-time').textContent = time;
+                }
+            
+                setInterval(updateDateTime, 1000);
+                window.onload = updateDateTime;
+            </script>
+
+               <!---DITOBETLOG-->
+
               
-                  setInterval(updateDateTime, 1000);
-                  window.onload = updateDateTime;
+
+              <script>
+                function openTab(event, tabName) {
+                  // Hide all tab content
+                  const tabPanes = document.getElementsByClassName("tab-pane");
+                  for (const pane of tabPanes) {
+                    pane.style.display = "none";
+                    pane.classList.remove("active");
+                  }
+
+                  // Remove "active" class from all buttons
+                  const tabButtons = document.getElementsByClassName("tab-button");
+                  for (const button of tabButtons) {
+                    button.classList.remove("active");
+                  }
+
+                  // Show the selected tab and set the button to active
+                  document.getElementById(tabName).style.display = "block";
+                  document.getElementById(tabName).classList.add("active");
+                  event.currentTarget.classList.add("active");
+                }
+
+                // Set the default tab to display
+                document.getElementById("Overview").style.display = "block";
               </script>
+              
 
             </div>
 
@@ -96,18 +139,6 @@
         
       </div>
 
-      <script>
-      // Simulate fetching data from a source (e.g., backend API)
-      const userData = {
-        name: "Seth Pelagio" // This value could come from your backend or database
-      };
-
-      // Dynamically display the user name in the navbar
-      document.addEventListener("DOMContentLoaded", () => {
-        const userNameDiv = document.getElementById("userName");
-        userNameDiv.textContent = userData.name; // Only display the user's name
-      });
-      </script>
 
 </body>
 </html>
