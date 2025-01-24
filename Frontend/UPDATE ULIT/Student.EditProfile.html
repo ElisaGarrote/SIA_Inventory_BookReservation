@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIARCHIVE</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="Student.EditProfile.css">
+</head>
+<body>
+
+    <h2>Edit Profile</h2>
+
+    <!-- Form with aligned text boxes -->
+    <form id="profile-form">
+        <div class="four-forms">
+                           <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Student ID" required>
+                    <i class="bx bx-id-card"></i>
+                </div>
+
+                <!------------------- for name start -------------------------->
+                <div class="four-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Lastname:" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Firstname:" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Middlename:">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <select class="input-field">
+                            <option value="" disabled selected>Suffix:</option>
+                            <option value="Jr.">Jr</option>
+                            <option value="Sr.">Sr</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                            <option value="V">V</option>
+                        </select>
+                        <i class="bx bx-chevron-down"></i>
+                    </div>
+                </div>
+                <!------------------- for name end -------------------------->
+
+                <div class="two-forms">
+                    <div class="input-box">
+                        <select class="input-field" id="gender">
+                            <option value="" disabled selected>Select Gender:</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            <option value="PreferNotToSay">Prefer not to say</option>
+                        </select>
+                        <i class="bx bx-chevron-down"></i>
+                    </div>
+
+                    <div class="input-box">
+                        <select class="input-field">
+                            <option value="" disabled selected>Select College Program:</option>
+                            <option value="it">Information Technology</option>
+                            <option value="he">Home Economics</option>
+                            <option value="ict">Information Communication and Technology</option>
+                            <option value="hrm">Human Resource Management</option>
+                            <option value="mm">Marketing Management</option>
+                            <option value="entrep">Entrepreneurship</option>
+                            <option value="fa">Fiscal Administration</option>
+                            <option value="domt">Office Management Technology</option>
+                        </select>
+                        <i class="bx bx-chevron-down"></i>
+                    </div>
+
+                </div>
+
+                <div class="input-box">
+                    <input type="text" class="input-field" id="contact" max="" placeholder="Contact Number:" required>
+                    <i class="bx bx-contact"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="E-mail Address:" required>
+                    <i class="bx bx-envelope"></i>
+                </div>
+    </form>
+
+<div class="button-group">
+    <button type="button" class="btn btn-cancel">Cancel</button>
+    <button type="button" class="btn btn-save">Save Changes</button>
+</div>
+
+<script>
+    // Select elements
+    const saveButton = document.querySelector('.btn-save');
+    const cancelButton = document.querySelector('.btn-cancel');
+    const formFields = document.querySelectorAll('.input-field');
+    const profileForm = document.getElementById('profile-form');
+
+    // Add event listener to "Save Changes" button
+    saveButton.addEventListener('click', function() {
+        formFields.forEach(field => {
+            // Disable the fields to prevent further editing
+            field.setAttribute('readonly', true); // Prevent further editing
+            field.style.backgroundColor = '#f0f0f0'; // Change background color to indicate it's not editable
+        });
+        alert("Changes saved successfully!");
+    });
+
+    // Add event listener to "Cancel" button
+    cancelButton.addEventListener('click', function() {
+        formFields.forEach(field => {
+            // Reset to the original values and make fields readonly again
+            field.setAttribute('readonly', true);
+            field.style.backgroundColor = '#f0f0f0'; // Reset to the readonly style
+            field.value = field.defaultValue; // Reset value to default
+        });
+        alert("Changes were canceled.");
+    });
+
+    // Add event listener to toggle between editable and non-editable state
+    profileForm.addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('input-field')) {
+            const targetField = event.target;
+            // Toggle the 'readonly' attribute to make the field editable or not
+            if (targetField.hasAttribute('readonly')) {
+                targetField.removeAttribute('readonly');
+                targetField.style.backgroundColor = '#fff'; // Change background to editable
+            } else {
+                targetField.setAttribute('readonly', true); // Lock the field again
+                targetField.style.backgroundColor = '#f0f0f0'; // Change to readonly style
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

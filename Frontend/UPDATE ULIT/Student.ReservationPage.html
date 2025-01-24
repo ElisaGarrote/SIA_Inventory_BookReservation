@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>UNIARCHIVE</title>
-    <link rel="stylesheet" href="Student.DashboardPage.css">
+    <link rel="stylesheet" href="Student.ReservationPage.css">
 </head>
 
 <body>
@@ -34,10 +34,11 @@
               <div class="dropdown">
                 <button class="dropbtn">▼</button>
                 <div class="dropdown-content">
-                    <a href="profile.html">View Profile</a>
+                  <a href="javascript:void(0)" class="scroll-link" onclick="toggleProfile()">View Profile</a>
                     <a href="Student.SignInPage.html" id="logout-link">Log Out</a>
                 </div>
               </div>
+
 
               <script>
                 // Add a confirmation dialog to the Log Out link
@@ -103,42 +104,353 @@
                 window.onload = updateDateTime;
             </script>
 
+            <div class="filter">
+              <p>Filter:</p>
+              <label for="dateFilter">Date</label>
+              <select id="dateFilter" name="dateFilter">
+                <option value="Date">Select Date:</option>
+                <option value="value">""</option>
+              </select>
+
+              <label for="category">Category</label>
+              <select id="dateFilter" name="dateFilter">
+                <option value="drop-category">Select Category:</option>
+                <option value="value">""</option>
+              </select>
+            </div>
+
                <!---DITOBETLOG-->
+                <!-- Navigation Tabs -->
 
+              <!-- Navigation Tabs -->
+              <nav class="navigation-bar">
+                <ul>
+                    <li><a href="#" id="all-books" class="active">All</a></li>
+                    <li><a href="#" id="reserved-books">Reserved Books</a></li>
+                    <li><a href="#" id="returned-books">Returned Books</a></li>
+                    <li><a href="#" id="overtime-books">Overtime Books</a></li>
+                </ul>
+              </nav>
+
+              <div class="content-container">
+                <!-- All Books Container -->
+                <div id="all-books-container" class="content active">
+                  <main>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Research Title</th>
+                          <th>Category</th> <!-- New Category column -->
+                          <th>Researchers</th> <!-- Changed from Author -->
+                          <th>Reservation Date</th>
+                          <th>Status</th>
+                          <th>Action</th> <!-- New column for View button -->
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </main>
+                </div>
               
+                <!-- Reserved Books Container -->
+                <div id="reserved-books-container" class="content">
+                  <main>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Research Title</th>
+                          <th>Category</th> <!-- New Category column -->
+                          <th>Researchers</th>
+                          <th>Reservation Date</th>
+                          <th>Action</th> <!-- New column for View button -->
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </main>
+                </div>
+              
+                <!-- Returned Books Container -->
+                <div id="returned-books-container" class="content">
+                  <main>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Research Title</th>
+                          <th>Category</th> <!-- New Category column -->
+                          <th>Researchers</th>
+                          <th>Reservation Date</th>
+                          <th>Action</th> <!-- New column for View button -->
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </main>
+                </div>
+              
+                <!-- Overtime Books Container -->
+                <div id="overtime-books-container" class="content">
+                  <main>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Research Title</th>
+                          <th>Category</th> <!-- New Category column -->
+                          <th>Researchers</th>
+                          <th>Reservation Date</th>
+                          <th>Returning Date</th>
+                          <th>Days Overdue</th>
+                          <th>Action</th> <!-- New column for View button -->
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </main>
+                </div>
 
-              <script>
-                function openTab(event, tabName) {
-                  // Hide all tab content
-                  const tabPanes = document.getElementsByClassName("tab-pane");
-                  for (const pane of tabPanes) {
-                    pane.style.display = "none";
-                    pane.classList.remove("active");
+              <!-- Container to show reservation details -->
+                  <div id="container-view" style="display: none;">
+                    <div class="view-content">
+                      <h2 id="view-title"></h2>
+                      <p id="view-category"></p>
+                      <p id="view-researcher"></p>
+                      <p id="view-reservation-date"></p>
+                      <p id="view-status"></p>
+                      <p id="view-abstract"></p>
+                      <button id="close-view-button">Close</button>
+                    </div>
+                  </div>
+
+                <script>
+                // Handle close button for the container-view
+                document.getElementById("close-view-button").addEventListener("click", () => {
+                  document.getElementById("container-view").style.display = "none";
+                });
+
+                // Function to populate and open the container-view
+                function showReservationDetails(data) {
+                  document.getElementById("view-title").textContent = data.title || data.bookTitle || "Reservation Details";
+                  document.getElementById("view-category").textContent = `Category: ${data.category || "N/A"}`;
+                  document.getElementById("view-researcher").textContent = `Researcher(s): ${data.researcher || "N/A"}`;
+                  document.getElementById("view-reservation-date").textContent = `Reservation Date: ${data.reservationDate || "N/A"}`;
+                  document.getElementById("view-status").textContent = `Status: ${data.status || "N/A"}`;
+                  document.getElementById("view-abstract").textContent = `Abstract: ${data.abstract || "N/A"}`;
+
+                  document.getElementById("container-view").style.display = "flex";
+                }
+                </script>
+
+                <script>
+                  // JavaScript to handle tab switching
+                  const navLinks = document.querySelectorAll(".navigation-bar a");
+                  const contentContainers = document.querySelectorAll(".content");
+              
+                  navLinks.forEach((link) => {
+                    link.addEventListener("click", (e) => {
+                      e.preventDefault();
+              
+                      // Remove 'active' class from all links and hide all containers
+                      navLinks.forEach((nav) => nav.classList.remove("active"));
+                      contentContainers.forEach((container) => container.classList.remove("active"));
+              
+                      // Add 'active' class to the clicked link and its corresponding container
+                      link.classList.add("active");
+                      const targetContainer = document.getElementById(`${link.id}-container`);
+                      if (targetContainer) {
+                        targetContainer.classList.add("active");
+                      }
+                    });
+                  });
+              
+                  // Set default content visibility
+                  document.getElementById("all-books-container").classList.add("active");
+              
+                // Sample data for each table with added "category" field
+                const allBooksData = [
+                  { title: "The Great Gatsby", category: "Literature", researcher: "F. Scott Fitzgerald", reservationDate: "01-10-2025", status: "Return" },
+                  { title: "1984", category: "Dystopian", researcher: "George Orwell", reservationDate: "01-12-2025", status: "Reserved" },
+                  { title: "To Kill a Mockingbird", category: "Literature", researcher: "Harper Lee", reservationDate: "02-16-2025", status: "Overtime" },
+                ];
+
+                const reservedBooksData = [
+                  { bookTitle: "1984", category: "Dystopian", researcher: "Alice", reservationDate: "01-10-2025" },
+                  { bookTitle: "Pride and Prejudice", category: "Literature", researcher: "Bob", reservationDate: "01-22-2025" },
+                ];
+
+                const returnedBooksData = [
+                  { bookTitle: "The Great Gatsby", category: "Literature", researcher: "Charlie", reservationDate: "06-21-2025" },
+                  { bookTitle: "The Catcher in the Rye", category: "Literature", researcher: "Diana", reservationDate: "12-24-2025" },
+                ];
+
+                const overtimeBooksData = [
+                  { bookTitle: "Moby Dick", category: "Adventure", researcher: "Eve", reservationDate: "06-21-2025", returnDate: "06-21-2025", daysOverdue: 5 },
+                  { bookTitle: "War and Peace", category: "Historical", researcher: "Frank", reservationDate: "06-21-2025", returnDate: "06-21-2025", daysOverdue: 3 },
+                ];
+
+                // Function to populate a table with a "View" button
+                function populateTable(containerId, data, columns) {
+                  const container = document.getElementById(containerId);
+                  if (container) {
+                    const tbody = container.querySelector("tbody");
+                    data.forEach((row) => {
+                      const tr = document.createElement("tr");
+
+                      // Add columns to the row
+                      columns.forEach((column) => {
+                        const td = document.createElement("td");
+                        td.textContent = row[column];
+
+                        // Add a class for "status" or other columns as necessary
+                        if (column === "status" || column === "reservationDate" || column === "returnDate") {
+                          td.classList.add(row[column].toLowerCase());
+                        }
+
+                        tr.appendChild(td);
+                      });
+
+                      // Add View button
+                      const viewTd = document.createElement("td");
+                      const viewButton = document.createElement("button");
+                      viewButton.textContent = "View";
+                      viewButton.classList.add("view-button");
+
+                      viewTd.appendChild(viewButton);
+                      tr.appendChild(viewTd);
+                      tbody.appendChild(tr);
+                    });
                   }
-
-                  // Remove "active" class from all buttons
-                  const tabButtons = document.getElementsByClassName("tab-button");
-                  for (const button of tabButtons) {
-                    button.classList.remove("active");
-                  }
-
-                  // Show the selected tab and set the button to active
-                  document.getElementById(tabName).style.display = "block";
-                  document.getElementById(tabName).classList.add("active");
-                  event.currentTarget.classList.add("active");
                 }
 
-                // Set the default tab to display
-                document.getElementById("Overview").style.display = "block";
-              </script>
-              
+                // Populate the tables with data and add View button
+                populateTable("all-books-container", allBooksData, ["title", "category", "researcher", "reservationDate", "status"]);
+                populateTable("reserved-books-container", reservedBooksData, ["bookTitle", "category", "researcher", "reservationDate"]);
+                populateTable("returned-books-container", returnedBooksData, ["bookTitle", "category", "researcher", "reservationDate"]);
+                populateTable("overtime-books-container", overtimeBooksData, ["bookTitle", "category", "researcher", "reservationDate", "returnDate", "daysOverdue"]);
 
+                  function populateTable(containerId, data, columns) {
+                    const container = document.getElementById(containerId);
+                    if (container) {
+                      const tbody = container.querySelector("tbody");
+                      data.forEach((row) => {
+                        const tr = document.createElement("tr");
+                  
+                        // Add columns to the row
+                        columns.forEach((column) => {
+                          const td = document.createElement("td");
+                          td.textContent = row[column];
+                          
+                          if (column === "status") {
+                            // Add a class to the status column based on the status value
+                            td.classList.add(row[column].toLowerCase());
+                          }
+                  
+                          tr.appendChild(td);
+                        });
+
+                  
+                        // Add the "View" button
+                        const viewTd = document.createElement("td");
+                        const viewButton = document.createElement("button");
+                        viewButton.textContent = "View";
+                        viewButton.classList.add("view-button");
+
+                        // Attach click event to "View" button to show reservation details
+                        viewButton.addEventListener("click", () => showReservationDetails(row));
+
+                        viewTd.appendChild(viewButton);
+                        tr.appendChild(viewTd);
+                        tbody.appendChild(tr);
+                        
+                      });
+                    }
+                  }
+                </script>
+                
             </div>
 
         </div>
+
+        <div class="profile-container" id="profile-section">
+          <!-- Close button -->
+          <button class="close-btn" onclick="toggleProfile()">×</button>
+
+          <h2>View Profile</h2>
+      
+          <!-- Form with aligned text boxes -->
+          <form>
+            <div class="four-forms">
+              <div class="input-box">
+                  <label for="lastname">Lastname:</label>
+                  <input type="text" class="input-field" id="lastname" placeholder="Lastname:" readonly>
+                  <i class="bx bx-user"></i>
+              </div>
+              <div class="input-box">
+                  <label for="firstname">Firstname:</label>
+                  <input type="text" class="input-field" id="firstname" placeholder="Firstname:" readonly>
+                  <i class="bx bx-user"></i>
+              </div>
+              <div class="input-box">
+                  <label for="middlename">Middlename:</label>
+                  <input type="text" class="input-field" id="middlename" placeholder="Middlename:" readonly>
+                  <i class="bx bx-user"></i>
+              </div>
+              <div class="input-box">
+                  <label for="suffix">Suffix:</label>
+                  <input type="text" class="input-field" id="suffix" placeholder="Suffix:" readonly>
+                  <i class="bx bx-user"></i>
+              </div>
+            </div>
+            
+            <!-- Gender and Program Section -->
+            <div class="two-forms">
+              <div class="input-box">
+                  <label for="gender">Gender:</label>
+                  <input type="text" class="input-field" id="gender" placeholder="Gender:" readonly>
+                  <i class="bx bx-chevron-down"></i>
+              </div>
+            
+              <div class="input-box">
+                  <label for="program">College Program:</label>
+                  <input type="text" class="input-field" id="program" placeholder="College Program:" readonly>
+                  <i class="bx bx-chevron-down"></i>
+              </div>
+            </div>
+            
+            <!-- Contact Section -->
+            <div class="input-box">
+              <label for="contact">Contact Number:</label>
+              <input type="text" class="input-field" id="contact" placeholder="Contact Number:" readonly>
+              <i class="bx bx-contact"></i>
+            </div>
+            
+            <div class="input-box">
+              <label for="email">E-mail Address:</label>
+              <input type="email" class="input-field" id="email" placeholder="E-mail Address:" readonly>
+              <i class="bx bx-envelope"></i>
+            </div>                
+
+            <div class="button-group">
+              <a href="#" class="btn btn-delete">Delete Account</a>
+              <a href="Student.EditProfile.html" class="btn btn-edit">Edit Profile</a>
+          </div>
+
+          </form>
+
+        </div>
+
+        <script>
+          // JavaScript to toggle the visibility of the profile section
+          function toggleProfile() {
+              var profileSection = document.getElementById("profile-section");
+              if (profileSection.style.display === "none" || profileSection.style.display === "") {
+                  profileSection.style.display = "block"; // Show the profile section
+              } else {
+                  profileSection.style.display = "none";  // Hide the profile section
+              }
+          }
+        </script>
         
       </div>
-
 
 </body>
 </html>

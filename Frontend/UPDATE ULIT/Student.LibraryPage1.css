@@ -135,51 +135,6 @@
     gap: 15px;
   }
   
-  .container1 {
-    display: flex; /* Make the parent a flex container */
-    margin-top: 15px; /* Add spacing above the container */
-    gap: 5px; /* Add spacing between the boxes */
-    justify-content: center; /* Center the boxes horizontally */
-    align-items: flex-start; /* Align the boxes to the top of the container */
-  }
-  
-  /* Shared Box Styling */
-  .box1, .box2 {
-    flex: 1; /* Make the boxes equal in size */
-    background-color: #740000; /* Box background color */
-    border: 1px solid #740000; /* Add border with the same color */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 125px; /* Set consistent box height */
-    box-shadow: 0 2px 4px rgba(88, 0, 0, 0.71); /* Subtle shadow */
-    display: flex; /* Make the box a flex container */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: center; /* Center the content vertically */
-    align-items: center; /* Center the content horizontally */
-    text-transform: uppercase; /* Uppercase text */
-    text-align: center; /* Center align all text */
-    color: #ffffff; /* Text color */
-    font-weight: bold;
-  }
-  
-  /* Heading Styling for Boxes */
-  .box1 h1, .box2 h1 {
-    font-size: 56px; /* Large heading text */
-    margin: 0; /* Remove default margin */
-  }
-  
-  /* Subtext (span) Styling for Boxes */
-  .box1 span, .box2 span {
-    font-size: 14px; /* Slightly smaller font for subtext */
-    margin-top: 10px; /* Space between heading and subtext */
-    color: #f1f1f1; /* Lighter color for subtext */
-  }
-  
-  /* Additional Specific Styles (Optional) */
-  .box1 .box2 {
-    background-color: #740000; /* Unique background for box1 */
-  }
-  
   .main_container .sidebar ul li a{
     color: #ffffff;
     font-size: 16px;
@@ -497,5 +452,175 @@ form button:nth-of-type(2):hover {
   
   #filter-btn:hover {
     background-color: #6d0000;
+  }
+
+
+  .profile-container {
+    display: none; /* Initially hidden */
+    position: fixed; /* Position it fixed on the screen */
+    top: 50%; /* Vertically center it */
+    left: 50%; /* Horizontally center it */
+    transform: translate(-50%, -50%); /* Offset by half its width and height */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    width: 100%;
+    max-width: 850px;
+    z-index: 1000; /* Ensure it's in front of other content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close-btn {
+    position: absolute; /* Position the button in the top-right corner */
+    top: 15px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #d10000;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .close-btn:hover {
+    color: rgb(255, 44, 44); /* Change color to red on hover */
+  }
+  
+  /* Styling for the profile container heading */
+  .profile-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #570000; /* Dark gray color */
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid #8b0000; /* Adds a bottom border */
+    letter-spacing: 1px; /* Slight spacing between letters */
+  }
+  
+  
+  /* General form container styling */
+  form {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Four-forms layout (Lastname, Firstname, Middlename, Suffix) */
+  .four-forms {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .four-forms .input-box {
+    flex: 1; /* Ensures equal width for all input boxes */
+    position: relative;
+  }
+  
+  /* Two-forms layout (Gender, College Program) */
+  .two-forms {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .two-forms .input-box {
+    flex: 1; /* Ensures equal width for both input boxes */
+    position: relative;
+  }
+  
+  /* General input box styling */
+  .input-box {
+    margin-top: 15px;
+    position: relative;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5; /* Read-only input background */
+    color: #6c757d; /* Gray text for read-only fields */
+    cursor: not-allowed; /* Shows not-allowed cursor */
+    box-sizing: border-box;
+  }
+  
+  /* Icon Styling */
+  .input-box i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+  }
+  
+  /* Input box styling for email and contact fields */
+  .input-box:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .four-forms,
+    .two-forms {
+      flex-wrap: wrap;
+    }
+  
+    .four-forms .input-box,
+    .two-forms .input-box {
+      flex: 1 1 100%; /* Stack input boxes on smaller screens */
+    }
+  }
+  
+  /* Button group styling */
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* General button styling */
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  /* Delete Account Button */
+  .btn-delete {
+    background-color: #dc3545;
+  }
+  
+  .btn-delete:hover {
+    background-color: #c82333;
+  }
+  
+  /* Edit Profile Button */
+  .btn-edit {
+    background-color: #007bff;
+  }
+  
+  .btn-edit:hover {
+    background-color: #0056b3;
+  }
+  
+  label {
+    display: block; /* Makes the label take up its own line */
+    font-size: 14px; /* Adjust the font size */
+    font-weight: bold; /* Makes the label bold */
+    margin-bottom: 5px; /* Adds space between the label and the input field */
+    color: #333; /* Adjust the label text color */
   }
   

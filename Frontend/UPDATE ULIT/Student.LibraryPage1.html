@@ -21,7 +21,7 @@
               <div class="dropdown">
                 <button class="dropbtn">▼</button>
                 <div class="dropdown-content">
-                    <a href="profile.html">View Profile</a>
+                  <a href="javascript:void(0)" class="scroll-link" onclick="toggleProfile()">View Profile</a>
                     <a href="Student.SignInPage.html" id="logout-link">Log Out</a>
                 </div>
 
@@ -328,7 +328,89 @@
 
             </div>
 
+            <div class="profile-container" id="profile-section">
+              <!-- Close button -->
+              <button class="close-btn" onclick="toggleProfile()">×</button>
+
+              <h2>View Profile</h2>
+          
+              <!-- Form with aligned text boxes -->
+              <form>
+                <div class="four-forms">
+                  <div class="input-box">
+                      <label for="lastname">Lastname:</label>
+                      <input type="text" class="input-field" id="lastname" placeholder="Lastname:" readonly>
+                      <i class="bx bx-user"></i>
+                  </div>
+                  <div class="input-box">
+                      <label for="firstname">Firstname:</label>
+                      <input type="text" class="input-field" id="firstname" placeholder="Firstname:" readonly>
+                      <i class="bx bx-user"></i>
+                  </div>
+                  <div class="input-box">
+                      <label for="middlename">Middlename:</label>
+                      <input type="text" class="input-field" id="middlename" placeholder="Middlename:" readonly>
+                      <i class="bx bx-user"></i>
+                  </div>
+                  <div class="input-box">
+                      <label for="suffix">Suffix:</label>
+                      <input type="text" class="input-field" id="suffix" placeholder="Suffix:" readonly>
+                      <i class="bx bx-user"></i>
+                  </div>
+                </div>
+                
+                <!-- Gender and Program Section -->
+                <div class="two-forms">
+                  <div class="input-box">
+                      <label for="gender">Gender:</label>
+                      <input type="text" class="input-field" id="gender" placeholder="Gender:" readonly>
+                      <i class="bx bx-chevron-down"></i>
+                  </div>
+                
+                  <div class="input-box">
+                      <label for="program">College Program:</label>
+                      <input type="text" class="input-field" id="program" placeholder="College Program:" readonly>
+                      <i class="bx bx-chevron-down"></i>
+                  </div>
+                </div>
+                
+                <!-- Contact Section -->
+                <div class="input-box">
+                  <label for="contact">Contact Number:</label>
+                  <input type="text" class="input-field" id="contact" placeholder="Contact Number:" readonly>
+                  <i class="bx bx-contact"></i>
+                </div>
+                
+                <div class="input-box">
+                  <label for="email">E-mail Address:</label>
+                  <input type="email" class="input-field" id="email" placeholder="E-mail Address:" readonly>
+                  <i class="bx bx-envelope"></i>
+                </div>                
+
+                <div class="button-group">
+                  <a href="#" class="btn btn-delete">Delete Account</a>
+                  <a href="Student.EditProfile.html" class="btn btn-edit">Edit Profile</a>
+              </div>
+
+              </form>
+
+            </div>
+
+            <script>
+              // JavaScript to toggle the visibility of the profile section
+              function toggleProfile() {
+                  var profileSection = document.getElementById("profile-section");
+                  if (profileSection.style.display === "none" || profileSection.style.display === "") {
+                      profileSection.style.display = "block"; // Show the profile section
+                  } else {
+                      profileSection.style.display = "none";  // Hide the profile section
+                  }
+              }
+            </script>
+
         </div>
+
+        
         
       </div>
 

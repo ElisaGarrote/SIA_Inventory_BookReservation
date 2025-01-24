@@ -1,0 +1,137 @@
+/* General form container styling */
+form {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Four-forms layout (Lastname, Firstname, Middlename, Suffix) */
+  .four-forms {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .four-forms .input-box {
+    flex: 1; /* Ensures equal width for all input boxes */
+    position: relative;
+  }
+  
+  /* Two-forms layout (Gender, College Program) */
+  .two-forms {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .two-forms .input-box {
+    flex: 1; /* Ensures equal width for both input boxes */
+    position: relative;
+  }
+  
+  /* General input box styling */
+  .input-box {
+    margin-top: 15px;
+    position: relative;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5; /* Disabled input background */
+    color: #6c757d; /* Gray text for disabled fields */
+    cursor: not-allowed; /* Shows not-allowed cursor */
+    box-sizing: border-box;
+  }
+  
+  /* Icon Styling */
+  .input-box i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+  }
+  
+  /* Input box styling for email and contact fields */
+  .input-box:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .four-forms,
+    .two-forms {
+      flex-wrap: wrap;
+    }
+  
+    .four-forms .input-box,
+    .two-forms .input-box {
+      flex: 1 1 100%; /* Stack input boxes on smaller screens */
+    }
+  }
+  
+  /* Button group styling */
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* General button styling */
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  /* Cancel Button */
+  .btn-cancel {
+    background-color: #dc3545;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #c82333;
+  }
+  
+  /* Save Changes Button */
+  .btn-save {
+    background-color: #007bff;
+  }
+  
+  .btn-save:hover {
+    background-color: #0056b3;
+  }
+  
+  label {
+    display: block; /* Makes the label take up its own line */
+    font-size: 14px; /* Adjust the font size */
+    font-weight: bold; /* Makes the label bold */
+    margin-bottom: 5px; /* Adds space between the label and the input field */
+    color: #333; /* Adjust the label text color */
+  }
+  
+  /* Styling for the profile container heading */
+  h2 {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      color: #570000; /* Dark gray color */
+      margin-bottom: 20px;
+      padding: 10px 0;
+      border-bottom: 2px solid #8b0000; /* Adds a bottom border */
+      letter-spacing: 1px; /* Slight spacing between letters */
+  }
+  
