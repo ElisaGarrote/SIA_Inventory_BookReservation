@@ -587,34 +587,44 @@ form button:nth-of-type(2):hover {
     margin-top: 20px;
   }
   
-  /* General button styling */
-  .btn {
-    padding: 10px 20px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fff;
-  }
-  
-  /* Delete Account Button */
-  .btn-delete {
-    background-color: #dc3545;
-  }
-  
-  .btn-delete:hover {
-    background-color: #c82333;
-  }
-  
-  /* Edit Profile Button */
-  .btn-edit {
-    background-color: #007bff;
-  }
-  
-  .btn-edit:hover {
-    background-color: #0056b3;
-  }
+/* General button styling */
+.btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Delete Account Button */
+.btn-delete {
+  background-color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* Edit Profile Button */
+.btn-edit {
+  background-color: #129700; 
+}
+
+.btn-edit:hover {
+  background-color: #108a00; 
+}
+
+/* Change Pass Button */
+.btn-change {
+  background-color: #007bff;
+}
+
+.btn-change:hover {
+  background-color: #0056b3;
+}
+
   
   label {
     display: block; /* Makes the label take up its own line */
