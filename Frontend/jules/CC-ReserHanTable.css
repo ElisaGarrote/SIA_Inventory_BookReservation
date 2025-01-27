@@ -1,0 +1,59 @@
+  /* Add Book button */
+  .confirm-btn {
+    background-color: #218838;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #1e7e34;
+  }
+
+  .confirm-btn:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+  }
+  
+  /* Table styling */
+  .reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .reservation-table th, 
+  .reservation-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .reservation-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+  }
+  
+/* Container for making the table scrollable */
+.table-container {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+/* Optional: Custom scrollbar styling */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 0.5rem;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
