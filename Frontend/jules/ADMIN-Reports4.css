@@ -146,8 +146,8 @@
     padding: 20px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    outline: 1px solid #ccc;
+    margin-top: 40px;
   }
   
   .main::-webkit-scrollbar-thumb {
@@ -167,7 +167,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 50px;
-    margin-top: 10px;
+    margin-top: 30px;
   }
 
   .nav {
@@ -248,13 +248,13 @@
     height: 130px;
     width: 230px;
     border-radius: 20px;
-    box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    outline: 1px solid #fcd143
   }
   
   .dashboard-title {
@@ -262,23 +262,31 @@
     display: flex;
     color: #961c1e;
     margin-left: 10px;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Align date/time to the right */
+  }
+
+  .date-time { 
+    font-size: 1.5rem;
+    margin-right: 20px;
+    color: #161414;
   }
 
   /*FILTER BOX FOR REPORTS ONLY*/
   .filter-container{
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 1px;
     margin: 10px 20px 10px auto;
   }
 
   .filter-bar {
-    margin-bottom: 20px;
-    align-items: flex-start;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
     display: flex;
-    gap: 10px;
+    gap: 20px;
   }
 
   .filter-bar select {
@@ -289,6 +297,7 @@
 
   .box:hover {
     transform: scale(1.08);
+    outline: 3px solid #741141;
   }
   
   .box:nth-child(1) {
@@ -325,7 +334,6 @@
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -339,7 +347,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 20px 10px 20px;
-    border-bottom: 2px solid #961c1e;
+    border-bottom: 2px solid #db8e29;
   }
   
   /*table inside container*/
@@ -362,7 +370,7 @@
   .title-Header{
     font-size: 30px;
     font-weight: 600;
-    color: #961c1e;
+    color: #1c2069;
   }
   
   .add {
@@ -414,3 +422,67 @@
     color: white;
     border-radius: 4px;
   }
+
+  /* Flex container to align .user_name and .dropdown horizontally */
+.userman {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Push everything to the right */
+  gap: 3px; /* Space between user_name and dropdown */
+  margin-right: 20px; /* Add space from the right edge */
+}
+
+.user_name {
+  margin-right: 20px; /* Space on the right side */
+  font-size: 14px; /* Adjust font size */
+  font-weight: bold; /* Make it stand out */
+  text-align: right;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropbtn {
+  background-color: #ffffff;
+  color: rgb(126, 0, 0);
+  padding: 5px 10px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute; /* Positioned relative to the parent */
+  right: 0; /* Align to the right side of the dropdown */
+  top: 100%; /* Place directly below the button */
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.dropdown-content a { 
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Make dropdown content visible on hover */
+}
+
+.dropdown:hover .dpicn {
+  background-color: #531616;
+}

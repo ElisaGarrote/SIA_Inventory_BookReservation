@@ -1,0 +1,222 @@
+/* General styling */
+  
+  /* Print Button */
+  .print-btn {
+    background-color: purple;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 10px;
+  }
+  
+  .print-btn:hover {
+    background-color: darkorchid;
+  }
+  
+  /* Table styling */
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .inventory-table th, 
+  .inventory-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .inventory-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+  }
+
+  .inventory-table th {
+    cursor: pointer;
+    user-select: none;
+}  
+
+  .inventory-table th:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Button styles */
+  .view-btn {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Button hover effects */
+  .view-btn:hover {
+    background-color: #138496;
+  }
+  
+  .edit-btn:hover {
+    background-color: #e0a800;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+
+
+  /* Add Book Modal Styling */
+  .modal-background {
+    display: none; /* Hidden by default */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+  }
+  .text-field {
+    padding: 8px;
+    font-size: 1rem;
+    border-width: 2px;
+    border-color: #d1d5db;
+    outline: none;
+    color: rgb(41, 41, 41);
+    transition: all 0.2s ease-in-out;
+  }
+  .text-field:focus {
+    outline-color: indigo;
+    border-color: indigo;
+    transform: scale(1.02);
+  }
+  label {
+    color: gray;
+  }
+
+  /* Edit Book Modal*/
+  .modal-content-edit {
+    animation: fadeIn 0.3s ease-in-out;
+    max-height: 80vh; /* Reduce height */
+    overflow-y: auto; /* Make it scrollable */
+    border-radius: 0.5rem; /* Ensures rounded corners */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent; /* Styled scrollbar */
+}
+
+  /* For WebKit browsers (Chrome, Edge, Safari) */
+  .modal-content-edit::-webkit-scrollbar {
+      width: 8px;
+  }
+
+  .modal-content-edit::-webkit-scrollbar-thumb {
+      background-color: rgba(156, 163, 175, 0.5);
+      border-radius: 0.5rem; /* Matches modal's border radius */
+  }
+
+  .modal-content-edit::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+/* Container for making the table scrollable */
+.table-container {
+    max-height: 76rem; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+/* Optional: Custom scrollbar styling */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 0.5rem;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Print styles */
+@media print {
+    /* Hide everything except table */
+    body * {
+        visibility: hidden;
+    }
+
+    .inventory-table th {
+        background-color: #FFE5B4 !important; /* Light gold */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .inventory-table,
+    .inventory-table * {
+        visibility: visible;
+    }
+    
+    .inventory-table {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    
+    /* Clean table styling for print */
+    .inventory-table th,
+    .inventory-table td {
+        padding: 8px;
+        border: 1px solid #000;
+    }
+    
+    /* Force background colors */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    /* Page setup */
+    @page {
+        margin: 0.5cm;
+        size: portrait;
+    }
+}
