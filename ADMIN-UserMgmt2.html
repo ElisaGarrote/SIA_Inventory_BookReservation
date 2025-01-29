@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport" 
+          content="width=device-width, 
+                   initial-scale=1.0">
+    <title>UNIARCHIVE - User Management</title>
+    <link rel="stylesheet" 
+          href="ADMIN-UserMgmt2.css">
+    <link rel="stylesheet" []
+          href="AA-Responsive-UserMgmt.css">
+    <link rel="stylesheet" []
+          href="CC-UserMgmt.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  
+    <!-- for header part -->
+    <header>
+        <div class="logosec">
+            <div class="logo">UNIARCHIVE</div>
+            <img src= "01-menu.png"
+                class="icn menuicn" 
+                id="menuicn" 
+                alt="menu-icon">
+        </div>
+
+        <div class="userman">
+            <div class="user_name" id="userName">
+            </div>
+
+            <div class="dropdown">
+                <img src= "03-user.png"
+                    class="dpicn" 
+                    alt="dp">
+              <div class="dropdown-content">
+                  <a href="profile.html">Edit Account</a>
+                  <a href="logout.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- for navigation part -->
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <div class="nav-option option1">
+                        <img src="04-dashboard.png"
+                            class="nav-img" 
+                            alt="dashboard">
+                        <h3>
+                            <a href="ADMIN-Dashboard1.html" class="nav-link">Dashboard</a>
+                        </h3>
+                    </div>
+
+                    <div class="option2 nav-option">
+                        <img src= "05-user management.png"
+                            class="nav-img" 
+                            alt="usermgmt">
+                        <h3>
+                            <a href="ADMIN-UserMgmt2.html" class="nav-link">User Management</a>
+                        </h3>
+                    </div>
+
+                    <div class="nav-option option3">
+                        <img src= "06-reservation.png"
+                            class="nav-img" 
+                            alt="reserved">
+                        <h3>
+                            <a href="ADMIN-ReservationHandling3.html" class="nav-link">Reservation Handling</a>
+                        </h3>
+                    </div>
+
+                    <div class="nav-option option4">
+                        <img src= "07-reports.png"
+                            class="nav-img" 
+                            alt="reports">
+                        <h3>
+                            <a href="ADMIN-Reports4.html" class="nav-link">Reports</a>
+                        </h3>
+                    </div>
+                
+
+                    <div class="nav-option option5">
+                        <img src= "13-inventory.png"
+                                class="nav-img" 
+                                alt="logout">
+                        <h3>
+                            <a href="ADMIN-BookInventory5.html" class="nav-link">Book Inventory</a>
+                        </h3>
+                    </div>        
+                </div>
+            </nav>
+        </div>
+    
+        <!----BODY CONTENT PAGE-----> 
+        <div class="main">
+            <div class="dashboard-title">
+                USER MANAGEMENT
+                <div class="date-time">
+                    <span id="current-date"></span>
+                    <span id="current-time"></span>
+                </div>
+            </div>
+        
+            <div class="wrapper">
+                <div class="tab-box">
+                <input checked="checked" id="tab-box1" name="tab-box" type="radio"> 
+                <label for="tab-box1" class="label-one">ADMIN</label>
+                <div class="content">
+                    <div class="main-content">
+                        <div class="table-container">
+                            <div class="report-header">
+                                <h1 class="title-Header">Administrators</h1>
+                                <button class="add-admin-btn" id="addAdminBtn">ADD USER ADMIN</button>
+                            </div>
+                                                
+                            <table class="inventory-table" id="bookTable">
+                                <thead>
+                                    <tr>
+                                        <th>School ID</th>
+                                        <th>Email</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                    <tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+
+                <input id="tab-box2" name="tab-box" type="radio"> 
+                <label for="tab-box2" class="label-two">STUDENTS</label>
+                <div class="content">
+                    <div class="main-content">
+                        <div class="table-container">
+                            <div class="report-header">
+                                <h1 class="title-Header">Student Users</h1>
+                            </div>
+                                                
+                            <table class="inventory-table" id="bookTable">
+                                <thead>
+                                    <tr>
+                                        <th>School ID</th>
+                                        <th>Email</th>
+                                        <th>Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                    <tr>
+                                        <td>0001</td>
+                                        <td>sample@email.com</td>
+                                        <td>John Smith</td>
+                                        </td>
+                                        <td><button class="view-btn" onclick="viewStudentModal()">View Student</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <!---------- Add ADMIN Modal ------------->
+    <div id="addAdminModal" class="modal-background fixed inset-0 flex justify-center items-center" style="display: none;">
+        <div class="modal-content relative bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full">
+            <div class="flex justify-between items-center mb-4 border-b pb-2">
+                <h2 class="text-xl font-semibold">ADD ADMIN</h2>
+                <button class="text-gray-500 hover:text-gray-700 text-3xl p-2" onclick="closeModal('addAdminModal')">&times;</button>
+            </div>
+            <form id="addAdminForm">
+                <div class="mb-4">
+                    <label for="schoolID" class="block text-sm font-medium">School ID</label>
+                    <input type="text" id="schoolID" required class="text-field mt-1 block w-full rounded-md shadow-sm" maxlength="14">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium">Email</label>
+                    <input type="email" id="email" name="email" required class="text-field mt-1 block w-full rounded-md shadow-sm">
+                </div>
+                <div class="mb-4">
+                    <label for="firstname" class="block text-sm font-medium">First Name</label>
+                    <input type="text" id="firstname" name="firstname" required class="text-field mt-1 block w-full rounded-md shadow-sm">
+                </div>
+                <div class="mb-4">
+                    <label for="middlename" class="block text-sm font-medium">Middle Name</label>
+                    <input type="text" id="middlename" name="middlename" class="text-field mt-1 block w-full rounded-md shadow-sm">
+                </div>
+                <div class="mb-4 flex gap-4">
+                    <div class="flex-1">
+                        <label for="surname" class="block text-sm font-medium">Surname</label>
+                        <input type="text" id="surname" name="surname" required class="text-field mt-1 block w-full rounded-md shadow-sm">
+                    </div>
+                    <div class="w-24">
+                        <label for="suffix" class="block text-sm font-medium">Suffix</label>
+                        <select id="suffix" name="suffix" class="text-field mt-1 block w-full rounded-md shadow-sm" aria-label="Optional suffix">
+                            <option disabled selected>Select</option>
+                            <option>N/A</option>
+                            <option>Jr.</option>
+                            <option>Sr.</option>
+                            <option>I</option>
+                            <option>II</option>
+                            <option>III</option>
+                            <option>IV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="gender" class="block text-sm font-medium">Gender</label>
+                    <select id="gender" name="gender" required class="text-field mt-1 block w-full rounded-md shadow-sm">
+                        <option disabled selected>Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Non-Binary</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="contactnum" class="block text-sm font-medium">Contact Number</label>
+                    <input type="text" id="contactnum" name="contactnum" required class="text-field mt-1 block w-full rounded-md shadow-sm"
+                        maxlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium">Password</label>
+                    <input type="password" id="password" name="password" required class="text-field mt-1 block w-full rounded-md shadow-sm" 
+                    required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Password must be at least 8 characters long and include at least one number, one lowercase letter, one uppercase letter, and one special character.">
+                </div>
+                <div class="mb-4">
+                    <label for="confirmPassword" class="block text-sm font-medium">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required class="text-field mt-1 block w-full rounded-md shadow-sm" 
+                    required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Password must be at least 8 characters long and include at least one number, one lowercase letter, one uppercase letter, and one special character.">
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <button type="button" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md" onclick="closeModal('addAdminModal')">Cancel</button>
+                    <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-md">CONFIRM</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!---------- View ADMIN Modal ------------->
+    <div id="viewAdminModal" class="modal-background flex justify-center items-center h-screen" style="display: none;">
+        <div class="modal-content bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full">
+            <div class="flex justify-between items-center mb-4 border-b pb-2">
+                <h2 class="text-xl font-semibold">ADMIN INFORMATION</h2>
+                <button class="text-gray-500 hover:text-gray-700 text-3xl p-2" onclick="closeModal('viewAdminModal')">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">School ID</p>
+                    <p class="mt-1 text-base" id="viewSchoolID"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Email</p>
+                    <p class="mt-1 text-base" id="viewEmail"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">First Name</p>
+                    <p class="mt-1 text-base" id="viewFirstName"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Middle Name</p>
+                    <p class="mt-1 text-base" id="viewMiddleName"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Surname</p>
+                    <p class="mt-1 text-base" id="viewSurname"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Suffix</p>
+                    <p class="mt-1 text-base" id="viewSuffix"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Gender</p>
+                    <p class="mt-1 text-base" id="viewGender"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Contact Number</p>
+                    <p class="mt-1 text-base" id="viewContactNum"></p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Status</p>
+                    <p class="mt-1 text-base" id="viewStatus"></p>    
+                </div>
+            </div>
+            <div class="flex justify-center mt-6 pt-4 border-t">
+                <button type="button" class="bg-indigo-600 hover:bg-green-500 text-white px-4 py-2 rounded-md" onclick="closeModal('viewAdminModal')">OKAY</button>
+            </div>
+        </div>
+    </div>
+
+    <!---------- View STUDENT Modal ------------->
+    <div id="viewStudentModal" class="modal-background flex justify-center items-center h-screen" style="display: none;">
+        <div class="modal-content bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full">
+            <div class="flex justify-between items-center mb-4 border-b pb-2">
+                <h2 class="text-xl font-semibold">STUDENT INFORMATION</h2>
+                <button class="text-gray-500 hover:text-gray-700 text-3xl p-2" onclick="closeModal('viewStudentModal')">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">School ID</p>
+                    <p class="mt-1 text-base" id="viewStudentID">0001</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Email</p>
+                    <p class="mt-1 text-base" id="viewStudentEmail">sample@email.com</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">First Name</p>
+                    <p class="mt-1 text-base" id="viewStudentFirstName">Jane</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Middle Name</p>
+                    <p class="mt-1 text-base" id="viewStudentMiddleName">Doe</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Surname</p>
+                    <p class="mt-1 text-base" id="viewStudentSurname">Smith</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Suffix</p>
+                    <p class="mt-1 text-base" id="viewStudentSuffix">N/A</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Gender</p>
+                    <p class="mt-1 text-base" id="viewStudentGender">Female</p>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm font-medium text-gray-500">Contact Number</p>
+                    <p class="mt-1 text-base" id="viewStudentContactNum">09123456789</p>
+                </div>
+            </div>
+            <div class="flex justify-center gap-4 mt-6 pt-4 border-t">
+                <button type="button" class="bg-gray-500 hover:bg-red-400 text-white px-4 py-2 rounded-md" onclick="changePasswordModal()">Change Password</button>
+                <button type="button" class="bg-indigo-600 hover:bg-green-500 text-white px-4 py-2 rounded-md" onclick="closeModal('viewStudentModal')">OKAY</button>
+            </div>
+        </div>
+    </div>
+
+    <!---------- Student Change Password Modal ------------->
+    <div id="changePasswordModal" class="modal-background flex justify-center items-center h-screen" style="display: none;">
+        <div class="modal-content bg-white p-6 rounded-lg shadow-lg max-w-xl w-full">
+            <div class="flex justify-between items-center mb-4 border-b pb-2">
+                <h2 class="text-xl font-semibold">Change Password</h2>
+                <button class="text-gray-500 hover:text-gray-700 text-3xl p-2" onclick="closeModal('changePasswordModal')">&times;</button>
+            </div>
+            <form id="changePasswordForm">
+                <div class="space-y-4">
+                    <div class="mb-4">
+                        <label for="newPassword" class="block text-sm font-medium text-gray-500">Enter New Password</label>
+                        <input type="password" 
+                               id="newPassword" 
+                               class="text-field mt-1 block w-full rounded-md shadow-sm" 
+                               required 
+                               minlength="8" 
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" 
+                               title="Password must be at least 8 characters long and include at least one number, one lowercase letter, one uppercase letter, and one special character."
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <label for="confirmNewPassword" class="block text-sm font-medium text-gray-500">Confirm New Password</label>
+                        <input type="password" 
+                               id="confirmNewPassword" 
+                               class="text-field mt-1 block w-full rounded-md shadow-sm" 
+                               required 
+                               minlength="8" 
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" 
+                               title="Password must match the requirements above"
+                        >
+                    </div>
+                </div>
+                <div class="flex justify-end mt-6 pt-4 border-t">
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const date = now.toLocaleDateString('en-US', options);
+            
+            // Format the time
+            const time = now.toLocaleTimeString('en-US');
+            
+            document.getElementById('current-date').textContent = date;
+            document.getElementById('current-time').textContent = time;
+        }
+    
+        setInterval(updateDateTime, 1000);
+        window.onload = updateDateTime;
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+
+    // Selecting modal elements
+    const addAdminModal = document.getElementById('addAdminModal');
+    const addAdminBtn = document.getElementById('addAdminBtn');
+    //loadTableData();
+
+    // Function to load table data
+    /*function loadTableData() {
+        const tableData = JSON.parse(localStorage.getItem('adminTableData')) || [];
+        const tableBody = document.getElementById('tableBody');
+        
+        tableData.forEach(admin => {
+            const newRow = document.createElement('tr');
+            // Combine firstName and surname
+            const fullName = `${admin.firstName} ${admin.surname}`;
+            newRow.innerHTML = `
+                <td>${admin.schoolID}</td>
+                <td>${admin.email}</td>
+                <td>${fullName}</td>
+                <td>${admin.status}</td>
+                <td>
+                    <button class="view-btn" onclick="viewAdmin(this)">View</button>
+                </td>
+            `;
+            tableBody.appendChild(newRow);
+        });
+    }*/
+
+
+    //----------- ADD ADMIN FUNCTION -----------
+    addAdminBtn.addEventListener('click', () => openModal(addAdminModal));
+
+    // Close buttons for modal
+    const closeButtons = document.querySelectorAll('.modal-content button[onclick^="closeModal"]');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => closeModal(addAdminModal));
+    });
+
+    // Add Admin Form Submission
+    const addAdminForm = document.getElementById('addAdminForm');
+    addAdminForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Collect admin details
+        const adminDetails = {
+            schoolID: document.getElementById('schoolID').value,
+            email: document.getElementById('email').value,
+            firstName: document.getElementById('firstname').value,
+            middleName: document.getElementById('middlename').value,
+            surname: document.getElementById('surname').value,
+            suffix: document.getElementById('suffix').value,
+            gender: document.getElementById('gender').value,
+            contactNum: document.getElementById('contactnum').value,
+            password: document.getElementById('password').value,
+            status: 'ACTIVE'
+        };
+
+        // Validate password match
+        if (adminDetails.password !== document.getElementById('confirmPassword').value) {
+            alert('Passwords do not match!');
+            return;
+        }
+        
+        /*
+        // Save to localStorage
+        const existingData = JSON.parse(localStorage.getItem('adminTableData')) || [];
+        existingData.push(adminDetails);
+        localStorage.setItem('adminTableData', JSON.stringify(existingData));*/
+
+        // Create table row
+        const tableBody = document.getElementById('tableBody');
+        const newRow = document.createElement('tr');
+            newRow.dataset.firstName = adminDetails.firstName;
+            newRow.dataset.middleName = adminDetails.middleName;
+            newRow.dataset.surname = adminDetails.surname;
+            newRow.dataset.suffix = adminDetails.suffix;
+            newRow.dataset.gender = adminDetails.gender;
+            newRow.dataset.contactNum = adminDetails.contactNum;
+            newRow.dataset.email = adminDetails.email;
+
+            newRow.innerHTML = `
+                <td>${adminDetails.schoolID}</td>
+                <td>${adminDetails.email}</td>
+                <td>${adminDetails.firstName} ${adminDetails.surname}</td>
+                <td>${createStatusDropdown('ACTIVE')}</td>
+                <td>
+                    <button class="view-btn" onclick="viewAdmin(this)">View</button>
+                </td>
+            `;
+
+            // Add data attributes
+            Object.keys(adminDetails).forEach(key => {
+                newRow.dataset[key] = adminDetails[key];
+            });
+
+        // Add row to table
+        tableBody.appendChild(newRow);
+
+        // Close modal
+        closeModal(addAdminModal);
+
+        // Reset form
+        addAdminForm.reset();
+    }); 
+
+    // Function for DROP DOWN STATUS MENU
+    function createStatusDropdown(status) {
+        return `
+            <select class="status-select ${status === 'ACTIVE' ? 'active' : 'inactive'} px-3 py-1 rounded-md cursor-pointer appearance-none focus:outline-none text-white font-medium" 
+                    onchange="updateAdminStatus(this)">
+                <option value="ACTIVE" ${status === 'ACTIVE' ? 'selected' : ''}>ACTIVE</option>
+                <option value="INACTIVE" ${status === 'INACTIVE' ? 'selected' : ''}>INACTIVE</option>
+            </select>
+        `;
+    }
+
+    // Function to update admin status
+    function updateAdminStatus(select) {
+        const newStatus = select.value;
+
+        // Remove previous class and apply the correct one
+        select.classList.remove('active', 'inactive');
+        select.classList.add(newStatus === 'ACTIVE' ? 'active' : 'inactive');
+
+        // Update view modal if open
+        const viewModal = document.getElementById('viewAdminModal');
+        if (viewModal && viewModal.style.display === 'flex') {
+            const statusElement = document.getElementById('viewStatus');
+            statusElement.textContent = newStatus;
+            statusElement.className = newStatus === 'ACTIVE' ? 'text-green-500' : 'text-red-500';
+        }
+    }
+
+
+    
+
+    //----------- VIEW ADMIN FUNCTIONALITY -----------
+    window.viewAdmin = function(button) {
+        const viewAdminModal = document.getElementById('viewAdminModal');
+        const row = button.closest('tr');
+        const cells = row.cells;
+
+        // Get full admin data from localStorage using schoolID
+        const adminData = JSON.parse(localStorage.getItem('adminTableData')) || [];
+        const admin = adminData.find(a => a.email === cells[1].textContent);
+
+        // Populate modal with complete admin data
+        document.getElementById('viewSchoolID').textContent = cells[0].textContent;
+        document.getElementById('viewEmail').textContent = row.dataset.email;
+        document.getElementById('viewFirstName').textContent = row.dataset.firstName;
+        document.getElementById('viewMiddleName').textContent = row.dataset.middleName || 'N/A';
+        document.getElementById('viewSurname').textContent = row.dataset.surname;
+        document.getElementById('viewSuffix').textContent = row.dataset.suffix || 'N/A';
+        document.getElementById('viewGender').textContent = row.dataset.gender;
+        document.getElementById('viewContactNum').textContent = row.dataset.contactNum;
+        document.getElementById('viewStatus').textContent = row.querySelector('.status-select').value;
+
+    // Replace existing placeholder viewBook function
+    function viewBook(button) {
+        window.viewBook(button);
+    }
+
+    // Open modal
+    openModal(viewAdminModal);
+}
+
+    // Close Modal Function
+    function closeModal(modal) {
+        if (modal) modal.style.display = 'none';
+    }
+
+    // Event listeners for close buttons
+    document.querySelectorAll('[onclick^="closeModal"]').forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.getAttribute('onclick').match(/'([^']+)'/)[1];
+            closeModal(document.getElementById(modalId));
+        });
+    });
+
+    // Open modal function
+    function openModal(modal) {
+        if (modal) modal.style.display = 'flex';
+    }
+
+    // Close Modal Function
+    function closeModal(modal) {
+        modal.style.display = "none";
+    }
+
+    //----------- VIEW STUDENT FUNCTION -----------
+    window.viewStudentModal = function() {
+        const viewStudentModal = document.getElementById('viewStudentModal');
+        openModal(viewStudentModal);
+    }
+
+    window.changePasswordModal = function changePassword() {
+        const changePasswordModal = document.getElementById('changePasswordModal');
+        openModal(changePasswordModal);
+    }
+
+    document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmNewPassword').value;
+    
+    if (newPassword !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+    
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+    if (!passwordRegex.test(newPassword)) {
+        alert('Password must meet all requirements!');
+        return;
+    }
+    
+    // If validation passes, close modal and reset form
+    closeModal('changePasswordModal');
+    this.reset();
+});
+    
+    /*const viewStudentModal = document.getElementById('viewStudentModal');
+    const row = button.closest('tr');
+    const cells = row.cells;
+
+    // Get text from table cells
+    const studentID = cells[0].textContent;
+    const email = cells[1].textContent;
+    const fullName = cells[2].textContent.split(' ');
+    const status = cells[3].textContent;
+
+    // Update modal content
+    document.getElementById('viewStudentID').textContent = studentID;
+    document.getElementById('viewStudentEmail').textContent = email;
+    document.getElementById('viewStudentFirstName').textContent = fullName[0];
+    document.getElementById('viewStudentSurname').textContent = fullName[1];
+    document.getElementById('viewStudentStatus').textContent = status;
+
+    // Optional fields
+    document.getElementById('viewStudentMiddleName').textContent = 'N/A';
+    document.getElementById('viewStudentSuffix').textContent = 'N/A';
+    document.getElementById('viewStudentGender').textContent = 'N/A';
+    document.getElementById('viewStudentContactNum').textContent = 'N/A';*/
+});
+    </script>
+</body>
+</html>
