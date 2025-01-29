@@ -1,0 +1,363 @@
+/* Responsive CSS Here */
+@media screen and (max-width: 1500px) {
+    .nav-img {
+      height: 25px;
+    }
+    .nav-option {
+      gap: 20px;
+    }
+
+    .nav-option h3 {
+      font-size: 15px;
+      gap: 20px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 800px;
+    }
+
+    .report-container {
+      max-width: 95%;
+      margin: 10px auto;
+    }
+  }
+  
+  
+  @media screen and (max-width: 1300px) {
+    .nav-img {
+      height: 25px;
+    }
+    .nav-option {
+      gap: 30px;
+    }
+  
+    .nav-option h3 {
+      font-size: 15px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 800px;
+    }
+  }
+  
+  
+  @media screen and (max-width: 1200px) {
+    .nav-img {
+      height: 25px;
+    }
+    .nav-option {
+      gap: 30px;
+    }
+  
+    .nav-option h3 {
+      font-size: 15px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 800px;
+    }
+
+    .main {
+      padding: 30px 20px;
+    }
+    
+    .report-body {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .report-container {
+      width: calc(100% - 40px);
+      max-width: 1400px;
+    }
+
+    table {
+      width: 100px;
+    }
+    
+    .filter-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .filter-bar {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+  
+  
+  @media screen and (max-width: 950px) {
+      .nav-img {
+        height: 25px;
+      }
+      .nav-option {
+        gap: 30px;
+      }
+      .nav-option h3 {
+        font-size: 15px;
+      }
+      .report-topic-heading,
+      .item1,
+      .items {
+        width: 800px;
+      }
+    }
+    
+  @media screen and (max-width: 850px) {
+    .nav-img {
+      height: 30px;
+    }
+    .nav-option {
+      gap: 30px;
+    }
+    .nav-option h3 {
+      font-size: 20px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 700px;
+    }
+    .navcontainer {
+      width: 100vw;
+      position: absolute;
+      transition: all 0.6s ease-in-out;
+      top: 0;
+      left: -100vw;
+    }
+    .nav {
+      width: 100%;
+      position: absolute;
+    }
+    .navclose {
+      left: 00px;
+    }
+    .searchbar {
+      display: none;
+    }
+    .main {
+      padding: 40px 30px 30px 30px;
+    }
+    .searchbar2 {
+      width: 100%;
+      display: flex;
+      margin: 0 0 40px 0;
+      justify-content: center;
+    }
+    .searchbar2 input {
+      width: 250px;
+      height: 42px;
+      border-radius: 50px 0 0 50px;
+      background-color: var(--background-color3);
+      padding: 0 20px;
+      font-size: 15px;
+      border: 2px solid #db8e29;
+    }
+
+    .main-container {
+      margin-left: 0;
+    }
+    
+    .report-container {
+      margin: 10px;
+      padding: 0 10px;
+    }
+    
+    .nav {
+      width: 100%;
+      position: fixed;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .nav.active {
+      transform: translateX(0);
+    }
+    
+    .navcontainer {
+      width: 100%;
+    }
+    
+    .searchbar2 {
+      margin-bottom: 20px;
+    }
+    
+    .action-buttons {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    
+    .action-buttons button {
+      flex: 1 1 auto;
+      min-width: 100px;
+    }
+  
+  }
+  
+  
+  @media screen and (max-width: 490px) {
+    .message {
+      display: none;
+    }
+    .logosec {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 20px;
+    }
+    .menuicn {
+      height: 25px;
+    }
+    .nav-img {
+      height: 25px;
+    }
+    .nav-option {
+      gap: 25px;
+    }
+    .nav-option h3 {
+      font-size: 12px;
+    }
+    .nav-upper-options {
+      gap: 15px;
+    }
+    .title-Header {
+      font-size: 20px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 550px;
+    }
+
+    .report-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      height: auto;
+      padding: 15px;
+    }
+    
+    .title-Header {
+      font-size: 20px;
+    }
+    
+    .filter-bar {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .filter-bar select {
+      width: 100%;
+    }
+    
+    .action-buttons button {
+      width: 100%;
+      margin: 5px 0;
+    }
+    
+    table td, table th {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .title-Header {
+      font-size: 17px;
+    }
+    .view {
+      width: 60px;
+      font-size: 10px;
+      height: 27px;
+    }
+    .report-header {
+      height: 60px;
+      padding: 10px 10px 5px 10px;
+    }
+    .searchbtn img {
+      height: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .title-Header {
+      font-size: 18px;
+    }
+    .view {
+      width: 50px;
+      font-size: 8px;
+      height: 27px;
+    }
+    .report-header {
+      height: 60px;
+      padding: 10px;
+    }
+
+    .report-container {
+      margin: 5px;
+      padding: 0 5px;
+    }
+
+    .t-op {
+      font-size: 12px;
+    }
+    .t-op-nextlvl {
+      font-size: 10px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 300px;
+    }
+    .report-body {
+      padding: 10px;
+    }
+    .label-tag {
+      width: 70px;
+    }
+    .searchbtn {
+      width: 40px;
+    }
+    .searchbar2 input {
+      width: 180px;
+    }
+
+    .main {
+      padding: 20px 10px;
+    }
+
+    table td, table th {
+      padding: 6px;
+      font-size: 12px;
+    }
+    
+    .searchbar2 input {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+  
+  @media print {
+    .nav,
+    .searchbar,
+    .searchbar2,
+    .action-buttons {
+      display: none;
+    }
+    
+    .main-container {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .report-container {
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
