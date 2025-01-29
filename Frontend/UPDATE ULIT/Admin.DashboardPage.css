@@ -1,0 +1,448 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Arial;
+  }
+  
+  .wrapper{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .top_navbar {
+    background: #830000;
+    height: 50px;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: space-between; /* Add space between logo and username */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    color: white;
+  }
+  
+  .header {
+    text-align: center;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 110px;
+  }
+  
+  /* Flex container to align .user_name and .dropdown horizontally */
+  .userman {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Push everything to the right */
+    gap: 3px; /* Space between user_name and dropdown */
+    margin-right: 20px; /* Add space from the right edge */
+  }
+  
+  .user_name {
+    margin-right: 20px; /* Space on the right side */
+    font-size: 14px; /* Adjust font size */
+    font-weight: bold; /* Make it stand out */
+    text-align: right;
+  }
+
+
+/* The dropdown container */
+.dropdown {
+    position:sticky; /* Position relative to contain the dropdown content */
+    display: inline-block; /* Make the container an inline element */
+  }
+  
+  /* Style for the dropdown button */
+  .dropbtn {
+    background-color: #ffffff;
+    color: rgb(126, 0, 0);
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  /* The content of the dropdown (hidden by default) */
+  .dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position it absolutely inside the .dropdown container */
+    top: 100%; /* Position it directly below the button */
+    right: 0; /* Align it to the right */
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Make sure it's above other content */
+    border-radius: 4px;
+  }
+
+  
+/* Style for the links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 13px;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change the background color of links when hovered */
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Display the dropdown content when hovering over the dropdown */
+  .dropdown:hover .dropdown-content {
+    display: block; /* Show the dropdown content */
+  }
+  
+  /* Change the button's background color when hovering over the dropdown */
+  .dropdown:hover .dropbtn {
+    background-color: #a04545;
+  }
+
+  
+.profile-container {
+    display: none; /* Initially hidden */
+    position: fixed; /* Position it fixed on the screen */
+    top: 50%; /* Vertically center it */
+    left: 50%; /* Horizontally center it */
+    transform: translate(-50%, -50%); /* Offset by half its width and height */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    width: 100%;
+    max-width: 850px;
+    z-index: 1000; /* Ensure it's in front of other content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close-btn {
+    position: absolute; /* Position the button in the top-right corner */
+    top: 15px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #d10000;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .close-btn:hover {
+    color: rgb(255, 44, 44); /* Change color to red on hover */
+  }
+  
+  /* Styling for the profile container heading */
+  .profile-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #570000; /* Dark gray color */
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid #8b0000; /* Adds a bottom border */
+    letter-spacing: 1px; /* Slight spacing between letters */
+  }
+  
+  
+  /* General form container styling */
+  form {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Four-forms layout (Lastname, Firstname, Middlename, Suffix) */
+  .four-forms {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .four-forms .input-box {
+    flex: 1; /* Ensures equal width for all input boxes */
+    position: relative;
+  }
+  
+  /* Two-forms layout (Gender, College Program) */
+  .two-forms {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .two-forms .input-box {
+    flex: 1; /* Ensures equal width for both input boxes */
+    position: relative;
+  }
+  
+  /* General input box styling */
+  .input-box {
+    margin-top: 15px;
+    position: relative;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5; /* Read-only input background */
+    color: #6c757d; /* Gray text for read-only fields */
+    cursor: not-allowed; /* Shows not-allowed cursor */
+    box-sizing: border-box;
+  }
+  
+  /* Icon Styling */
+  .input-box i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+  }
+  
+  /* Input box styling for email and contact fields */
+  .input-box:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .four-forms,
+    .two-forms {
+      flex-wrap: wrap;
+    }
+  
+    .four-forms .input-box,
+    .two-forms .input-box {
+      flex: 1 1 100%; /* Stack input boxes on smaller screens */
+    }
+  }
+  
+  /* Button group styling */
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* General button styling */
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  /* Delete Account Button */
+  .btn-delete {
+    background-color: #dc3545;
+  }
+  
+  .btn-delete:hover {
+    background-color: #c82333;
+  }
+  
+  /* Edit Profile Button */
+  .btn-edit {
+    background-color: #129700; 
+  }
+  
+  .btn-edit:hover {
+    background-color: #108a00; 
+  }
+  
+  /* Change Pass Button */
+  .btn-change {
+    background-color: #007bff;
+  }
+  
+  .btn-change:hover {
+    background-color: #0056b3;
+  }
+  
+  label {
+    display: block; /* Makes the label take up its own line */
+    font-size: 14px; /* Adjust the font size */
+    font-weight: bold; /* Makes the label bold */
+    margin-bottom: 5px; /* Adds space between the label and the input field */
+    color: #333; /* Adjust the label text color */
+  }
+
+/* Title Bar */
+.title-bar {
+    display: flex;
+    justify-content: right;
+    margin-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    gap: 15px;
+  }
+
+  .main_container .sidebar{
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    background: #f5ebeb;
+    transition: all 0.3s ease;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0,0.5)), url(ASSETS/Untitled\ design\ \(9\).png);
+  }
+  
+  .main_container .sidebar .sidebar__inner{
+    position: relative;
+  }
+  
+  .main_container .container{
+    margin-top: 45px;
+    margin-left: 225px;
+    padding: 15px;
+    transition: all 0.3s ease;
+  }
+  
+.main_container .sidebar ul li a{
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px 30px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+    transition: all 0.3s ease;
+  }
+  
+  .main_container .sidebar ul li a span{
+    display: inline-block;
+  }
+  
+  .main_container .sidebar ul li a:hover,
+  .main_container .sidebar ul li a.active{
+    background: #910000b2;
+    color: #ffffff;
+  }
+  
+  .main_container .container .item{
+    background: #fff;
+    border: 1px solid #E0F2F1;
+    margin-bottom: 30px;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  /* after adding active class */
+  .wrapper.active .sidebar{
+    width: 80px;
+  }
+  
+  
+  .wrapper.active .main_container .container{
+    width: calc(100% - 80px);
+    margin-left: 80px;
+  }
+
+  .google-visualization-tooltip {
+    font-family: Verdana;
+    font-size: 12px;
+  }
+
+/* General Styling */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* First Row Styling */
+.row {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 10px; /* Add spacing between elements */
+}
+
+/* Left Container Styling */
+.left-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add spacing between boxes */
+  border-right: 1px solid #ccc; /* Divider between left and right column */
+  padding: 10px; /* Optional for spacing inside the boxes */
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #8b0000;
+  border-radius: 8px;
+  height: 205px;
+}
+
+.number {
+  font-size: 72px;
+  font-weight: bolder;
+  margin: 0;
+  color: white;
+}
+
+.categorychart {
+  flex: 1;
+  display: unset;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  display: flex;
+  box-sizing: border-box;
+}
+
+#piechart {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  display: flex;
+  border-radius: 8px;
+}
+
+/* Divider Styling */
+.divider {
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px 0;
+}
+
+/* Second Row: Area Chart Styling */
+#chart_div {
+  width: 100%;
+  height: 300px;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

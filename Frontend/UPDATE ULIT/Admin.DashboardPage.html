@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UNIARCHIVE</title>
+    <link rel="stylesheet" href="Admin.DashboardPage.css">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <!--fordaheader-->
+        <div class="top_navbar">
+
+            <div class="header">
+                <img src="ASSETS/UNIARCHIVE__4_-removebg-preview.png" class="logo">
+            </div>
+
+            <!--Userame html/css/javascript-->
+            <div class="userman">
+                <div class="user_name" id="userName">
+            </div>
+
+                <script>
+                // Simulate fetching data from a source (e.g., backend API)
+                const userData = {
+                    name: "Seth Pelagio" // This value could come from your backend or database
+                };
+
+                // Dynamically display the user name in the navbar
+                document.addEventListener("DOMContentLoaded", () => {
+                    const userNameDiv = document.getElementById("userName");
+                    userNameDiv.textContent = userData.name; // Only display the user's name
+                });
+                </script>
+            
+            <div class="dropdown">
+                <button class="dropbtn">▼</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" class="scroll-link" onclick="toggleProfile()">View Profile</a>
+                    <a href="Admin.LogInPage.html" id="logout-link">Log Out</a>
+            </div>
+
+                    <!--LogOut script-->
+                    <script>
+                        // Add a confirmation dialog to the Log Out link
+                        document.getElementById("logout-link").addEventListener("click", function (event) {
+                        // Show a confirmation dialog
+                        const confirmation = confirm("Are you sure you want to log out?");
+                        if (!confirmation) {
+                            event.preventDefault(); // Prevent navigation if the user cancels
+                        }
+                        });
+                    </script>
+
+            <!--ViewProfile container/script-->
+            <div class="profile-container" id="profile-section">
+                <!-- Close button -->
+                <button class="close-btn" onclick="toggleProfile()">×</button>
+          
+                <h2>View Profile</h2>
+                    
+                <!-- Form with aligned text boxes -->
+                        <form>
+                          <div class="four-forms">
+                            <div class="input-box">
+                                <label for="lastname">Lastname:</label>
+                                <input type="text" class="input-field" id="lastname" placeholder="Lastname:" readonly>
+                                <i class="bx bx-user"></i>
+                            </div>
+                            <div class="input-box">
+                                <label for="firstname">Firstname:</label>
+                                <input type="text" class="input-field" id="firstname" placeholder="Firstname:" readonly>
+                                <i class="bx bx-user"></i>
+                            </div>
+                            <div class="input-box">
+                                <label for="middlename">Middlename:</label>
+                                <input type="text" class="input-field" id="middlename" placeholder="Middlename:" readonly>
+                                <i class="bx bx-user"></i>
+                            </div>
+                            <div class="input-box">
+                                <label for="suffix">Suffix:</label>
+                                <input type="text" class="input-field" id="suffix" placeholder="Suffix:" readonly>
+                                <i class="bx bx-user"></i>
+                            </div>
+                          </div>
+                          
+                          <!-- Gender and Program Section -->
+                          <div class="two-forms">
+                            <div class="input-box">
+                                <label for="gender">Gender:</label>
+                                <input type="text" class="input-field" id="gender" placeholder="Gender:" readonly>
+                                <i class="bx bx-chevron-down"></i>
+                            </div>
+                          
+                            <div class="input-box">
+                              <label for="program">Admin ID:</label>
+                              <input type="text" class="input-field" id="program" placeholder="Admin ID:" readonly>
+                              <i class="bx bx-chevron-down"></i>
+                          </div>
+                          </div>
+                          
+                          <!-- Contact Section -->
+                          <div class="input-box">
+                            <label for="contact">Contact Number:</label>
+                            <input type="text" class="input-field" id="contact" placeholder="Contact Number:" readonly>
+                            <i class="bx bx-contact"></i>
+                          </div>
+                          
+                          <div class="input-box">
+                            <label for="email">E-mail Address:</label>
+                            <input type="email" class="input-field" id="email" placeholder="E-mail Address:" readonly>
+                            <i class="bx bx-envelope"></i>
+                          </div>                
+          
+                          <div class="button-group">
+                            <a href="#" class="btn btn-change">Change Password</a>
+                            <a href="Admin.EditProfile.html" class="btn btn-edit">Edit Profile</a>
+                            <a href="#" class="btn btn-delete">Delete Account</a>
+                        </div>
+          
+                        </form>
+
+                    </div>
+
+                    <script>
+                        // JavaScript to toggle the visibility of the profile section
+                        function toggleProfile() {
+                            var profileSection = document.getElementById("profile-section");
+                            if (profileSection.style.display === "none" || profileSection.style.display === "") {
+                                profileSection.style.display = "block"; // Show the profile section
+                            } else {
+                                profileSection.style.display = "none";  // Hide the profile section
+                            }
+                        }
+                      </script>
+
+                    </div>
+        </div>           
+        </div>
+        <div class="main_container">
+            <div class="sidebar">
+                <div class="sidebar__inner">
+                  <ul>
+                    <li>
+                      <a href="Student.DashboardPage.html" class="active">
+                        <span class="title">Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.LibraryPage1.html">
+                        <span class="title">Library</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Student.ReservationPage.html">
+                        <span class="title">Reservation</span>
+                      </a>
+                    </li>
+                  </ul>
+
+                </div>
+            </div>
+
+            <div class="container">
+
+              <div class="title-bar">
+                <span id="current-date"></span>
+                <span id="current-time"></span>
+              </div>
+
+            <script>
+
+              function updateDateTime() {
+                const now = new Date();
+                
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const date = now.toLocaleDateString('en-US', options);
+                
+                // Format the time
+                const time = now.toLocaleTimeString('en-US');
+                
+                document.getElementById('current-date').textContent = date;
+                document.getElementById('current-time').textContent = time;
+            }
+        
+            setInterval(updateDateTime, 1000);
+            window.onload = updateDateTime;
+            </script>
+
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load('current', { packages: ['corechart'] });
+            
+              // Pie Chart
+              google.charts.setOnLoadCallback(function () {
+                var data = google.visualization.arrayToDataTable([
+                  ['Task', 'Hours per Day'],
+                  ['Work', 11],
+                  ['Eat', 2],
+                  ['Commute', 2],
+                  ['Watch TV', 2],
+                  ['Sleep', 7],
+                ]);
+            
+                var options = {
+                  title: 'No. of Books per Category',
+                  pieHole: 0,
+                  colors: ['#d76b3e', '#9e2a2f', '#f1a40f', '#6b8e23', '#8b4513'],
+                  legend: { position: 'bottom', alignment: 'center' },
+                };
+            
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(data, options);
+              });
+            
+              // Area Chart
+              google.charts.setOnLoadCallback(function () {
+                var data = google.visualization.arrayToDataTable([
+                  ['Day', 'Reservations'],
+                  ['Monday', 25],
+                  ['Tuesday', 30],
+                  ['Wednesday', 45],
+                  ['Thursday', 40],
+                  ['Friday', 50],
+                  ['Saturday', 35],
+                ]);
+            
+                var options = {
+                  title: 'Total reservations of student weekly',
+                  hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+                  vAxis: { minValue: 0 },
+                  colors: ['#8b0000'],
+                };
+            
+                var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+              });
+            </script>
+
+            <div class="main-content">
+              <!-- First Row: Two Columns -->
+              <div class="row">
+                  <!-- Left Column: Two Boxes -->
+                  <div class="left-container">
+                      <div class="box" id="reservations-box">
+                          <h2 class="number" id="reservations-number">0</h2>
+                          <p>No. of Reservations</p>
+                      </div>
+                      <div class="box" id="students-box">
+                          <h2 class="number" id="students-number">0</h2>
+                          <p>Total of Students</p>
+                      </div>
+                  </div>
+
+                  <!-- Right Column: Pie Chart -->
+                  <div class="categorychart">
+                      <div id="piechart"></div>
+                  </div>
+              </div>
+          
+              <!-- Divider -->
+              <div class="divider"></div>
+          
+              <!-- Second Row: Area Chart -->
+              <div class="row">
+                  <div id="chart_div"></div>
+              </div>
+
+
+          </div>
+          
+            <div class="main_container">
+                <div class="sidebar">
+                    <div class="sidebar__inner">
+                      <ul>
+                        <li>
+                          <a href="Admin.DashboardPage.html" class="active">
+                            <span class="title">Dashboard</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="Admin.Reservationhandling.html">
+                            <span class="title">Reservation Handling</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="Admin.BookInventory.html">
+                            <span class="title">Book Inventory</span>
+                          </a>
+                        </li>
+                        <li>
+                            <a href="Admin.UserManagement.html">
+                              <span class="title">User Management</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="Admin.Reports.html">
+                              <span class="title">Reports</span>
+                            </a>
+                          </li>
+                      </ul>
+    
+                    </div>
+                </div>
+
+    </div>
+      
+</div>
+    
+</body>
+</html>
