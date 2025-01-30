@@ -141,6 +141,64 @@ header {
   padding: 40px 30px 30px 30px;
 }
 
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  min-width: 0;
+  margin-left: 1rem;
+  margin-top: 30px;
+}
+
+.dashboard-layout {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center align elements */
+  width: 100%;
+  gap: 20px; /* Adds spacing between sections */
+}
+
+.graph-container {
+  width: 55%; /* Adjust width */
+  max-width: 800px; /* Prevents graph from stretching too much */
+  height: 400px; /* Adjust height */
+  background-color: #f8f9fa; /* Light background */
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Fixed width */
+  margin: auto;
+}
+
+.stats-graph-container {
+  display: flex;  /* Enables side-by-side layout */
+  align-items: center; /* Aligns items vertically */
+  justify-content: flex-start; /* Adds spacing */
+  gap: 10px; /* Space between elements */
+  width: 100%; /* Full width */
+  padding: 20px; /* Adds space around the graph */
+  margin: auto 0;
+}
+
+.box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  flex-direction: column;
+  gap: 15px;
+  width: 40%;
+  margin: auto;
+  flex: 0 0 300px; /* Fixed width */
+
+}
 .main::-webkit-scrollbar-thumb {
   background-image: 
         linear-gradient(to bottom, rgb(0, 0, 85), rgb(0, 0, 50));
@@ -152,13 +210,13 @@ header {
   background-color: #9e9e9eb2;
 }
 
-.box-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 50px;
+.date-time { 
+  font-size: 1.5rem;
+  margin-right: 20px;
+  color: #161414;
 }
+
+
 .nav {
   min-height: 100vh;
   width: 250px;
@@ -197,6 +255,11 @@ header {
   transition: all 0.1s ease-in-out;
 }
 
+.nav-upper-options a {
+  color: #000000;
+  text-decoration: none;
+}
+
 .nav-option:hover {
   border-left: 5px solid #880000af;
   background-color: #ffd8df;
@@ -213,13 +276,6 @@ header {
   gap: 30px;
 }
 
-.nav-logout {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;;
-}
-
 .option1 {
   background-color: var(--background-color4);
   color: black;
@@ -230,18 +286,30 @@ header {
 }
 .box {
   height: 130px;
-  width: 230px;
+  width: 100%;
   border-radius: 20px;
-  box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  outline: 2px solid #7fe3f5;
+  margin: 0;
 }
+
+.dashboard-title {
+  font-size: 2.5rem;
+  display: flex;
+  color: #961c1e;
+  margin-left: 10px;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Align date/time to the right */
+}
+
 .box:hover {
   transform: scale(1.08);
+  outline: 3px solid #ffc628;
 }
 
 .box:nth-child(1) {
@@ -277,10 +345,10 @@ header {
 .report-container {
   min-height: 300px;
   max-width: 1200px;
-  margin: 70px auto 0px auto;
+  margin: 40px auto 0px auto;
   background-color: #ffffff;
-  border-radius: 30px;
-  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  border-radius: 20px;
+  outline: 1px solid #ccc;
   padding: 0px 20px 20px 20px;
 }
 .report-header {
@@ -290,7 +358,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 20px 20px 10px 20px;
-  border-bottom: 2px solid #961c1e;
+  border-bottom: 2px solid #ccc;
 }
 
 /*Title of report box container*/
@@ -348,4 +416,159 @@ header {
   background-color: rgb(0, 177, 0);
   color: white;
   border-radius: 4px;
+}
+
+/* Flex container to align .user_name and .dropdown horizontally */
+.userman {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Push everything to the right */
+  gap: 3px; /* Space between user_name and dropdown */
+  margin-right: 20px; /* Add space from the right edge */
+}
+
+.user_name {
+  margin-right: 20px; /* Space on the right side */
+  font-size: 14px; /* Adjust font size */
+  font-weight: bold; /* Make it stand out */
+  text-align: right;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropbtn {
+  background-color: #ffffff;
+  color: rgb(126, 0, 0);
+  padding: 5px 10px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute; /* Positioned relative to the parent */
+  right: 0; /* Align to the right side of the dropdown */
+  top: 100%; /* Place directly below the button */
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.dropdown-content a { 
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Make dropdown content visible on hover */
+}
+
+.dropdown:hover .dpicn {
+  background-color: #531616;
+}
+
+/* Container for making the table scrollable */
+.table-container {
+  max-height: 76rem; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+/* Optional: Custom scrollbar styling */
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 0.5rem;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/*For list of research books*/
+.scrollable-list {
+  max-height: calc(100vh - 250px); /* Adjust for header and margins */
+  overflow-y: auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.research-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.research-list li {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.research-list li:last-child {
+  border-bottom: none;
+}
+
+/* Scrollbar styling */
+.scrollable-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+/* Container for making the table scrollable */
+.table-container {
+  max-height: 76rem; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+/* Optional: Custom scrollbar styling */
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 0.5rem;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* Table styling */
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
